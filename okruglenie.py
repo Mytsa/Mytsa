@@ -1,0 +1,13 @@
+
+print(round(-9417696 /3308558))
+print(round(19581 /1612))
+print(round(5336651 /-662040))
+print(round(6991641 /-2959872))
+print(round(6632988 /641))
+print(round(18221 /1364))
+print(round(12173 /1240))
+print(round(8164070 /47))
+print(round(12817 /1410))
+print(round(-7722821 /928847))
+print(round(1890408 /1219999))
+print(round(-363873 /957268))

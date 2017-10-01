@@ -1,0 +1,22 @@
+st = float(input('ставка: '))
+hour = float(input('кількість робочих годин: '))
+over = float(input('кількість понаднормових годин: '))
+pover = float(input('сума понаднормових премій: '))
+
+def stav(arg):
+    sal = (arg * 0.3) + arg
+    salar = sal - (sal * 0.18)
+    salar1 = salar - (sal * 0.015)
+    return salar1
+
+
+
+def prem(hour, over, st, stav):
+    cst = st / hour
+    price = cst * over
+    pprice = stav(price)
+    return pprice
+
+print(prem)
+
+#prover = pover - ((pover * 0.18) + (pover * 0.015))
