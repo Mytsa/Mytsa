@@ -9,4 +9,4 @@ class Comparison():
         if self.data_row_in == self.data_row_out:
             return None  # return something
         else:
-            return self.data_row_in   # return data from row input
+            return self.data_row_in   # return data from row input ---test test
