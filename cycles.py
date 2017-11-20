@@ -20,7 +20,6 @@ correction = counter - total_cycles
 wb = xlwt.Workbook()    # initialization new file to write
 ws = wb.add_sheet(datetime.strftime(datetime.now(), "%Y"))    # initialization new file with sheet
 
-
 # open file
 rb = xlrd.open_workbook('apl_counter.xls', formatting_info=True)
 # choice active sheet
@@ -30,9 +29,6 @@ while sheet.row_values(i)[0] != '**':
     x = i + 1
     i += 1
     # print(x)
-
-
-
 
 def add(x, j, val):
     ws.write(x, j, val)
