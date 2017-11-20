@@ -30,7 +30,8 @@ while sheet.row_values(i)[0] != '**':
     i += 1
     # print(x)
 
-# clean firsted lines
+# clean firsted lines - need decision
+
 def add(x, j, val):
     ws.write(x, j, val)
 
