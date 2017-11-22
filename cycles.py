@@ -20,6 +20,7 @@ correction = counter - total_cycles
 wb = xlwt.Workbook()    # initialization new file to write
 ws = wb.add_sheet(datetime.strftime(datetime.now(), "%Y"))    # initialization new file with sheet
 
+
 # open file
 rb = xlrd.open_workbook('apl_counter.xls', formatting_info=True)
 # choice active sheet
@@ -30,7 +31,7 @@ while sheet.row_values(i)[0] != '**':
     i += 1
     # print(x)
 
-# clean firsted lines - need decision
+# clean all file and write new data - need decision
 
 def add(x, j, val):
     ws.write(x, j, val)
@@ -43,3 +44,14 @@ add(x, 4, total_cycles)
 ws.write(x + 1, 0, "**")
 
 wb.save('apl_counter.xls')
+
+
+# >>> import os
+# >>> from xlrd import open_workbook
+# >>> from xlutils.save import save
+# >>> wb = open_workbook(os.path.join(test_files,'testall.xls'))
+# >>> os.listdir(temp_dir)
+# []
+# >>> save(wb,os.path.join(temp_dir,'saved.xls'))
+# >>> os.listdir(temp_dir)
+# ['saved.xls']
