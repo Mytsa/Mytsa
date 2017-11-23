@@ -12,10 +12,11 @@ c = input('has a counter (y/no): ')
 
 if c is 'y':
     counter = int(input('input counter data: '))
+    correction = counter - cycles
+    total_cycles = counter
+    print(correction)
 else:
     total_cycles = int(input('input total cycles: '))
-    counter = total_cycles
-correction = counter - total_cycles
 
 wb = xlwt.Workbook()    # initialization new file to write
 ws = wb.add_sheet(datetime.strftime(datetime.now(), "%Y"))    # initialization new file with sheet
