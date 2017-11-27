@@ -4,82 +4,72 @@ import xlwt  # write excel file
 import xlsxwriter
 from datetime import datetime
 
-applicator = int(input('input SAP number of applicator: '))
-date = datetime.strftime(datetime.now(), "%Y/%m/%d ")
-page = int(input('input page number of card: '))
-cycles = int(input('input cycles: '))
-c = input('has a counter (y/no): ')
-
-if c is 'y':
-    counter = int(input('input counter data: '))
-    correction = counter - cycles
-    total_cycles = counter
-    print('correction is: {} '.format(correction))
-else:
-    total_cycles = int(input('input total cycles: '))
+# applicator = int(input('input SAP number of applicator: '))
+# date = datetime.strftime(datetime.now(), "%Y/%m/%d ")
+# page = int(input('input page number of card: '))
+# cycles = int(input('input cycles: '))
+# old_cycles = int(input('input cycles previous card: '))
+# c = input('has a counter (y/no): ')
+#
+# if c is 'y':
+#     counter = int(input('input counter data: '))
+#     correction = counter - (cycles + old_cycles)
+#     total_cycles = counter
+#     # print('correction is: {} '.format(correction))
+# else:
+#     total_cycles = cycles + old_cycles
 
 # wb = xlwt.Workbook()    # initialization new file to write
-# ws = wb.add_sheet(datetime.strftime(datetime.now(), "%Y"))    # initialization new file with sheet
+# ws = wb.add_sheet('2017')    # initialization new file with sheet
 #
-#
-# # open file
-# rb = xlrd.open_workbook('apl_counter.xls', formatting_info=True)
+# #open file
+# rb = xlrd.open_workbook('mark.xls', formatting_info=True)
 # # choice active sheet
 # sheet = rb.sheet_by_index(0)
 # i = 0
-# while sheet.row_values(i)[0] != '**':  # find last row before mark --> **
+# while sheet.row_values(i)[0] != '*':  # find last row before mark --> **
 #     x = i + 1
 #     i += 1
-#     # print(x)
-
-# ---- new shanche ---->
-
-
-# Create a workbook and add a worksheet.
-workbook = xlsxwriter.Workbook('apl_counter.xls')
-worksheet = workbook.add_worksheet('2018')
-
-# Some data we want to write to the worksheet.
-# expenses = (
-#     ['Rent', 1000],
-#     ['Gas',   100],
-#     ['Food',  300],
-#     ['Gym',    50],
-# )
-
-# Start from the first cell. Rows and columns are zero indexed.
-# row = 0
-# col = 0
-
-# Iterate over the data and write it out row by row.
-
-worksheet.write(25, 0, applicator)
-worksheet.write(25, 1, date)
-worksheet.write(25, 2, page)
-worksheet.write(25, 3, cycles)
-worksheet.write(25, 4, total_cycles)
-worksheet.write(26, 0, '**')
-
-
-# Write a total using a formula.
-# worksheet.write(row, 0, 'Total')
-# worksheet.write(row, 1, '=SUM(B1:B4)')
-
-workbook.close()
-
-
-#  ---- end ---->
-
-# clean all file and write new data - need decision
-
-# def add(x, j, val):
-#     ws.write(x, j, val)
+# print(x)
 #
-# add(x, 0, applicator)
-# add(x, 1, date)
-# add(x, 2, page)
-# add(x, 3, cycles)
-# add(x, 4, total_cycles)
-# ws.write(x + 1, 0, "**")  # mark last row with symbol --> **
+# ws.write(x + 1, 0, "*")  # mark last row with symbol --> **
+# wb.save('mark.xls')
+
+# --------------------------- new openpyxl
+import openpyxl
+from openpyxl import *
+
+wb = load_workbook(filename='counter_ver.1.xlsx', read_only=True)
+ws = wb['mark']
+
+for row in ws.rows:
+    for cell in row:
+        a = cell.value
+print(a)
+i = 1
+j = 1
+while a != '*':
+    for row in ws.rows:
+        for cell in row:
+            x = i
+            i += 1
+            print(i)
+
+# xfile = openpyxl.load_workbook('counter_ver.1.xlsx')
 #
-# wb.save('apl_counter.xls')
+# x = 2
+#
+# a = str('A') + str(x)
+# b = str('B') + str(x)
+# c = str('C') + str(x)
+# d = str('D') + str(x)
+# e = str('E') + str(x)
+#
+# sheet = xfile.get_sheet_by_name('2017')
+# sheet[a] = applicator
+# sheet[b] = date
+# sheet[c] = page
+# sheet[d] = cycles
+# sheet[e] = total_cycles
+#
+# xfile.save('counter_ver.1.xlsx')
