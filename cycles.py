@@ -41,3 +41,5 @@ add(x, 4, total_cycles)
 ws.write(x + 1, 0, "**")
 
 wb.save('apl_counter.xls')
+
+#https://stackoverflow.com/questions/44433563/find-cell-values-in-excel-workbook-that-are-the-same-with-openpyxl
