@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-# import xlrd  # read excel file
-# import xlwt  # write excel file
-import openpyxl
+#import openpyxl
 from openpyxl import *
 from datetime import datetime
 
 applicator = int(input('input SAP number of applicator: '))
-date = datetime.strftime(datetime.now(), "%Y/%m/%d ")
+date = datetime.strftime(datetime.now(), "%Y/%m/%d")
 page = int(input('input page number of card: '))
 cycles = int(input('input cycles: '))
 old_cycles = int(input('input cycles previous card: '))
@@ -20,6 +18,14 @@ if c is 'y':
 else:
     total_cycles = cycles + old_cycles
 
+# output block
+print("total cycles is {}".format(total_cycles))
+print("sum of cycles in this cart is {}".format(old_cycles + cycles))
+# print('date is {}'.format(date))
+print('next page is: ', page+1)
+if c == 'y':
+    print('correction is: ', correction)
+
 wb = load_workbook(filename='counter_ver.1.xlsx', read_only=True)
 ws = wb['2017']
 
@@ -30,7 +36,7 @@ for row in ws:
             x = cell.row  # find last mark row
             break
 
-xfile = openpyxl.load_workbook('counter_ver.1.xlsx')
+wrfile = load_workbook('counter_ver.1.xlsx')
 
 a = str('A') + str(x)
 b = str('B') + str(x)
@@ -39,7 +45,7 @@ d = str('D') + str(x)
 e = str('E') + str(x)
 a1 = str('A') + str(x + 1)
 
-sheet = xfile.get_sheet_by_name('2017')
+sheet = wrfile.get_sheet_by_name('2017')
 sheet[a] = applicator
 sheet[b] = date
 sheet[c] = page
@@ -47,4 +53,7 @@ sheet[d] = cycles
 sheet[e] = total_cycles
 sheet[a1] = '**'
 
-xfile.save('counter_ver.1.xlsx')
+wrfile.save('counter_ver.1.xlsx')
+
+
+
