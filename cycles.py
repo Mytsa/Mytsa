@@ -61,6 +61,12 @@ while a != '*':
 #        for j in range(i, ws.max_column):
 #            print (ws.cell(row=i, column=j).value)
 
+#sentinel = u"Yes"  # word to search
+#for row in ws:
+#    for cell in row:
+#        if cell.value == sentinel:
+#            print(cell.row) #
+#            break
 
 
 #rom openpyxl import load_workbook  #https://stackoverflow.com/questions/10939450/openpyxl-basic-search
