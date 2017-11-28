@@ -55,6 +55,40 @@ while a != '*':
             i += 1
             print(i)
 
+###            find cell location
+#for i in range(1,ws.max_row):
+#    if ws.cell(row=row, column=0).value == date:
+#        for j in range(i, ws.max_column):
+#            print (ws.cell(row=i, column=j).value)
+
+
+
+#rom openpyxl import load_workbook  #https://stackoverflow.com/questions/10939450/openpyxl-basic-search
+#import glob
+#import re
+#import os
+#wb = load_workbook('xl.xlsx')
+#sh = wb.get_sheet_by_name('Russian')
+#for name in glob.glob('*.mp3'):
+#    audio = EasyID3(name)
+#    for row_index in range(sh.get_highest_row()):
+#       if sh.cell(row=row_index, column=0).value == name:
+#            print(row_index)
+
+
+#openpyxl.worksheet.Worksheet.iter_cols()
+#for row in ws.iter_rows(min_row=1, max_col=3, max_row=2):
+#    for cell in row:
+#        print(cell)
+
+#openpyxl.worksheet.Worksheet.rows()
+#>>> ws = wb.active
+#>>> ws['C9'] = 'hello world'
+#>>> tuple(ws.rows)
+
+
+
+   ###         
 # xfile = openpyxl.load_workbook('counter_ver.1.xlsx')
 #
 # x = 2
