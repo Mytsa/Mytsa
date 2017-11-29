@@ -55,5 +55,8 @@ sheet[a1] = '**'
 
 wrfile.save('counter_ver.1.xlsx')
 
-
+# print file
+import os
+os.startfile("D:/1.txt", "print") # write corect adress and name of file
+#
 
