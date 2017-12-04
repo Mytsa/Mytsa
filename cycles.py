@@ -21,7 +21,7 @@ else:
 # output block
 print("total cycles is {}".format(total_cycles))
 print("sum of cycles in this cart is {}".format(old_cycles + cycles))
-# print('date is {}'.format(date))
+print('date is {}'.format(date))
 print('next page is: ', page+1)
 if c == 'y':
     print('correction is: ', correction)
@@ -55,6 +55,7 @@ sheet[a1] = '**'
 
 wrfile.save('counter_ver.1.xlsx')
 
+print
 # print file
 # import os
 # os.startfile("D:/1.txt", "print") # write corect adress and name of file
