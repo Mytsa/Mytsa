@@ -1,31 +1,5 @@
 # -*- coding: utf-8 -*-
-# import sys
-# from PyQt5.QtGui import QIcon
-# from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
-
-# app = QApplication(sys.argv)
-#
-# window = QWidget()
-# window.setGeometry(100, 100, 300, 300)
-# window.setWindowTitle('calculation of cycles')
-#
-# window.show()
-# sys.exit(app.exec())
-
-# class Window(QMainWindow):
-#     def __init__(self):
-#         super(Window, self).__init__()
-#         self.setGeometry(100, 100, 300, 300)
-#         self.setWindowTitle('calculation of cycles')
-#         # self.setWindowIcon(QGui.QIcon('namefile.png'))  # add image in window
-#         self.show()
-#
-# app = QApplication(sys.argv)
-# Gui = Window()
-# sys.exit(app.exec_())
-
-
-# import os
+import os
 import sys
 from openpyxl import *
 from datetime import datetime
@@ -33,15 +7,15 @@ from datetime import datetime
 from window1 import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class MyWin(QtWidgets.QMainWindow):
+class MyWin(QtWidgets.QDialog):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
-        self.ui = Ui_Dialog()
+        self.ui = UiDialog()
         self.ui.setupUi(self)
 
         # push button and function is go
         self.ui.pushButton_2.clicked.connect(self.action)    # action of calculation
-        self.ui.pushButton.clicked.connect(self.print_card)    # print data
+        self.ui.pushButton.clicked.connect(self.print_card)    # print data - work
 
 
     def action(self):
@@ -63,8 +37,9 @@ class MyWin(QtWidgets.QMainWindow):
         #old_cycles = int(input('input cycles previous card: '))
 
 
-        self.ui.textEdit_.setText_7(page1)
-        print(page1)
+        self.ui.textEdit_7.setText(page1)
+
+
 
 
         # checkbox action
@@ -73,12 +48,13 @@ class MyWin(QtWidgets.QMainWindow):
             #counter = int(input('input counter data: '))
             counter = self.ui.textEdit_9.toPlainText()
             correction = counter - (cycles + old_cycles)
-            self.ui.textEdit_.setText_6(correction)
+            self.ui.textEdit_6.setText(correction)
             total_cycles = counter
             # print('correction is: {} '.format(correction))
         else:
             total_cycles = cycles + old_cycles
-            self.ui.textEdit_.setText_5(total_cycles)
+            self.ui.textEdit_5.setText(total_cycles)
+
 
 
 

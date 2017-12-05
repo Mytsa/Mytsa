@@ -6,9 +6,9 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_Dialog(object):
+class UiDialog(object):
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Cycles of applicator")
+        Dialog.setObjectName("Dialog")
         Dialog.resize(980, 406)
         self.textEdit = QtWidgets.QTextEdit(Dialog)
         self.textEdit.setGeometry(QtCore.QRect(30, 70, 281, 41))
