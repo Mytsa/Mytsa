@@ -1,1 +1,1 @@
-pyuic5 window.ui -o window.py
+pyuic5 untitled.ui -o window2.py
