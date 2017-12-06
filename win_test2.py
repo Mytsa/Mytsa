@@ -17,6 +17,7 @@ class MyWin(QtWidgets.QDialog):
     def action(self):
         self.ui.total_cycles.setText("")    # total_cycles
         self.ui.next_page.setText("")    # next page
+        self.ui.correction.setText("")    # correction
 
         applicator = self.ui.applicator.toPlainText()
         cycles = self.ui.cycles.toPlainText()
@@ -24,7 +25,6 @@ class MyWin(QtWidgets.QDialog):
         page = self.ui.page.toPlainText()
 
         counter = self.ui.counter.toPlainText()
-
         total_cycles = str(int(cycles) + int(old_cycles))
 
         if counter != total_cycles:
@@ -34,10 +34,7 @@ class MyWin(QtWidgets.QDialog):
         else:
             self.ui.total_cycles.setText(total_cycles)
 
-
         page1 = str(int(page) + 1)
-
-        # self.ui.total_cycles.setText(total_cycles)
         self.ui.next_page.setText(page1)
 
 
@@ -50,7 +47,7 @@ class MyWin(QtWidgets.QDialog):
             for cell in row:
                 if cell.value == mark:
                     x = cell.row  # find last mark row
-                    print(x)
+                    #print(x)
                     break
 
         wrfile = load_workbook('counter_ver.1.xlsx')
@@ -65,17 +62,31 @@ class MyWin(QtWidgets.QDialog):
         a1 = str('A') + str(x + 1)
 
         sheet = wrfile.get_sheet_by_name('2017')
-        sheet[a] = applicator
+        sheet[a] = int(applicator)
         sheet[b] = date
-        sheet[c] = page
-        sheet[d] = cycles
-        sheet[e] = total_cycles
+        sheet[c] = int(page)
+        sheet[d] = int(cycles)
+        sheet[e] = int(total_cycles)
         sheet[a1] = '**'
 
         wrfile.save('counter_ver.1.xlsx')
 
+
+        # write data to file
+        wb = load_workbook(filename='Template_apl_cycles.xlsx', read_only=True)
+        wrfile = load_workbook('Template_apl_cycles.xlsx')
+
+        b = str('B') + str(80)
+        c = str('C') + str(75)
+
+        sheet = wrfile.get_sheet_by_name('print')
+        sheet[b] = "correction is: {}".format(correction)
+        sheet[c] = int(total_cycles)
+
+        wrfile.save('Template_apl_cycles.xlsx')
+
     def print_card(self):
-        os.startfile("I:/python/code/cycles_apl/counter_ver.1.xlsx", "print")    # write correct address, file name
+        os.startfile("I:/python/code/cycles_apl/Template_apl_cycles.xlsx", "print")    # write correct address, file name
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
