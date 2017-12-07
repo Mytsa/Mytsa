@@ -38,8 +38,8 @@ class MyWin(QtWidgets.QDialog):
         self.ui.total_cycles1.setText(total_cycles1)
 
 
-        total_cycles = str(int(cycles) + int(initial_cycles))
-        correction = str(int(counter) - (int(cycles) + int(initial_cycles)))
+        total_cycles = str(int(cycles) + int(initial_cycles) + int(counter))
+        correction = str((int(cycles) + int(initial_cycles)) - int(counter))
 
         self.ui.total_cycles.setText(total_cycles)
         self.ui.correction.setText(correction)
