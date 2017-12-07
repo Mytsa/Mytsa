@@ -16,10 +16,10 @@ class MyWin(QtWidgets.QDialog):
         self.ui.pushButton_3.clicked.connect(self.print_card2)    # print data 2 page
 
     def action(self):
-        self.ui.total_cycles.setText("")    # total_cycles
-        self.ui.next_page.setText("")    # next page
-        self.ui.correction.setText("")    # correction
-        self.ui.total_cycles1.setText("")    # Sum of cycles in card
+        self.ui.total_cycles.setText("")  # total_cycles
+        self.ui.next_page.setText("")  # next page
+        self.ui.correction.setText("")  # correction
+        self.ui.total_cycles1.setText("")  # Sum of cycles in card
 
         # input data
         applicator = self.ui.applicator.toPlainText()
@@ -30,25 +30,33 @@ class MyWin(QtWidgets.QDialog):
         counter = self.ui.counter.toPlainText()
 
 
-        total_cycles = str(int(cycles) + int(initial_cycles))
-
-        total_cycles1 = str((int(cycles) + int(initial_cycles)) - int(f_cycles))
-        self.ui.total_cycles1.setText(total_cycles1)
-
-        if counter != total_cycles:
-            correction = str((int(counter) - (int(cycles) + int(initial_cycles))))
-            self.ui.total_cycles.setText(counter)
-            self.ui.correction.setText(correction)
-        else:
-            self.ui.total_cycles.setText(total_cycles)
-
         page1 = str(int(page) + 1)
         self.ui.next_page.setText(page1)
 
 
+        total_cycles1 = str((int(cycles) + int(initial_cycles)) - int(f_cycles))
+        self.ui.total_cycles1.setText(total_cycles1)
+
+
+        total_cycles = str(int(cycles) + int(initial_cycles))
+        correction = str(int(counter) - (int(cycles) + int(initial_cycles)))
+
+        self.ui.total_cycles.setText(total_cycles)
+        self.ui.correction.setText(correction)
+
+        # if counter != total_cycles:
+        #     correction = str((int(counter) - (int(cycles) + int(initial_cycles))))
+        #     self.ui.total_cycles.setText(counter)
+        #     self.ui.correction.setText(correction)
+        # else:
+        #     self.ui.total_cycles.setText(total_cycles)
+
+
+        y_date = datetime.strftime(datetime.now(), "%Y")
+
         #write data to file
         wb = load_workbook(filename='counter_ver.1.xlsx', read_only=True)
-        ws = wb['2017']
+        ws = wb[y_date]
 
         mark = "**"  # word to search
         for row in ws:
@@ -69,7 +77,7 @@ class MyWin(QtWidgets.QDialog):
         e = str('E') + str(x)
         a1 = str('A') + str(x + 1)
 
-        sheet = wrfile.get_sheet_by_name('2017')
+        sheet = wrfile.get_sheet_by_name(y_date)
         sheet[a] = int(applicator)
         sheet[b] = date
         sheet[c] = int(page)
@@ -88,7 +96,7 @@ class MyWin(QtWidgets.QDialog):
         f = str('F') + str(44)
 
         sheet = wrfile.get_sheet_by_name('print1')
-        sheet[b] = datetime.strftime(datetime.now(), "%Y")
+        sheet[b] = y_date
         sheet[i] = int(applicator)
         sheet[f] = int(page1)
 
@@ -96,7 +104,7 @@ class MyWin(QtWidgets.QDialog):
 
 
         # write data to template file, 2 page
-        wrfile = load_workbook('Template_apl_cycles.xlsx')
+        wrfile = load_workbook('Template_apl_cycles2.xlsx')
 
         d = str('D') + str(30)
         b = str('B') + str(35)
