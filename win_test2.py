@@ -39,17 +39,10 @@ class MyWin(QtWidgets.QDialog):
 
 
         total_cycles = str(int(cycles) + int(initial_cycles) + int(counter))
-        correction = str((int(cycles) + int(initial_cycles)) - int(counter))
+        correction = str(int(counter) - int(total_cycles))
 
         self.ui.total_cycles.setText(total_cycles)
         self.ui.correction.setText(correction)
-
-        # if counter != total_cycles:
-        #     correction = str((int(counter) - (int(cycles) + int(initial_cycles))))
-        #     self.ui.total_cycles.setText(counter)
-        #     self.ui.correction.setText(correction)
-        # else:
-        #     self.ui.total_cycles.setText(total_cycles)
 
 
         y_date = datetime.strftime(datetime.now(), "%Y")
