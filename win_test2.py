@@ -37,14 +37,14 @@ class MyWin(QtWidgets.QDialog):
         total_cycles1 = str((int(cycles) + int(initial_cycles)) - int(f_cycles))
         self.ui.total_cycles1.setText(total_cycles1)
 
+        
         counter = int(counter)
-
         if counter == 0:
             total_cycles = str(int(cycles) + int(initial_cycles))
             correction = str(0)
         else:
-            total_cycles = str(int(cycles) + int(initial_cycles) + int(counter))
-            correction = str(int(counter) - int(total_cycles))
+            total_cycles = str(counter)
+            correction = str(int(counter) - (int(cycles) + int(initial_cycles)))
 
         #total_cycles = str(int(cycles) + int(initial_cycles) + int(counter))
         #correction = str(int(counter) - int(total_cycles))
