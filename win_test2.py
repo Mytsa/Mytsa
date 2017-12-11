@@ -53,7 +53,7 @@ class MyWin(QtWidgets.QDialog):
         y_date = datetime.strftime(datetime.now(), "%Y")
 
         # write data to file
-        wb = load_workbook(filename='counter_ver.1.xlsx', read_only=True)
+        wb = load_workbook(filename='counter_apl.xlsx', read_only=True)
         ws = wb[y_date]
 
         mark = "**"  # word to search
@@ -64,7 +64,7 @@ class MyWin(QtWidgets.QDialog):
                     # print(x)
                     break
 
-        wrfile = load_workbook('counter_ver.1.xlsx')
+        wrfile = load_workbook('counter_apl.xlsx')
 
         date = datetime.strftime(datetime.now(), "%Y/%m/%d")
 
@@ -83,7 +83,7 @@ class MyWin(QtWidgets.QDialog):
         sheet[e] = int(total_cycles)
         sheet[a1] = '**'
 
-        wrfile.save('counter_ver.1.xlsx')
+        wrfile.save('counter_apl.xlsx')
 
         # write data to template file, 1 page
         wrfile = load_workbook('Template_apl_cycles.xlsx')

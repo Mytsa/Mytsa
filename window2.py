@@ -86,11 +86,15 @@ class Ui_MainWindow(object):
 
         self.label_10 = QtWidgets.QLabel(MainWindow)
         self.label_10.setGeometry(QtCore.QRect(340, 170, 190, 16))
-        self.label_10.setObjectName("label_8")
+        self.label_10.setObjectName("label_10")
         self.total_cycles1 = QtWidgets.QTextBrowser(self.centralwidget)
         self.total_cycles1.setGeometry(QtCore.QRect(340, 190, 200, 41))
         self.total_cycles1.setObjectName("total_cycles1")
 
+        # my info-block
+        self.label_12 = QtWidgets.QLabel(MainWindow)
+        self.label_12.setGeometry(QtCore.QRect(800, 380, 180, 20))
+        self.label_12.setObjectName("label_12")
 
         #  buttons
 
@@ -110,7 +114,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MYTSA_CYCLES"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Applicator Cycles"))
         self.label.setText(_translate("MainWindow", "cycles in last row"))
         self.label_1.setText(_translate("MainWindow", "initial cycles"))
         self.label_2.setText(_translate("MainWindow", "card page"))
@@ -123,6 +127,7 @@ class Ui_MainWindow(object):
         self.label_9.setText(_translate("MainWindow", "CHECK THIS DATA IN NEW CARD"))
         self.label_10.setText(_translate("MainWindow", "      WRITE THIS NUMBER TO CARD !!!"))
         self.label_11.setText(_translate("MainWindow", "number in first row"))
+        self.label_12.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
         self.pushButton.setText(_translate("MainWindow", "CALCULATION"))
         self.pushButton_2.setText(_translate("MainWindow", "PRINT NEW CARD - first page"))
         self.pushButton_3.setText(_translate("MainWindow", "PRINT NEW CARD - second page"))
