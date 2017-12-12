@@ -59,8 +59,7 @@ class MyWin(QtWidgets.QDialog):
         for row in ws:
             for cell in row:
                 if cell.value == mark:
-                    x = cell.row  # find last mark row
-                    # print(x)
+                    x = cell.row  # find last mark row, for data input place
                     break
 
         wrfile = load_workbook('counter_apl.xlsx')
