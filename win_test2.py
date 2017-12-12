@@ -47,6 +47,11 @@ class MyWin(QtWidgets.QDialog):
             total_cycles = str(counter)
             correction = str(int(counter) - (int(cycles) + int(initial_cycles)))
 
+        # <--- need check data for input total cycles is more than last recorded in file !!!
+
+        
+        # end check data --->
+
         # write data after counter if loop
         self.ui.total_cycles.setText(total_cycles)
         self.ui.correction.setText(correction)
