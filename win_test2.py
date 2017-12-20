@@ -49,7 +49,7 @@ class MyWin(QtWidgets.QDialog):
 
         # <--- need check data for input total cycles is more than last recorded in file !!!
 
-        
+
         # end check data --->
 
         # write data after counter if loop
