@@ -95,8 +95,6 @@ class Ui_MainWindow(object):
         self.pushButton.setGeometry(QtCore.QRect(30, 300, 300, 41))
         self.pushButton.setObjectName("pushButton")
 
-
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
