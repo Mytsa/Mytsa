@@ -22,6 +22,7 @@ class MyWin(QtWidgets.QDialog):
         self.ui.next_page.setText("")  # next page
         self.ui.correction.setText("")  # correction
         self.ui.total_cycles1.setText("")  # Sum of cycles in card
+        self.ui.sum_cycles.setText("")  # Sum of cycles in old_card
 
         # input data
         applicator = self.ui.applicator.toPlainText()
@@ -35,21 +36,26 @@ class MyWin(QtWidgets.QDialog):
         page1 = str(int(page) + 1)
         self.ui.next_page.setText(page1)
 
+        
         total_cycles1 = str((int(cycles) + int(initial_cycles)) - int(f_cycles))
+        sum_old = str((int(cycles)- int(f_cycles)))                   
+
+        #total_cycles1 = str((int(cycles) + int(initial_cycles)) - int(f_cycles))
         self.ui.total_cycles1.setText(total_cycles1)
+        self.ui.sum_cycles.setText(sum_old)
 
         # counter if loop
         counter = int(counter)
         if counter == 0:
-            total_cycles = str(int(cycles) + int(initial_cycles))
+            total_cycles = str(total_cycles1)
             correction = str(0)
         else:
             total_cycles = str(counter)
-            correction = str(int(counter) - (int(cycles) + int(initial_cycles)))
-
+            correction = str(int(counter) - (int(total_cycles1)))
+     
         # <--- need check data for input total cycles is more than last recorded in file !!!
 
-
+        
         # end check data --->
 
         # write data after counter if loop
@@ -115,7 +121,7 @@ class MyWin(QtWidgets.QDialog):
 
         sheet = wrfile.get_sheet_by_name('print2')
         sheet[b] = "correction is: {}".format(correction)
-        sheet[d] = int(total_cycles) + int(correction)
+        sheet[d] = int(total_cycles)
 
         wrfile.save('Template_apl_cycles2.xlsx')
 

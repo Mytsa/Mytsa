@@ -78,6 +78,14 @@ class Ui_MainWindow(object):
         self.correction.setObjectName("correction")
 
 
+
+        self.label_13 = QtWidgets.QLabel(MainWindow)
+        self.label_13.setGeometry(QtCore.QRect(340, 100, 190, 16))
+        self.label_13.setObjectName("label_13")
+        self.sum_cycles = QtWidgets.QTextBrowser(self.centralwidget)
+        self.sum_cycles.setGeometry(QtCore.QRect(340, 120, 200, 41))
+        self.sum_cycles.setObjectName("sum of cycles in card")
+
         self.label_10 = QtWidgets.QLabel(MainWindow)
         self.label_10.setGeometry(QtCore.QRect(340, 170, 190, 16))
         self.label_10.setObjectName("label_10")
@@ -119,9 +127,10 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "correction"))
         self.label_8.setText(_translate("MainWindow", "INPUT DATA FROM APPLICATOR"))
         self.label_9.setText(_translate("MainWindow", "CHECK THIS DATA IN NEW CARD"))
-        self.label_10.setText(_translate("MainWindow", "      WRITE THIS NUMBER TO CARD !!!"))
+        self.label_10.setText(_translate("MainWindow", "      final cycles in card"))
         self.label_11.setText(_translate("MainWindow", "number in first row"))
         self.label_12.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
+        self.label_13.setText(_translate("MainWindow", "      sum of cycles in card"))
         self.pushButton.setText(_translate("MainWindow", "CALCULATION"))
         self.pushButton_2.setText(_translate("MainWindow", "PRINT NEW CARD - first page"))
         self.pushButton_3.setText(_translate("MainWindow", "PRINT NEW CARD - second page"))
