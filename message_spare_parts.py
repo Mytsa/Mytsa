@@ -15,6 +15,7 @@ class MyWin(QtWidgets.QDialog):
 
 
     def action(self):
+        # output clean area
         # self.ui.avans.setText("")  # avans
         # self.ui.pay.setText("")  # pay
         # self.ui.month_pay.setText("")  # month_pay
@@ -22,13 +23,9 @@ class MyWin(QtWidgets.QDialog):
 
         # input data
         s_part = self.ui.s_part.toPlainText()     # search spare part in catalog
-        # dodat = self.ui.proc.toPlainText()
-        # hour = self.ui.hours.toPlainText()
-        # whour = self.ui.w_hours.toPlainText()
-        # prysut = self.ui.bonus_present.toPlainText()
-        # bonus = self.ui.bonus.toPlainText()
-        # over = self.ui.overtime.toPlainText()
-        # pover = self.ui.bonus_overtime.toPlainText()
+
+        # calculation logica
+
 
         # read/write data intro/to file
 
@@ -44,33 +41,4 @@ class MyWin(QtWidgets.QDialog):
                 if ws.cell(row=row, column=0).value == date:
                     print(ws.cell.value)
 
-        # mark = s_part  # word to search last raw in sheet
-        # for row in ws:
-        #     for cell in row:
-        #         if cell.value == mark:
-        #             x = cell.row  # find mark row, for data input place
-        #             break
-
-        # # write data to counter file
-        # wrfile = load_workbook('counter_apl.xlsx')
-        #             ws.title = "New Title"   # create sheet with name "new title
-        #
-        # # index coordinate
-        # a = str('A') + str(x)
-        # b = str('B') + str(x)
-        # c = str('C') + str(x)
-        # d = str('D') + str(x)
-        # e = str('E') + str(x)
-        # a1 = str('A') + str(x + 1)  # for mark symbols
-        #
-        # # write data
-        # sheet = wrfile.get_sheet_by_name(y_date)
-        # sheet[a] = int(applicator)
-        # sheet[b] = date
-        # sheet[c] = int(page)
-        # sheet[d] = int(cycles)
-        # sheet[e] = int(total_cycles)
-        # sheet[a1] = '**'
-        #
-        # wrfile.save('counter_apl.xlsx')
 
