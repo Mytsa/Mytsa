@@ -82,8 +82,6 @@ class MyWin(QtWidgets.QDialog):
                     x = cell.row  # find last mark row, for data input place
                     break
 
-
-
         # write data to counter file
         wrfile = load_workbook('counter_apl.xlsx')
 
