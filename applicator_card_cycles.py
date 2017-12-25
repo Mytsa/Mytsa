@@ -52,6 +52,11 @@ class MyWin(QtWidgets.QDialog):
         else:
             total_cycles = str(counter)
             correction = str(int(counter) - (int(total_cycles1)))
+
+        #kof = float((int(total_cycles1)) / 30000)  # calculation of remainder in 30 000 cycles
+        #first_row = (kof - int(kof)) * 30000    # cycles to write in first row - not good calculation with tolerance (+/- 5 000)
+
+
      
         # <--- need check data for input total cycles is more than last recorded in file !!!
 
@@ -76,6 +81,8 @@ class MyWin(QtWidgets.QDialog):
                 if cell.value == mark:
                     x = cell.row  # find last mark row, for data input place
                     break
+
+
 
         # write data to counter file
         wrfile = load_workbook('counter_apl.xlsx')
@@ -104,11 +111,13 @@ class MyWin(QtWidgets.QDialog):
 
         b = str('B') + str(8)
         i = str('I') + str(8)
+        #e1 = str('E') + str(11)
         f = str('F') + str(44)
 
         sheet = wrfile.get_sheet_by_name('print1')
         sheet[b] = y_date
         sheet[i] = int(applicator)
+        #sheet[e1] = int(first_row)
         sheet[f] = int(page1)
 
         wrfile.save('Template_apl_cycles.xlsx')
