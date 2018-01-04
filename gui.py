@@ -13,20 +13,34 @@ class Ui_MainWindow(object):
 
         self.label_1 = QtWidgets.QLabel(MainWindow)
         self.label_1.setGeometry(QtCore.QRect(30, 55, 150, 16))
-        self.label_1.setObjectName("s_part")
-        self.s_part = QtWidgets.QTextEdit(self.centralwidget)
-        self.s_part.setGeometry(QtCore.QRect(30, 70, 150, 25))
-        self.s_part.setObjectName("s_part")
+        self.label_1.setObjectName("per_number")
+        self.per_number = QtWidgets.QTextEdit(self.centralwidget)
+        self.per_number.setGeometry(QtCore.QRect(30, 70, 150, 25))
+        self.per_number.setObjectName("per_number")
+
+        self.label_2 = QtWidgets.QLabel(MainWindow)
+        self.label_2.setGeometry(QtCore.QRect(30, 100, 150, 16))
+        self.label_2.setObjectName("counter")
+        self.per_number = QtWidgets.QTextEdit(self.centralwidget)
+        self.per_number.setGeometry(QtCore.QRect(30, 120, 150, 25))
+        self.per_number.setObjectName("counter")
 
 
         # output area
 
-        self.label_9 = QtWidgets.QLabel(MainWindow)
-        self.label_9.setGeometry(QtCore.QRect(610, 150, 150, 16))
-        self.label_9.setObjectName("pay")
-        self.pay = QtWidgets.QTextBrowser(self.centralwidget)
-        self.pay.setGeometry(QtCore.QRect(560, 170, 150, 41))
-        self.pay.setObjectName("pay")
+        self.label_10 = QtWidgets.QLabel(MainWindow)
+        self.label_10.setGeometry(QtCore.QRect(610, 150, 150, 16))
+        self.label_10.setObjectName("counter")
+        self.counter = QtWidgets.QTextBrowser(self.centralwidget)
+        self.counter.setGeometry(QtCore.QRect(560, 170, 150, 41))
+        self.counter.setObjectName("counter")
+
+        self.label_11 = QtWidgets.QLabel(MainWindow)
+        self.label_11.setGeometry(QtCore.QRect(610, 200, 150, 16))
+        self.label_11.setObjectName("")
+        self. = QtWidgets.QTextBrowser(self.centralwidget)
+        self..setGeometry(QtCore.QRect(560, 220, 150, 41))
+        self..setObjectName("")
 
 
         # my info-block
@@ -46,9 +60,11 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "repare"))
-        self.label_1.setText(_translate("MainWindow", "search spare part"))
+        self.label_1.setText(_translate("MainWindow", "personal number"))
+        self.label_2.setText(_translate("MainWindow", "counter"))
 
-        self.label_9.setText(_translate("MainWindow", "виплата"))
+        self.label_10.setText(_translate("MainWindow", "counter"))
+        self.label_11.setText(_translate("MainWindow", ""))
         # self.label_12.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
         self.pushButton.setText(_translate("MainWindow", "напис на кнопці"))
 

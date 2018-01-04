@@ -1,44 +1,50 @@
 # -*- coding: utf-8 -*-
-import sys
-# window1 is our interface file
-from gui import *
+
 from openpyxl import *
 from datetime import datetime
 
-class MyWin(QtWidgets.QDialog):
-    def __init__(self, parent=None):
-        QtWidgets.QWidget.__init__(self, parent)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-
-        self.ui.pushButton.clicked.connect(self.action)  # calculation
-
-
-    def action(self):
-        # output clean area
-        # self.ui.avans.setText("")  # avans
-        # self.ui.pay.setText("")  # pay
-        # self.ui.month_pay.setText("")  # month_pay
-        # self.ui.total_work_hours.setText("")  # total_work_hours
-
-        # input data
-        s_part = self.ui.s_part.toPlainText()     # search spare part in catalog
-
-        # calculation logica
+class Message():
+    def __init__(self):
+        self.file_name = file_name
+        self.date = datetime.strftime(datetime.now(), "%d/%m/%Y")
+        self.time = datetime.strftime(datetime.now(), "%H:%M")
+        self.per_number = per_number
+        self.defect = defect
+        self.sap_eq = sap_eq
+        self.typ_eq = type_eq
+        self.fault = fault
+        self.counter = counter
 
 
-        # read/write data intro/to file
+    def write(self):
+        # write data intro/to file
 
-        # date = datetime.strftime(datetime.now(), "%Y/%m/%d")  # local variables for excel
+        wrfile = load_workbook('{}.xlsx'.format(self.file_name))
 
-        wb = load_workbook('catalog.xlsx')
-        ws = wb.active
+        # index coordinate
+        a = str('A') + str(x)
+        b = str('B') + str(x)
+        c = str('C') + str(x)
+        d = str('D') + str(x)
+        e = str('E') + str(x)
+        f = str('F') + str(x)
+        g = str('G') + str(x)
+        h = str('H') + str(x)
 
-        # searching date in A column and print all row
-        date = input("Prompt: ")
-        for row in ws.iter_rows('A{}:A{}'.format(ws.min_row, ws.max_row)):
-            for cell in row:
-                if ws.cell(row=row, column=0).value == date:
-                    print(ws.cell.value)
+        # write data
+        sheet = wrfile.get_sheet_by_name('')
+
+        sheet[a] = (self.date)
+        sheet[b] = (self.time)
+        sheet[c] = (self.per_number)
+        sheet[d] = (self.defect)
+        sheet[e] = (self.sap_eq)
+        sheet[f] = (self.typ_eq)
+        sheet[g] = (self.fault)
+        sheet[h] = (self.counter)
+
+        wrfile.save('{}.xlsx'.format(self.file_name))
 
 
+    def print_mes(self):
+        os.startfile('{}.xlsx'.format(self.file_name), "print")  # write correct address, file name
