@@ -35,9 +35,10 @@ class Ui_MainWindow(object):
         self.label_4 = QtWidgets.QLabel(MainWindow)
         self.label_4.setGeometry(QtCore.QRect(30, 190, 150, 16))
         self.label_4.setObjectName("defect")
-        self.defect = QtWidgets.QCheckBox(self.centralwidget)
-        self.defect.setGeometry(QtCore.QRect(30, 210, 150, 25))
-        self.defect.setObjectName("defect")
+        self.radioButton = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton.setGeometry(QtCore.QRect(70, 210, 82, 17))
+        self.radioButton.setObjectName("radioButton")
+
 
         self.label_5 = QtWidgets.QLabel(MainWindow)
         self.label_5.setGeometry(QtCore.QRect(30, 250, 150, 16))

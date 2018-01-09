@@ -30,8 +30,8 @@ class MyWin(QtWidgets.QDialog):
 
         # defect need drop-list
 
-        defect = self.ui.CheckBox.stateChanged.connect(self.cc)  # input defect from radio-bottom
-
+        defect = self.ui.radioButton.setText('yes')  # input defect from radio-bottom
+        # print(defect)
 
 
 
@@ -63,7 +63,7 @@ class MyWin(QtWidgets.QDialog):
         a = str('C') + str(4)
         b = str('F') + str(7)
         c = str('K') + str(7)
-        d = str(x1) + str(x)
+        d = str('A') + str(1)
         e = str('E') + str(22)
         f = str(y1) + str(y)
         g = str(z1) + str(z)
