@@ -25,6 +25,26 @@ class Ui_MainWindow(object):
         self.per_number.setGeometry(QtCore.QRect(30, 120, 150, 25))
         self.per_number.setObjectName("counter")
 
+        self.label_3 = QtWidgets.QLabel(MainWindow)
+        self.label_3.setGeometry(QtCore.QRect(30, 150, 150, 16))
+        self.label_3.setObjectName("sap number of equipment")
+        self.sap_eq = QtWidgets.QTextEdit(self.centralwidget)
+        self.sap_eq.setGeometry(QtCore.QRect(30, 170, 150, 25))
+        self.sap_eq.setObjectName("sap number of equipment")
+
+        self.label_4 = QtWidgets.QLabel(MainWindow)
+        self.label_4.setGeometry(QtCore.QRect(30, 190, 150, 16))
+        self.label_4.setObjectName("defect")
+        self.defect = QtWidgets.QCheckBox(self.centralwidget)
+        self.defect.setGeometry(QtCore.QRect(30, 210, 150, 25))
+        self.defect.setObjectName("defect")
+
+        self.label_5 = QtWidgets.QLabel(MainWindow)
+        self.label_5.setGeometry(QtCore.QRect(30, 250, 150, 16))
+        self.label_5.setObjectName("fault")
+        self.fault = QtWidgets.QTextEdit(self.centralwidget)
+        self.fault.setGeometry(QtCore.QRect(30, 270, 150, 25))
+        self.fault.setObjectName("fault")
 
         # output area
 
@@ -35,12 +55,12 @@ class Ui_MainWindow(object):
         self.counter.setGeometry(QtCore.QRect(560, 170, 150, 41))
         self.counter.setObjectName("counter")
 
-        self.label_11 = QtWidgets.QLabel(MainWindow)
-        self.label_11.setGeometry(QtCore.QRect(610, 200, 150, 16))
-        self.label_11.setObjectName("")
-        self. = QtWidgets.QTextBrowser(self.centralwidget)
-        self..setGeometry(QtCore.QRect(560, 220, 150, 41))
-        self..setObjectName("")
+        # self.label_11 = QtWidgets.QLabel(MainWindow)
+        # self.label_11.setGeometry(QtCore.QRect(610, 200, 150, 16))
+        # self.label_11.setObjectName("")
+        # self. = QtWidgets.QTextBrowser(self.centralwidget)
+        # self..setGeometry(QtCore.QRect(560, 220, 150, 41))
+        # self..setObjectName("")
 
 
         # my info-block
@@ -51,8 +71,12 @@ class Ui_MainWindow(object):
         #  buttons
 
         self.pushButton = QtWidgets.QPushButton(MainWindow)
-        self.pushButton.setGeometry(QtCore.QRect(30, 300, 300, 41))
+        self.pushButton.setGeometry(QtCore.QRect(30, 300, 200, 41))
         self.pushButton.setObjectName("pushButton")
+
+        self.pushButton1 = QtWidgets.QPushButton(MainWindow)
+        self.pushButton1.setGeometry(QtCore.QRect(300, 300, 200, 41))
+        self.pushButton1.setObjectName("pushButton1")
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -62,9 +86,13 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "repare"))
         self.label_1.setText(_translate("MainWindow", "personal number"))
         self.label_2.setText(_translate("MainWindow", "counter"))
+        self.label_3.setText(_translate("MainWindow", "sap number of equipment"))
+        self.label_4.setText(_translate("MainWindow", "defect"))
+        self.label_5.setText(_translate("MainWindow", "fault"))
 
         self.label_10.setText(_translate("MainWindow", "counter"))
-        self.label_11.setText(_translate("MainWindow", ""))
+        # self.label_11.setText(_translate("MainWindow", ""))
         # self.label_12.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
-        self.pushButton.setText(_translate("MainWindow", "напис на кнопці"))
+        self.pushButton.setText(_translate("MainWindow", "write data to file"))
+        self.pushButton1.setText(_translate("MainWindow", "print 1 card of message"))
 
