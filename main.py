@@ -15,45 +15,52 @@ class MyWin(QtWidgets.QDialog):
 
         self.ui.pushButton.clicked.connect(self.action)  # calculation
         self.ui.pushButton1.clicked.connect(self.print_mes)  # write data to file
-
+        self.dic_defect = {'1': ['B', 11], '2': ['B', 12], '3': ['B', 13], '4': ['B', 14], '5': ['B', 15], '6': ['B', 16], '7': ['B', 17], '8': ['B', 18], '9': ['B', 19], '10': ['H', 11], '11': ['H', 12], '12': ['H', 13], '13': ['H', 14], '14': ['H', 15], '15': ['H', 16], '16': ['H', 17], '17': ['H', 18]}
+        self.dic_fault = {'1': ['B', 33], '2': ['B', 34], '3': ['H', 33]}
 
     def action(self):
         # input data
         per_number = self.ui.per_number.toPlainText()     # input personal number
         defect = self.ui.defect.toPlainText()     # input defect
+        index = self.dic_defect[defect]
         sap_eq = self.ui.sap_eq.toPlainText()  # input sap number of equipment
         # type_eq = self.ui.type_eq.toPlainText()  # input type equipment
         fault = self.ui.fault.toPlainText()  # input type fault
+        index1 = self.dic_fault[fault]
         counter = self.ui.counter.toPlainText()  # input counter
 
         # output data
-        # self.ui.type_eq.setText(counter)
+        # self.ui.type_eq.setText(type_eq)
         # calculation logica
-
 
         # read/write data intro/to file
         wrfile = load_workbook('f2-02-04-5.xlsx')
+        sheet = wrfile.get_sheet_by_name('1')
+
+        for i in range(11, 35):
+            sheet[str('B') + str(i)] = ''  # clean check mark
+            sheet[str('H') + str(i)] = ''  # clean check mark
+
 
         # index coordinate
-        a = str('C') + str(7)
-        b = str('F') + str(7)
-        c = str('K') + str(7)
-        d = str('D') + str(19)
-        e = str('F') + str(22)
-        f = str('D') + str(29)
-        g = str('D') + str(34)
-        h = str('D') + str(52)  # counter
+        a = str('C7')
+        b = str('F7')
+        c = str('K7')
+        d = str('{}'.format(index[0])) + str(index[1])
+        e = str('F22')
+        # f = str('D29')
+        g = str('{}'.format(index1[0])) + str(index1[1])    # need decision
+        h = str('D52')    # counter
 
         # write data
-        sheet = wrfile.get_sheet_by_name('1')
 
         sheet[a] = self.date
         sheet[b] = self.time
         sheet[c] = int(per_number)
-        sheet[d] = defect    # need decision
+        sheet[d] = 'X'
         sheet[e] = int(sap_eq)
-        sheet[f] = type_eq
-        sheet[g] = fault
+        # sheet[f] = type_eq
+        sheet[g] = 'X'
         sheet[h] = int(counter)
 
         wrfile.save('f2-02-04-5.xlsx')
@@ -61,6 +68,7 @@ class MyWin(QtWidgets.QDialog):
 
     def print_mes(self):
         os.startfile('f2-02-04-5.xlsx', "print")  # write correct address, file name
+
 
 
 if __name__ == "__main__":

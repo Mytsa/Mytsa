@@ -48,39 +48,39 @@ class Ui_MainWindow(object):
 
         # self.label_6 = QtWidgets.QLabel(MainWindow)
         # self.label_6.setGeometry(QtCore.QRect(10, 255, 150, 16))
-        # self.label_6.setObjectName("type_eq")
-        # self.type_eq = QtWidgets.QTextEdit(self.centralwidget)
-        # self.type_eq.setGeometry(QtCore.QRect(5, 275, 150, 25))
-        # self.type_eq.setObjectName("type_eq")
+        # self.label_6.setObjectName("")
+        # self. = QtWidgets.QTextEdit(self.centralwidget)
+        # self..setGeometry(QtCore.QRect(5, 275, 150, 25))
+        # self..setObjectName("")
 
 
-        self.label_7 = QtWidgets.QLabel(MainWindow)
-        self.label_7.setGeometry(QtCore.QRect(305, 70, 150, 16))
-        self.label_7.setObjectName("spare_parts")
-        self.sp1 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp1.setGeometry(QtCore.QRect(300, 90, 150, 25))
-        self.sp1.setObjectName("spare_parts")
-
-        self.label_8 = QtWidgets.QLabel(MainWindow)
-        self.label_8.setGeometry(QtCore.QRect(305, 120, 150, 16))
-        self.label_8.setObjectName("spare_parts1")
-        self.sp2 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp2.setGeometry(QtCore.QRect(300, 140, 150, 25))
-        self.sp2.setObjectName("spare_parts1")
-
-        self.label_9 = QtWidgets.QLabel(MainWindow)
-        self.label_9.setGeometry(QtCore.QRect(305, 170, 150, 16))
-        self.label_9.setObjectName("spare_parts2")
-        self.sp3 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp3.setGeometry(QtCore.QRect(300, 190, 150, 25))
-        self.sp3.setObjectName("spare_parts2")
-
-        self.label_10 = QtWidgets.QLabel(MainWindow)
-        self.label_10.setGeometry(QtCore.QRect(305, 220, 150, 16))
-        self.label_10.setObjectName("spare_parts3")
-        self.sp4 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp4.setGeometry(QtCore.QRect(300, 240, 150, 25))
-        self.sp4.setObjectName("spare_parts3")
+        # self.label_7 = QtWidgets.QLabel(MainWindow)
+        # self.label_7.setGeometry(QtCore.QRect(305, 70, 150, 16))
+        # self.label_7.setObjectName("spare_parts")
+        # self.sp1 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.sp1.setGeometry(QtCore.QRect(300, 90, 150, 25))
+        # self.sp1.setObjectName("spare_parts")
+        #
+        # self.label_8 = QtWidgets.QLabel(MainWindow)
+        # self.label_8.setGeometry(QtCore.QRect(305, 120, 150, 16))
+        # self.label_8.setObjectName("spare_parts1")
+        # self.sp2 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.sp2.setGeometry(QtCore.QRect(300, 140, 150, 25))
+        # self.sp2.setObjectName("spare_parts1")
+        #
+        # self.label_9 = QtWidgets.QLabel(MainWindow)
+        # self.label_9.setGeometry(QtCore.QRect(305, 170, 150, 16))
+        # self.label_9.setObjectName("spare_parts2")
+        # self.sp3 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.sp3.setGeometry(QtCore.QRect(300, 190, 150, 25))
+        # self.sp3.setObjectName("spare_parts2")
+        #
+        # self.label_10 = QtWidgets.QLabel(MainWindow)
+        # self.label_10.setGeometry(QtCore.QRect(305, 220, 150, 16))
+        # self.label_10.setObjectName("spare_parts3")
+        # self.sp4 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.sp4.setGeometry(QtCore.QRect(300, 240, 150, 25))
+        # self.sp4.setObjectName("spare_parts3")
 
         # output area
 
@@ -97,6 +97,27 @@ class Ui_MainWindow(object):
         # self. = QtWidgets.QTextBrowser(self.centralwidget)
         # self..setGeometry(QtCore.QRect(560, 220, 150, 41))
         # self..setObjectName("")
+
+        # defect block
+        self.label_14 = QtWidgets.QLabel(MainWindow)
+        self.label_14.setGeometry(QtCore.QRect(5, 100, 250, 20))
+        self.label_14.setObjectName("Пошкодження поверхні контакту")
+
+        self.label_15 = QtWidgets.QLabel(MainWindow)
+        self.label_15.setGeometry(QtCore.QRect(5, 120, 250, 20))
+        self.label_15.setObjectName("Гострини на розрізі контакту")
+
+        self.label_16 = QtWidgets.QLabel(MainWindow)
+        self.label_16.setGeometry(QtCore.QRect(5, 140, 250, 20))
+        self.label_16.setObjectName("Не симетричне / не відповідне закриття ядра")
+
+        self.label_17 = QtWidgets.QLabel(MainWindow)
+        self.label_17.setGeometry(QtCore.QRect(5, 160, 250, 20))
+        self.label_17.setObjectName("Пошкодження контакту або його деформація")
+
+        self.label_18 = QtWidgets.QLabel(MainWindow)
+        self.label_18.setGeometry(QtCore.QRect(5, 180, 250, 20))
+        self.label_18.setObjectName("Асиметрія контакту")
 
 
         # my info-block
@@ -125,15 +146,24 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "sap № of equipment 8000: "))
         self.label_4.setText(_translate("MainWindow", "defect"))
         self.label_5.setText(_translate("MainWindow", "fault"))
-        # self.label_6.setText(_translate("MainWindow", "type_eq"))
-        self.label_7.setText(_translate("MainWindow", "SAP № of spare parts 1"))
-        self.label_8.setText(_translate("MainWindow", "SAP № of spare parts 2"))
-        self.label_9.setText(_translate("MainWindow", "SAP № of spare parts 3"))
-        self.label_10.setText(_translate("MainWindow", "SAP № of spare parts 4"))
+        # self.label_6.setText(_translate("MainWindow", ""))
+        # self.label_7.setText(_translate("MainWindow", "SAP № of spare parts 1"))
+        # self.label_8.setText(_translate("MainWindow", "SAP № of spare parts 2"))
+        # self.label_9.setText(_translate("MainWindow", "SAP № of spare parts 3"))
+        # self.label_10.setText(_translate("MainWindow", "SAP № of spare parts 4"))
 
         self.label_11.setText(_translate("MainWindow", "type of equipment"))
         # self.label_12.setText(_translate("MainWindow", ""))
         self.label_13.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
+
+
+        self.label_14.setText(_translate("MainWindow", "1: Пошкодження поверхні контакту"))
+        self.label_15.setText(_translate("MainWindow", "2: Гострини на розрізі контакту"))
+        self.label_16.setText(_translate("MainWindow", "3: Не симетричне / не відповідне закриття ядра"))
+        self.label_17.setText(_translate("MainWindow", "4: Пошкодження контакту або його деформація"))
+        self.label_18.setText(_translate("MainWindow", "5: Асиметрія контакту"))
+
+
         self.pushButton.setText(_translate("MainWindow", "write data to file"))
         self.pushButton1.setText(_translate("MainWindow", "print 1 card of message"))
 
