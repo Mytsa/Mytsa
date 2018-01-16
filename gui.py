@@ -132,39 +132,39 @@ class Ui_MainWindow(object):
         self.label_21.setObjectName("Рекваліфікація / EMPB")
         
         self.label_22 = QtWidgets.QLabel(MainWindow)
-        self.label_22.setGeometry(QtCore.QRect(5, 260, 250, 20))
+        self.label_22.setGeometry(QtCore.QRect(5, 420, 250, 20))
         self.label_22.setObjectName("Інше:")
         
         self.label_23 = QtWidgets.QLabel(MainWindow)
-        self.label_23.setGeometry(QtCore.QRect(5, 280, 250, 20))
+        self.label_23.setGeometry(QtCore.QRect(5, 260, 250, 20))
         self.label_23.setObjectName("Не вірна довжина проводу")
 
         self.label_24 = QtWidgets.QLabel(MainWindow)
-        self.label_24.setGeometry(QtCore.QRect(5, 300, 250, 20))
+        self.label_24.setGeometry(QtCore.QRect(5, 280, 250, 20))
         self.label_24.setObjectName("Не відповідне зварне з’єднання")
         
         self.label_25 = QtWidgets.QLabel(MainWindow)
-        self.label_25.setGeometry(QtCore.QRect(5, 320, 300, 20))
+        self.label_25.setGeometry(QtCore.QRect(5, 300, 300, 20))
         self.label_25.setObjectName("Не відповідна сила стягування кабельбіндера")
         
         self.label_26 = QtWidgets.QLabel(MainWindow)
-        self.label_26.setGeometry(QtCore.QRect(5, 340, 250, 20))
+        self.label_26.setGeometry(QtCore.QRect(5, 320, 250, 20))
         self.label_26.setObjectName("Не відповідне термоусадження")
         
         self.label_27 = QtWidgets.QLabel(MainWindow)
-        self.label_27.setGeometry(QtCore.QRect(5, 360, 250, 20))
+        self.label_27.setGeometry(QtCore.QRect(5, 340, 250, 20))
         self.label_27.setObjectName("Не відповідне скручення проводів")
 
         self.label_28 = QtWidgets.QLabel(MainWindow)
-        self.label_28.setGeometry(QtCore.QRect(5, 380, 250, 20))
+        self.label_28.setGeometry(QtCore.QRect(5, 360, 250, 20))
         self.label_28.setObjectName("Не відповідна обмотка з’єднання")
 
         self.label_29 = QtWidgets.QLabel(MainWindow)
-        self.label_29.setGeometry(QtCore.QRect(5, 400, 250, 20))
+        self.label_29.setGeometry(QtCore.QRect(5, 380, 250, 20))
         self.label_29.setObjectName("Тріснута запчастина")
 
         self.label_30 = QtWidgets.QLabel(MainWindow)
-        self.label_30.setGeometry(QtCore.QRect(5, 420, 300, 20))
+        self.label_30.setGeometry(QtCore.QRect(5, 400, 300, 20))
         self.label_30.setObjectName("Обладнання не вмикається / не продукує виріб")
 
         self.label_31 = QtWidgets.QLabel(MainWindow)
@@ -172,11 +172,11 @@ class Ui_MainWindow(object):
         self.label_31.setObjectName("Людський фактор")
 
         self.label_32 = QtWidgets.QLabel(MainWindow)
-        self.label_32.setGeometry(QtCore.QRect(5, 510, 300, 20))
+        self.label_32.setGeometry(QtCore.QRect(5, 530, 300, 20))
         self.label_32.setObjectName("Інше:")
         
         self.label_33 = QtWidgets.QLabel(MainWindow)
-        self.label_33.setGeometry(QtCore.QRect(5, 530, 300, 20))
+        self.label_33.setGeometry(QtCore.QRect(5, 510, 300, 20))
         self.label_33.setObjectName("Нормальне зношення / механічне зношення")
 
         # my info-block
@@ -224,19 +224,19 @@ class Ui_MainWindow(object):
         self.label_19.setText(_translate("MainWindow", "6: Зазубрини в місті відрізу контакту"))
         self.label_20.setText(_translate("MainWindow", "7: Пошкодження проводу або ущільнення"))
         self.label_21.setText(_translate("MainWindow", "8: Рекваліфікація / EMPB"))
-        self.label_22.setText(_translate("MainWindow", "9: Інше:"))
-        self.label_23.setText(_translate("MainWindow", "10: Не вірна довжина проводу"))
-        self.label_24.setText(_translate("MainWindow", "11: Не відповідне зварне з’єднання"))
-        self.label_25.setText(_translate("MainWindow", "12: Не відповідна сила стягування кабельбіндера"))
-        self.label_26.setText(_translate("MainWindow", "13: Не відповідне термоусадження"))
-        self.label_27.setText(_translate("MainWindow", "14: Не відповідне скручення проводів"))        
-        self.label_28.setText(_translate("MainWindow", "15: Не відповідна обмотка з’єднання"))
-        self.label_29.setText(_translate("MainWindow", "16: Тріснута запчастина"))
-        self.label_30.setText(_translate("MainWindow", "17: Обладнання не вмикається / не продукує виріб"))
+        self.label_22.setText(_translate("MainWindow", "17: Інше:"))
+        self.label_23.setText(_translate("MainWindow", "9: Не вірна довжина проводу"))
+        self.label_24.setText(_translate("MainWindow", "10: Не відповідне зварне з’єднання"))
+        self.label_25.setText(_translate("MainWindow", "11: Не відповідна сила стягування кабельбіндера"))
+        self.label_26.setText(_translate("MainWindow", "12: Не відповідне термоусадження"))
+        self.label_27.setText(_translate("MainWindow", "13: Не відповідне скручення проводів"))        
+        self.label_28.setText(_translate("MainWindow", "14: Не відповідна обмотка з’єднання"))
+        self.label_29.setText(_translate("MainWindow", "15: Тріснута запчастина"))
+        self.label_30.setText(_translate("MainWindow", "16: Обладнання не вмикається / не продукує виріб"))
 
         self.label_31.setText(_translate("MainWindow", "1: Людський фактор"))
-        self.label_32.setText(_translate("MainWindow", "2: Інше:"))
-        self.label_33.setText(_translate("MainWindow", "3: Нормальне зношення / механічне зношення"))        
+        self.label_32.setText(_translate("MainWindow", "3: Інше:"))
+        self.label_33.setText(_translate("MainWindow", "2: Нормальне зношення / механічне зношення"))        
 
 
         self.pushButton.setText(_translate("MainWindow", "write data to file"))
