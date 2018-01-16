@@ -41,7 +41,8 @@ class MyWin(QtWidgets.QDialog):
                     print(x)
                     break
 
-        print(ws[str('E') + str(x)].value)
+        pos = str('E') + str(x)
+        print(ws[pos].value)
         # type_eq = (ws[str('E') + str(x)].value)
 
         # output data
