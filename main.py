@@ -29,18 +29,21 @@ class MyWin(QtWidgets.QDialog):
         counter = self.ui.counter.toPlainText()  # input counter
 
         # calculation logica
-        wb = load_workbook(filename='eq.xlsx', read_only=True)
-        ws = wb['eq']
+        wb = load_workbook('eq.xlsx')
+        ws = wb['eq1']
 
-        mark = sap_eq  # word to search last raw in sheet
+        mark = sap_eq  # word to search row in sheet
+
         for row in ws:
             for cell in row:
                 if cell.value == mark:
-                    x = cell.row  # find last mark row, for data input place
+                    x = cell.row  # find last mark row, for data place
+                    print(x)
                     break
-        print(x.value)
 
-        # type_eq =
+        print(ws[str('E') + str(x)].value)
+        # type_eq = (ws[str('E') + str(x)].value)
+
         # output data
         # self.ui.type_eq.setText(type_eq)
 
