@@ -15,8 +15,8 @@ class MyWin(QtWidgets.QDialog):
 
         self.ui.pushButton.clicked.connect(self.action)  # calculation
         self.ui.pushButton1.clicked.connect(self.print_mes)  # write data to file
-        self.dic_defect = {'1': ['B', 11], '2': ['B', 12], '3': ['B', 13], '4': ['B', 14], '5': ['B', 15], '6': ['B', 16], '7': ['B', 17], '8': ['B', 18], '9': ['B', 19], '10': ['H', 11], '11': ['H', 12], '12': ['H', 13], '13': ['H', 14], '14': ['H', 15], '15': ['H', 16], '16': ['H', 17], '17': ['H', 18]}
-        self.dic_fault = {'1': ['B', 33], '2': ['B', 34], '3': ['H', 33]}
+        self.dic_defect = {'1': ['B', 11], '2': ['B', 12], '3': ['B', 13], '4': ['B', 14], '5': ['B', 15], '6': ['B', 16], '7': ['B', 17], '8': ['B', 18], '17': ['B', 19], '9': ['H', 11], '10': ['H', 12], '11': ['H', 13], '12': ['H', 14], '13': ['H', 15], '14': ['H', 16], '15': ['H', 17], '16': ['H', 18]}
+        self.dic_fault = {'1': ['B', 33], '3': ['B', 34], '2': ['H', 33]}
 
     def action(self):
         # input data
