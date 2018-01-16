@@ -24,14 +24,26 @@ class MyWin(QtWidgets.QDialog):
         defect = self.ui.defect.toPlainText()     # input defect
         index = self.dic_defect[defect]
         sap_eq = self.ui.sap_eq.toPlainText()  # input sap number of equipment
-        # type_eq = self.ui.type_eq.toPlainText()  # input type equipment
         fault = self.ui.fault.toPlainText()  # input type fault
         index1 = self.dic_fault[fault]
         counter = self.ui.counter.toPlainText()  # input counter
 
+        # calculation logica
+        wb = load_workbook(filename='eq.xlsx', read_only=True)
+        ws = wb['eq']
+
+        mark = sap_eq  # word to search last raw in sheet
+        for row in ws:
+            for cell in row:
+                if cell.value == mark:
+                    x = cell.row  # find last mark row, for data input place
+                    break
+        print(x.value)
+
+        # type_eq =
         # output data
         # self.ui.type_eq.setText(type_eq)
-        # calculation logica
+
 
         # read/write data intro/to file
         wrfile = load_workbook('f2-02-04-5.xlsx')
