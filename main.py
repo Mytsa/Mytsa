@@ -29,24 +29,16 @@ class MyWin(QtWidgets.QDialog):
         counter = self.ui.counter.toPlainText()  # input counter
 
         # calculation logica
-        wb = load_workbook('eq.xlsx')
-        ws = wb['eq1']
+        sap_eq1 = '8000' + str(sap_eq)
+        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
+        ws = wb['main']
 
-        mark = sap_eq  # word to search row in sheet
-
-        for row in ws:
-            for cell in row:
-                if cell.value == mark:
-                    x = cell.row  # find last mark row, for data place
-                    print(x)
-                    break
-
-        pos = str('E') + str(x)
+        pos = str('G2')
         print(ws[pos].value)
-        # type_eq = (ws[str('E') + str(x)].value)
+        type_eq = str(ws[pos].value)
 
         # output data
-        # self.ui.type_eq.setText(type_eq)
+        self.ui.type_eq.setText(type_eq)
 
 
         # read/write data intro/to file
@@ -58,13 +50,40 @@ class MyWin(QtWidgets.QDialog):
             sheet[str('H') + str(i)] = ''  # clean check mark
 
 
+        if type_eq == 'Аплікатор':
+            #type_eq_pos = 'Аплікатор'
+            f = str('B25')
+        elif type_eq == 'Komax Alpha 355 / 355 S':
+            #type_eq_pos = 'Komax Alpha 355 / 355 S'
+            f = str('B26')
+        elif type_eq == 'Komax Gamma 333 PC':
+            #type_eq_pos = 'Komax Gamma 333 PC'
+            f = str('B27')
+        elif type_eq == 'Schunk / Stapla ультразвукова зварка':
+           # type_eq_pos = 'Schunk / Stapla ультразвукова зварка'
+            f = str('B28')
+        elif type_eq == 'Кабельбіндеровий пістолет':
+            #type_eq_pos = 'Кабельбіндеровий пістолет'
+            f = str('H25')
+        elif type_eq == 'Raychem / Raychem TE':
+            #type_eq_pos = 'Raychem / Raychem TE'
+            f = str('H26')
+        elif type_eq == 'Komax Twist BT 188 t / BT 188':
+            #type_eq_pos = 'Komax Twist BT 188 t / BT 188'
+            f = str('H27')
+        elif type_eq == 'Kabateck / Ondal':
+            #type_eq_pos = 'Kabateck / Ondal'
+            f = str('H28')
+        else:
+            #type_eq_pos = type_eq
+            f = str('B29')
+
         # index coordinate
         a = str('C7')
         b = str('F7')
         c = str('K7')
         d = str('{}'.format(index[0])) + str(index[1])
         e = str('F22')
-        # f = str('D29')
         g = str('{}'.format(index1[0])) + str(index1[1])    # need decision
         h = str('D52')    # counter
 
@@ -75,12 +94,37 @@ class MyWin(QtWidgets.QDialog):
         sheet[c] = int(per_number)
         sheet[d] = 'X'
         sheet[e] = int(sap_eq)
-        # sheet[f] = type_eq
+        sheet[f] = 'X'
         sheet[g] = 'X'
         sheet[h] = int(counter)
 
         wrfile.save('f2-02-04-5.xlsx')
 
+# write data to eq_log
+        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
+        ws = wb['main']
+
+        mark = '**'
+        for row in ws:
+            for cell in row:
+                if cell.value == mark:
+                    ex = cell.row  # find last mark row, for data place
+                    break
+
+        # index coordinate
+        a = str('A') + str(ex)
+        b = str('B') + str(ex)
+        d = str('D') + str(ex)
+
+        a1 = str('A') + str(ex + 1)  # for mark symbols
+
+        # write data
+        sheet[a] = self.date
+        sheet[b] = per_number
+        sheet[d] = 'write data'
+
+        sheet[a1] = '**'
+        wb.save('eq_log/{}.xlsx'.format(sap_eq1))
 
     def print_mes(self):
         os.startfile('f2-02-04-5.xlsx', "print")  # write correct address, file name
