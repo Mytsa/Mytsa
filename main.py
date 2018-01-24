@@ -18,8 +18,9 @@ class MyWin(QtWidgets.QDialog):
         self.dic_defect = {'1': ['B', 11], '2': ['B', 12], '3': ['B', 13], '4': ['B', 14], '5': ['B', 15], '6': ['B', 16], '7': ['B', 17], '8': ['B', 18], '17': ['B', 19], '9': ['H', 11], '10': ['H', 12], '11': ['H', 13], '12': ['H', 14], '13': ['H', 15], '14': ['H', 16], '15': ['H', 17], '16': ['H', 18]}
         self.dic_fault = {'1': ['B', 33], '3': ['B', 34], '2': ['H', 33]}
 
+
     def action(self):
-        # input data
+    # input data
         per_number = self.ui.per_number.toPlainText()     # input personal number
         defect = self.ui.defect.toPlainText()     # input defect
         index = self.dic_defect[defect]
@@ -28,20 +29,19 @@ class MyWin(QtWidgets.QDialog):
         index1 = self.dic_fault[fault]
         counter = self.ui.counter.toPlainText()  # input counter
 
-        # calculation logica
+# calculation logica
         sap_eq1 = '8000' + str(sap_eq)
-        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
+        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))    # search file by number
         ws = wb['main']
 
-        pos = str('G2')
+        pos = str('G2')    # take name of equipment
         print(ws[pos].value)
         type_eq = str(ws[pos].value)
 
-        # output data
+    # output data
         self.ui.type_eq.setText(type_eq)
 
-
-        # read/write data intro/to file
+    # write data intro/to template file
         wrfile = load_workbook('f2-02-04-5.xlsx')
         sheet = wrfile.get_sheet_by_name('1')
 
@@ -49,36 +49,64 @@ class MyWin(QtWidgets.QDialog):
             sheet[str('B') + str(i)] = ''  # clean check mark
             sheet[str('H') + str(i)] = ''  # clean check mark
 
-
+# <------------------ this loops is for the present and must be work with data log in future !!!
+        if defect == '1':
+            df = 'Пошкодження поверхні контакту'
+        elif defect == '2':
+            df = 'Гострини на розрізі контакту'
+        elif defect == '3':
+            df = 'Не симетричне / не відповідне закриття ядра'
+        elif defect == '4':
+            df = 'Пошкодження контакту або його деформація'
+        elif defect == '5':
+            df = 'Асиметрія контакту'
+        elif defect == '6':
+            df = 'Зазубрини в місті відрізу контакту'
+        elif defect == '7':
+            df = 'Пошкодження проводу або ущільнення'
+        elif defect == '8':
+            df = 'Рекваліфікація / EMPB'
+        elif defect == '9':
+            df = 'Не вірна довжина проводу'
+        elif defect == '10':
+            df = 'Не відповідне зварне з’єднання'
+        elif defect == '11':
+            df = 'Не відповідна сила стягування кабельбіндера'
+        elif defect == '12':
+            df = 'Не відповідне термоусадження'
+        elif defect == '13':
+            df = 'Не відповідне скручення проводів'
+        elif defect == '14':
+            df = 'Не відповідна обмотка з’єднання  '
+        elif defect == '15':
+            df = 'Тріснута запчастина'
+        elif defect == '16':
+            df = 'Обладнання не вмикається / не продукує виріб'
+        elif defect == '17':
+            df = 'інше'
+        else:
+            df = 'не вірно визначений дефект'
+        # mark in message template on index by name
         if type_eq == 'Аплікатор':
-            #type_eq_pos = 'Аплікатор'
             f = str('B25')
         elif type_eq == 'Komax Alpha 355 / 355 S':
-            #type_eq_pos = 'Komax Alpha 355 / 355 S'
             f = str('B26')
         elif type_eq == 'Komax Gamma 333 PC':
-            #type_eq_pos = 'Komax Gamma 333 PC'
             f = str('B27')
         elif type_eq == 'Schunk / Stapla ультразвукова зварка':
-           # type_eq_pos = 'Schunk / Stapla ультразвукова зварка'
             f = str('B28')
         elif type_eq == 'Кабельбіндеровий пістолет':
-            #type_eq_pos = 'Кабельбіндеровий пістолет'
             f = str('H25')
         elif type_eq == 'Raychem / Raychem TE':
-            #type_eq_pos = 'Raychem / Raychem TE'
             f = str('H26')
         elif type_eq == 'Komax Twist BT 188 t / BT 188':
-            #type_eq_pos = 'Komax Twist BT 188 t / BT 188'
             f = str('H27')
         elif type_eq == 'Kabateck / Ondal':
-            #type_eq_pos = 'Kabateck / Ondal'
             f = str('H28')
         else:
-            #type_eq_pos = type_eq
             f = str('B29')
-
-        # index coordinate
+# ------------------>
+        # index coordinate for template file
         a = str('C7')
         b = str('F7')
         c = str('K7')
@@ -87,8 +115,7 @@ class MyWin(QtWidgets.QDialog):
         g = str('{}'.format(index1[0])) + str(index1[1])    # need decision
         h = str('D52')    # counter
 
-        # write data
-
+        # write data to template file
         sheet[a] = self.date
         sheet[b] = self.time
         sheet[c] = int(per_number)
@@ -100,32 +127,36 @@ class MyWin(QtWidgets.QDialog):
 
         wrfile.save('f2-02-04-5.xlsx')
 
-# write data to eq_log
+    # write data to eq_log
         wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
         ws = wb['main']
 
+        # find last mark row, for new data place
         mark = '**'
         for row in ws:
             for cell in row:
                 if cell.value == mark:
-                    ex = cell.row  # find last mark row, for data place
+                    ex = cell.row
                     break
 
-        # index coordinate
+        # index coordinate to equipment file
         a = str('A') + str(ex)
         b = str('B') + str(ex)
+        c = str('C') + str(ex)
         d = str('D') + str(ex)
-
         a1 = str('A') + str(ex + 1)  # for mark symbols
 
-        # write data
+        # write data to equipment file
+        sheet = wb.get_sheet_by_name('main')
         sheet[a] = self.date
         sheet[b] = per_number
-        sheet[d] = 'write data'
-
+        sheet[c] = df
+        sheet[d] = counter
         sheet[a1] = '**'
+
         wb.save('eq_log/{}.xlsx'.format(sap_eq1))
 
+# print the template
     def print_mes(self):
         os.startfile('f2-02-04-5.xlsx', "print")  # write correct address, file name
 

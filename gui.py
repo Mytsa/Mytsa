@@ -224,7 +224,7 @@ class Ui_MainWindow(object):
         self.label_19.setText(_translate("MainWindow", "6: Зазубрини в місті відрізу контакту"))
         self.label_20.setText(_translate("MainWindow", "7: Пошкодження проводу або ущільнення"))
         self.label_21.setText(_translate("MainWindow", "8: Рекваліфікація / EMPB"))
-        self.label_22.setText(_translate("MainWindow", "17: Інше:"))
+        self.label_22.setText(_translate("MainWindow", "17: Інше:    --->'записати в карті'"))
         self.label_23.setText(_translate("MainWindow", "9: Не вірна довжина проводу"))
         self.label_24.setText(_translate("MainWindow", "10: Не відповідне зварне з’єднання"))
         self.label_25.setText(_translate("MainWindow", "11: Не відповідна сила стягування кабельбіндера"))
@@ -235,7 +235,7 @@ class Ui_MainWindow(object):
         self.label_30.setText(_translate("MainWindow", "16: Обладнання не вмикається / не продукує виріб"))
 
         self.label_31.setText(_translate("MainWindow", "1: Людський фактор"))
-        self.label_32.setText(_translate("MainWindow", "3: Інше:"))
+        self.label_32.setText(_translate("MainWindow", "3: Інше:    --->'записати в карті'"))
         self.label_33.setText(_translate("MainWindow", "2: Нормальне зношення / механічне зношення"))        
 
 
