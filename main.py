@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import sys
-# window1 is our interface file
-from gui import *
 from openpyxl import *
 from datetime import datetime
+# gui is interface file
+from gui import *
+from log_f import Excel
+
+
 
 class MyWin(QtWidgets.QDialog):
     def __init__(self, parent=None):
@@ -50,42 +53,7 @@ class MyWin(QtWidgets.QDialog):
             sheet[str('H') + str(i)] = ''  # clean check mark
 
 # <------------------ this loops is for the present and must be work with data log in future !!!
-        if defect == '1':
-            df = 'Пошкодження поверхні контакту'
-        elif defect == '2':
-            df = 'Гострини на розрізі контакту'
-        elif defect == '3':
-            df = 'Не симетричне / не відповідне закриття ядра'
-        elif defect == '4':
-            df = 'Пошкодження контакту або його деформація'
-        elif defect == '5':
-            df = 'Асиметрія контакту'
-        elif defect == '6':
-            df = 'Зазубрини в місті відрізу контакту'
-        elif defect == '7':
-            df = 'Пошкодження проводу або ущільнення'
-        elif defect == '8':
-            df = 'Рекваліфікація / EMPB'
-        elif defect == '9':
-            df = 'Не вірна довжина проводу'
-        elif defect == '10':
-            df = 'Не відповідне зварне з’єднання'
-        elif defect == '11':
-            df = 'Не відповідна сила стягування кабельбіндера'
-        elif defect == '12':
-            df = 'Не відповідне термоусадження'
-        elif defect == '13':
-            df = 'Не відповідне скручення проводів'
-        elif defect == '14':
-            df = 'Не відповідна обмотка з’єднання  '
-        elif defect == '15':
-            df = 'Тріснута запчастина'
-        elif defect == '16':
-            df = 'Обладнання не вмикається / не продукує виріб'
-        elif defect == '17':
-            df = 'інше'
-        else:
-            df = 'не вірно визначений дефект'
+
         # mark in message template on index by name
         if type_eq == 'Аплікатор':
             f = str('B25')
@@ -128,6 +96,8 @@ class MyWin(QtWidgets.QDialog):
         wrfile.save('f2-02-04-5.xlsx')
 
     # write data to eq_log
+
+
         wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
         ws = wb['main']
 
@@ -147,6 +117,8 @@ class MyWin(QtWidgets.QDialog):
         a1 = str('A') + str(ex + 1)  # for mark symbols
 
         # write data to equipment file
+        df = Excel.lf(defect)    # loop in file log_f, class Excel, method lf()
+
         sheet = wb.get_sheet_by_name('main')
         sheet[a] = self.date
         sheet[b] = per_number
