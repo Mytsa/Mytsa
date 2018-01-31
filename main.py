@@ -2,10 +2,8 @@
 import sys
 from openpyxl import *
 from datetime import datetime
-# gui is interface file
-from gui import *
-from log_f import Excel
-
+from gui import *    # gui is interface file
+from log_f import Log    # file work with log
 
 
 class MyWin(QtWidgets.QDialog):
@@ -15,7 +13,6 @@ class MyWin(QtWidgets.QDialog):
         self.ui.setupUi(self)
         self.date = datetime.strftime(datetime.now(), "%d/%m/%Y")
         self.time = datetime.strftime(datetime.now(), "%H:%M")
-
         self.ui.pushButton.clicked.connect(self.action)  # calculation
         self.ui.pushButton1.clicked.connect(self.print_mes)  # write data to file
         self.dic_defect = {'1': ['B', 11], '2': ['B', 12], '3': ['B', 13], '4': ['B', 14], '5': ['B', 15], '6': ['B', 16], '7': ['B', 17], '8': ['B', 18], '17': ['B', 19], '9': ['H', 11], '10': ['H', 12], '11': ['H', 13], '12': ['H', 14], '13': ['H', 15], '14': ['H', 16], '15': ['H', 17], '16': ['H', 18]}
@@ -32,17 +29,22 @@ class MyWin(QtWidgets.QDialog):
         index1 = self.dic_fault[fault]
         counter = self.ui.counter.toPlainText()  # input counter
 
-# calculation logica
+# calculation logic
+    # find log file
+
+#<-------------- in future change search logic. Work with txt data file
         sap_eq1 = '8000' + str(sap_eq)
         wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))    # search file by number
         ws = wb['main']
 
-        pos = str('G2')    # take name of equipment
-        print(ws[pos].value)
+        pos = str('G2')    # take type of equipment
+        #print(ws[pos].value)
         type_eq = str(ws[pos].value)
+# ------------------------------>
 
     # output data
         self.ui.type_eq.setText(type_eq)
+
 
     # write data intro/to template file
         wrfile = load_workbook('f2-02-04-5.xlsx')
@@ -52,7 +54,7 @@ class MyWin(QtWidgets.QDialog):
             sheet[str('B') + str(i)] = ''  # clean check mark
             sheet[str('H') + str(i)] = ''  # clean check mark
 
-# <------------------ this loops is for the present and must be work with data log in future !!!
+# <------------------ this loops for the present and must be work with data log in future !!! and another class
 
         # mark in message template on index by name
         if type_eq == 'Аплікатор':
@@ -74,6 +76,7 @@ class MyWin(QtWidgets.QDialog):
         else:
             f = str('B29')
 # ------------------>
+
         # index coordinate for template file
         a = str('C7')
         b = str('F7')
@@ -96,18 +99,7 @@ class MyWin(QtWidgets.QDialog):
         wrfile.save('f2-02-04-5.xlsx')
 
     # write data to eq_log
-
-
-        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
-        ws = wb['main']
-
-        # find last mark row, for new data place
-        mark = '**'
-        for row in ws:
-            for cell in row:
-                if cell.value == mark:
-                    ex = cell.row
-                    break
+        ex = Log.mark(sap_eq1)
 
         # index coordinate to equipment file
         a = str('A') + str(ex)
@@ -117,7 +109,7 @@ class MyWin(QtWidgets.QDialog):
         a1 = str('A') + str(ex + 1)  # for mark symbols
 
         # write data to equipment file
-        df = Excel.lf(defect)    # loop in file log_f, class Excel, method lf()
+        df = Log.lf(defect)    # loop in file log_f, class Excel, method lf()
 
         sheet = wb.get_sheet_by_name('main')
         sheet[a] = self.date
@@ -131,7 +123,6 @@ class MyWin(QtWidgets.QDialog):
 # print the template
     def print_mes(self):
         os.startfile('f2-02-04-5.xlsx', "print")  # write correct address, file name
-
 
 
 if __name__ == "__main__":

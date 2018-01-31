@@ -4,18 +4,21 @@ from datetime import datetime
 # import main
 
 
-class Excel(object):
-    def __init__(self, defect):
+class Log:
+    # def __init__(self):
+    #     self.wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
+    #     self.ws = self.wb['main']
 
         # self.date = datetime.strftime(datetime.now(), "%d/%m/%Y")
         # self.defect = main.MyWin.action(defect)
-        self.defect = defect
+        #self.defect = defect
         # self.sap_eq1 = sap_eq1
         # self.wb = load_workbook('eq_log/{}.xlsx'.format(self.sap_eq1))
         # self.ws = self.wb['main']
         # self.sheet = self.wb.get_sheet_by_name('main')
         # self.per_number = per_number
         # self.counter = counter
+
 
 
 
@@ -60,34 +63,22 @@ class Excel(object):
         else:
             df = 'не вірно визначений дефект'
 
-        print(df)
+        # print(df)
         return df
 # ------------------>
-#     def wrt(self):
-#
-#     # write data to eq_log
-#
-#         # find last mark row, for new data place
-#         mark = '**'
-#         for row in self.ws:
-#             for cell in row:
-#                 if cell.value == mark:
-#                     ex = cell.row
-#                     break
-#
-#         # index coordinate to equipment file
-#         a = str('A') + str(ex)
-#         b = str('B') + str(ex)
-#         c = str('C') + str(ex)
-#         d = str('D') + str(ex)
-#         a1 = str('A') + str(ex + 1)  # for mark symbols
-#
-#         # write data to equipment file
-#
-#         self.sheet[a] = self.date
-#         self.sheet[b] = self.per_number
-#         self.sheet[c] = lf(self)
-#         self.sheet[d] = self.counter
-#         self.sheet[a1] = '**'
-#
-#         self.wb.save('eq_log/{}.xlsx'.format(self.sap_eq1))
+
+
+    def mark(sap_eq1):
+        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
+        ws = wb['main']
+
+        # find last mark row, for new data place
+        mark = '**'
+        for row in ws:
+            for cell in row:
+                if cell.value == mark:
+                    ex = cell.row
+                    #print(ex)
+                    return ex
+
+
