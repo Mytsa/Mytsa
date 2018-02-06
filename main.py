@@ -120,16 +120,12 @@ class MyWin(QtWidgets.QDialog):
         sheet[d] = counter
         sheet[a1] = '**'
 
-
-
         pos = str('D') + str(ex - 1)  # take type of equipment
-        print(ws[pos].value)
         num = str(ws[pos].value)
 
-
         c_num = Log.num_check(num, counter)
-        c_num = str(c_num)
-        self.ui.message.setText(c_num)
+        # c_num = str(c_num)
+        # self.ui.message.setText(c_num)
 
         if c_num == 'ok':
             wb.save('eq_log/{}.xlsx'.format(sap_eq1))

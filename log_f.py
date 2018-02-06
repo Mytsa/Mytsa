@@ -55,7 +55,7 @@ class Log:
             for cell in row:
                 if cell.value == mark:
                     ex = cell.row
-                    print(ex)
+                    # print(ex)
                     return ex
 
     def num_check(num, counter):
