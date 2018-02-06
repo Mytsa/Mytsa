@@ -46,6 +46,8 @@ class MyWin(QtWidgets.QDialog):
         self.ui.type_eq.setText(type_eq)
 
 
+
+
     # write data intro/to template file
         wrfile = load_workbook('f2-02-04-5.xlsx')
         sheet = wrfile.get_sheet_by_name('1')
@@ -118,7 +120,23 @@ class MyWin(QtWidgets.QDialog):
         sheet[d] = counter
         sheet[a1] = '**'
 
-        wb.save('eq_log/{}.xlsx'.format(sap_eq1))
+
+
+        pos = str('D') + str(ex - 1)  # take type of equipment
+        print(ws[pos].value)
+        num = str(ws[pos].value)
+
+
+        c_num = Log.num_check(num, counter)
+        c_num = str(c_num)
+        self.ui.message.setText(c_num)
+
+        if c_num == 'ok':
+            wb.save('eq_log/{}.xlsx'.format(sap_eq1))
+            self.ui.message.setText('equipment log file is saved')
+        else:
+            self.ui.message.setText('counter not correct')
+
 
 # print the template
     def print_mes(self):

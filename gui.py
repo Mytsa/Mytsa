@@ -91,12 +91,12 @@ class Ui_MainWindow(object):
         self.type_eq.setGeometry(QtCore.QRect(515, 25, 150, 25))
         self.type_eq.setObjectName("type_eq")
 
-        # self.label_12 = QtWidgets.QLabel(MainWindow)
-        # self.label_12.setGeometry(QtCore.QRect(610, 200, 150, 16))
-        # self.label_12.setObjectName("")
-        # self. = QtWidgets.QTextBrowser(self.centralwidget)
-        # self..setGeometry(QtCore.QRect(560, 220, 150, 41))
-        # self..setObjectName("")
+        self.label_12 = QtWidgets.QLabel(MainWindow)
+        self.label_12.setGeometry(QtCore.QRect(610, 200, 150, 16))
+        self.label_12.setObjectName("message")
+        self.message = QtWidgets.QTextBrowser(self.centralwidget)
+        self.message.setGeometry(QtCore.QRect(560, 220, 150, 41))
+        self.message.setObjectName("message")
 
         # defect block
         self.label_14 = QtWidgets.QLabel(MainWindow)
@@ -212,7 +212,7 @@ class Ui_MainWindow(object):
         # self.label_10.setText(_translate("MainWindow", "SAP № of spare parts 4"))
 
         self.label_11.setText(_translate("MainWindow", "type of equipment"))
-        # self.label_12.setText(_translate("MainWindow", ""))
+        self.label_12.setText(_translate("MainWindow", "message of status"))
         self.label_13.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
 
 

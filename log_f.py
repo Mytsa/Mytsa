@@ -1,30 +1,9 @@
 # -*- coding: utf-8 -*-
 from openpyxl import *
-from datetime import datetime
-# import main
-
 
 class Log:
-    # def __init__(self):
-    #     self.wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
-    #     self.ws = self.wb['main']
-
-        # self.date = datetime.strftime(datetime.now(), "%d/%m/%Y")
-        # self.defect = main.MyWin.action(defect)
-        #self.defect = defect
-        # self.sap_eq1 = sap_eq1
-        # self.wb = load_workbook('eq_log/{}.xlsx'.format(self.sap_eq1))
-        # self.ws = self.wb['main']
-        # self.sheet = self.wb.get_sheet_by_name('main')
-        # self.per_number = per_number
-        # self.counter = counter
-
-
-
-
 
     def lf(defect):
-
 # <------------------ this loops is for the present and must be work with data log in future !!!
         if defect == '1':
             df = 'Пошкодження поверхні контакту'
@@ -67,18 +46,23 @@ class Log:
         return df
 # ------------------>
 
-
     def mark(sap_eq1):
         wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
         ws = wb['main']
-
         # find last mark row, for new data place
         mark = '**'
         for row in ws:
             for cell in row:
                 if cell.value == mark:
                     ex = cell.row
-                    #print(ex)
+                    print(ex)
                     return ex
 
+    def num_check(num, counter):
+        if num < counter:
+            a = 'ok'
+            return a
+        else:
+            b = 'counter not correct'
+            return b
 
