@@ -46,8 +46,6 @@ class MyWin(QtWidgets.QDialog):
         self.ui.type_eq.setText(type_eq)
 
 
-
-
     # write data intro/to template file
         wrfile = load_workbook('f2-02-04-5.xlsx')
         sheet = wrfile.get_sheet_by_name('1')
@@ -56,7 +54,7 @@ class MyWin(QtWidgets.QDialog):
             sheet[str('B') + str(i)] = ''  # clean check mark
             sheet[str('H') + str(i)] = ''  # clean check mark
 
-# <------------------ this loops for the present and must be work with data log in future !!! and another class
+# <------------------ this loops for the present and must be work with data log in future !!! and with another class
 
         # mark in message template on index by name
         if type_eq == 'Аплікатор':
@@ -100,7 +98,7 @@ class MyWin(QtWidgets.QDialog):
 
         wrfile.save('f2-02-04-5.xlsx')
 
-    # write data to eq_log
+    # write data to equipment log file
         ex = Log.mark(sap_eq1)
 
         # index coordinate to equipment file

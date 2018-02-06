@@ -4,7 +4,7 @@ from openpyxl import *
 class Log:
 
     def lf(defect):
-# <------------------ this loops is for the present and must be work with data log in future !!!
+# <------------------ this loops is for the present and must be work with data log in future ! -----> MAYBE!!!
         if defect == '1':
             df = 'Пошкодження поверхні контакту'
         elif defect == '2':
