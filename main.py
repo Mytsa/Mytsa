@@ -32,13 +32,13 @@ class MyWin(QtWidgets.QDialog):
 # calculation logic
     # find log file
 
-#<-------------- in future change search logic. Work with txt data file
+# <-------------- in future change search logic. Work with txt data file
         sap_eq1 = '8000' + str(sap_eq)
         wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))    # search file by number
         ws = wb['main']
 
         pos = str('G2')    # take type of equipment
-        #print(ws[pos].value)
+        # print(ws[pos].value)
         type_eq = str(ws[pos].value)
 # ------------------------------>
 
@@ -120,16 +120,14 @@ class MyWin(QtWidgets.QDialog):
 
         pos = str('D') + str(ex - 1)  # take type of equipment
         num = str(ws[pos].value)
+        self.ui.counter_info.setText(num) # info block about last counter data in log file
 
-        c_num = Log.num_check(num, counter)
-        # c_num = str(c_num)
-        # self.ui.message.setText(c_num)
-
-        if c_num == 'ok':
+        # check of input correct counter data, after successfully check write data to log or take a message
+        if int(num) < int(counter):
             wb.save('eq_log/{}.xlsx'.format(sap_eq1))
             self.ui.message.setText('equipment log file is saved')
         else:
-            self.ui.message.setText('counter not correct')
+            self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved")
 
 
 # print the template

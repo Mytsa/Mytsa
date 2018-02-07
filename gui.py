@@ -46,41 +46,34 @@ class Ui_MainWindow(object):
         self.fault.setGeometry(QtCore.QRect(5, 470, 40, 25))
         self.fault.setObjectName("Ймовірні причини дефекту:")
 
-        # self.label_6 = QtWidgets.QLabel(MainWindow)
-        # self.label_6.setGeometry(QtCore.QRect(10, 255, 150, 16))
-        # self.label_6.setObjectName("")
-        # self. = QtWidgets.QTextEdit(self.centralwidget)
-        # self..setGeometry(QtCore.QRect(5, 275, 150, 25))
-        # self..setObjectName("")
 
+        self.label_7 = QtWidgets.QLabel(MainWindow)
+        self.label_7.setGeometry(QtCore.QRect(305, 170, 150, 16))
+        self.label_7.setObjectName("spare_parts")
+        self.sp1 = QtWidgets.QTextEdit(self.centralwidget)
+        self.sp1.setGeometry(QtCore.QRect(300, 190, 150, 25))
+        self.sp1.setObjectName("spare_parts")
 
-        # self.label_7 = QtWidgets.QLabel(MainWindow)
-        # self.label_7.setGeometry(QtCore.QRect(305, 70, 150, 16))
-        # self.label_7.setObjectName("spare_parts")
-        # self.sp1 = QtWidgets.QTextEdit(self.centralwidget)
-        # self.sp1.setGeometry(QtCore.QRect(300, 90, 150, 25))
-        # self.sp1.setObjectName("spare_parts")
-        #
-        # self.label_8 = QtWidgets.QLabel(MainWindow)
-        # self.label_8.setGeometry(QtCore.QRect(305, 120, 150, 16))
-        # self.label_8.setObjectName("spare_parts1")
-        # self.sp2 = QtWidgets.QTextEdit(self.centralwidget)
-        # self.sp2.setGeometry(QtCore.QRect(300, 140, 150, 25))
-        # self.sp2.setObjectName("spare_parts1")
-        #
-        # self.label_9 = QtWidgets.QLabel(MainWindow)
-        # self.label_9.setGeometry(QtCore.QRect(305, 170, 150, 16))
-        # self.label_9.setObjectName("spare_parts2")
-        # self.sp3 = QtWidgets.QTextEdit(self.centralwidget)
-        # self.sp3.setGeometry(QtCore.QRect(300, 190, 150, 25))
-        # self.sp3.setObjectName("spare_parts2")
-        #
-        # self.label_10 = QtWidgets.QLabel(MainWindow)
-        # self.label_10.setGeometry(QtCore.QRect(305, 220, 150, 16))
-        # self.label_10.setObjectName("spare_parts3")
-        # self.sp4 = QtWidgets.QTextEdit(self.centralwidget)
-        # self.sp4.setGeometry(QtCore.QRect(300, 240, 150, 25))
-        # self.sp4.setObjectName("spare_parts3")
+        self.label_8 = QtWidgets.QLabel(MainWindow)
+        self.label_8.setGeometry(QtCore.QRect(305, 220, 150, 16))
+        self.label_8.setObjectName("spare_parts1")
+        self.sp2 = QtWidgets.QTextEdit(self.centralwidget)
+        self.sp2.setGeometry(QtCore.QRect(300, 240, 150, 25))
+        self.sp2.setObjectName("spare_parts1")
+
+        self.label_9 = QtWidgets.QLabel(MainWindow)
+        self.label_9.setGeometry(QtCore.QRect(305, 270, 150, 16))
+        self.label_9.setObjectName("spare_parts2")
+        self.sp3 = QtWidgets.QTextEdit(self.centralwidget)
+        self.sp3.setGeometry(QtCore.QRect(300, 290, 150, 25))
+        self.sp3.setObjectName("spare_parts2")
+
+        self.label_10 = QtWidgets.QLabel(MainWindow)
+        self.label_10.setGeometry(QtCore.QRect(305, 320, 150, 16))
+        self.label_10.setObjectName("spare_parts3")
+        self.sp4 = QtWidgets.QTextEdit(self.centralwidget)
+        self.sp4.setGeometry(QtCore.QRect(300, 340, 150, 25))
+        self.sp4.setObjectName("spare_parts3")
 
         # output area
 
@@ -91,12 +84,21 @@ class Ui_MainWindow(object):
         self.type_eq.setGeometry(QtCore.QRect(515, 25, 150, 25))
         self.type_eq.setObjectName("type_eq")
 
+
+        self.label_6 = QtWidgets.QLabel(MainWindow)
+        self.label_6.setGeometry(QtCore.QRect(520, 60, 150, 16))
+        self.label_6.setObjectName("counter_info")
+        self.counter_info = QtWidgets.QTextBrowser(self.centralwidget)
+        self.counter_info.setGeometry(QtCore.QRect(515, 80, 150, 25))
+        self.counter_info.setObjectName("counter_info")
+
         self.label_12 = QtWidgets.QLabel(MainWindow)
-        self.label_12.setGeometry(QtCore.QRect(610, 200, 150, 16))
-        self.label_12.setObjectName("message")
+        self.label_12.setGeometry(QtCore.QRect(480, 420, 150, 16))
+        self.label_12.setObjectName("статус обробки")
         self.message = QtWidgets.QTextBrowser(self.centralwidget)
-        self.message.setGeometry(QtCore.QRect(560, 220, 150, 41))
-        self.message.setObjectName("message")
+        self.message.setGeometry(QtCore.QRect(400, 440, 250, 50))
+        self.message.setObjectName("статус обробки")
+
 
         # defect block
         self.label_14 = QtWidgets.QLabel(MainWindow)
@@ -205,14 +207,14 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "sap № of equipment 8000: "))
         self.label_4.setText(_translate("MainWindow", "опис дефекту:"))
         self.label_5.setText(_translate("MainWindow", "Ймовірні причини дефекту:"))
-        # self.label_6.setText(_translate("MainWindow", ""))
-        # self.label_7.setText(_translate("MainWindow", "SAP № of spare parts 1"))
-        # self.label_8.setText(_translate("MainWindow", "SAP № of spare parts 2"))
-        # self.label_9.setText(_translate("MainWindow", "SAP № of spare parts 3"))
-        # self.label_10.setText(_translate("MainWindow", "SAP № of spare parts 4"))
+        self.label_6.setText(_translate("MainWindow", "останній запис лічильника"))
+        self.label_7.setText(_translate("MainWindow", "SAP № of spare parts 1"))
+        self.label_8.setText(_translate("MainWindow", "SAP № of spare parts 2"))
+        self.label_9.setText(_translate("MainWindow", "SAP № of spare parts 3"))
+        self.label_10.setText(_translate("MainWindow", "SAP № of spare parts 4"))
 
         self.label_11.setText(_translate("MainWindow", "type of equipment"))
-        self.label_12.setText(_translate("MainWindow", "message of status"))
+        self.label_12.setText(_translate("MainWindow", "статус обробки"))
         self.label_13.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
 
 
@@ -224,7 +226,7 @@ class Ui_MainWindow(object):
         self.label_19.setText(_translate("MainWindow", "6: Зазубрини в місті відрізу контакту"))
         self.label_20.setText(_translate("MainWindow", "7: Пошкодження проводу або ущільнення"))
         self.label_21.setText(_translate("MainWindow", "8: Рекваліфікація / EMPB"))
-        self.label_22.setText(_translate("MainWindow", "17: Інше:    --->'записати в карті'"))
+        self.label_22.setText(_translate("MainWindow", "17: Інше:    ---> записати в карті"))
         self.label_23.setText(_translate("MainWindow", "9: Не вірна довжина проводу"))
         self.label_24.setText(_translate("MainWindow", "10: Не відповідне зварне з’єднання"))
         self.label_25.setText(_translate("MainWindow", "11: Не відповідна сила стягування кабельбіндера"))
@@ -235,7 +237,7 @@ class Ui_MainWindow(object):
         self.label_30.setText(_translate("MainWindow", "16: Обладнання не вмикається / не продукує виріб"))
 
         self.label_31.setText(_translate("MainWindow", "1: Людський фактор"))
-        self.label_32.setText(_translate("MainWindow", "3: Інше:    --->'записати в карті'"))
+        self.label_32.setText(_translate("MainWindow", "3: Інше:    ---> записати в карті"))
         self.label_33.setText(_translate("MainWindow", "2: Нормальне зношення / механічне зношення"))        
 
 

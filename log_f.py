@@ -58,11 +58,12 @@ class Log:
                     # print(ex)
                     return ex
 
-    def num_check(num, counter):
-        if num < counter:
-            a = 'ok'
-            return a
-        else:
-            b = 'counter not correct'
-            return b
+    # def num_check(num, counter):
+    #
+    #     if num < counter:
+    #         a = 'ok'
+    #         return a
+    #     else:
+    #         b = 'counter not correct'
+    #         return b
 
