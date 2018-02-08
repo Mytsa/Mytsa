@@ -81,15 +81,15 @@ class Ui_MainWindow(object):
         self.label_11.setGeometry(QtCore.QRect(520, 5, 150, 16))
         self.label_11.setObjectName("type_eq")
         self.type_eq = QtWidgets.QTextBrowser(self.centralwidget)
-        self.type_eq.setGeometry(QtCore.QRect(515, 25, 150, 25))
+        self.type_eq.setGeometry(QtCore.QRect(515, 25, 150, 40))
         self.type_eq.setObjectName("type_eq")
 
 
         self.label_6 = QtWidgets.QLabel(MainWindow)
-        self.label_6.setGeometry(QtCore.QRect(520, 60, 150, 16))
+        self.label_6.setGeometry(QtCore.QRect(520, 70, 150, 16))
         self.label_6.setObjectName("counter_info")
         self.counter_info = QtWidgets.QTextBrowser(self.centralwidget)
-        self.counter_info.setGeometry(QtCore.QRect(515, 80, 150, 25))
+        self.counter_info.setGeometry(QtCore.QRect(515, 90, 150, 25))
         self.counter_info.setObjectName("counter_info")
 
         self.label_12 = QtWidgets.QLabel(MainWindow)

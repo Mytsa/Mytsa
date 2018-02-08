@@ -57,7 +57,7 @@ class MyWin(QtWidgets.QDialog):
 # <------------------ this loops for the present and must be work with data log in future !!! and with another class
 
         # mark in message template on index by name
-        if type_eq == 'Аплікатор':
+        if type_eq == 'Applicator':
             f = str('B25')
         elif type_eq == 'Komax Alpha 355 / 355 S':
             f = str('B26')
@@ -120,14 +120,48 @@ class MyWin(QtWidgets.QDialog):
 
         pos = str('D') + str(ex - 1)  # take type of equipment
         num = str(ws[pos].value)
-        self.ui.counter_info.setText(num) # info block about last counter data in log file
+        self.ui.counter_info.setText(num)    # info block about last counter data in log file
+
+    # show forecast of counter for the next repair
+        pos_f = str('D') + str(ex)
+        num_r = int(ws[pos_f].value)
+        pos_aver = str('H2')
+        num_aver = int(ws[pos_aver].value)
+
+        forecast = num_aver - num_r
+        forecast = str(forecast)
 
         # check of input correct counter data, after successfully check write data to log or take a message
         if int(num) < int(counter):
+
+            type_eq_m = Log.te(type_eq)
+            exl = Log.markl(type_eq_m)
+            w = load_workbook('eq_log/general equipment log.xlsx')
+
+            a = str('A') + str(exl)
+            b = str('B') + str(exl)
+            c = str('C') + str(exl)
+            d = str('D') + str(exl)
+            e = str('E') + str(exl)
+            a1 = str('A') + str(exl + 1)  # for mark symbols
+            # write data to equipment file
+            sheet = w.get_sheet_by_name(type_eq_m)
+            sheet[a] = self.date
+            sheet[b] = sap_eq1
+            sheet[c] = per_number
+            sheet[d] = df
+            sheet[e] = counter
+            sheet[a1] = '**'
+
+            w.save('eq_log/general equipment log.xlsx')
+
             wb.save('eq_log/{}.xlsx'.format(sap_eq1))
-            self.ui.message.setText('equipment log file is saved')
+            self.ui.message.setText('equipment log file is saved' + '\n' + 'forecast of next repair is: ' + forecast)
         else:
             self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved")
+
+
+
 
 
 # print the template

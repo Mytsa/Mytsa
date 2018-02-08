@@ -58,6 +58,33 @@ class Log:
                     # print(ex)
                     return ex
 
+    def te(type_eq):
+        if type_eq == 'Аплікатор':
+            type_eq_m = 'applicator'
+        elif type_eq == 'Komax Alpha 355 / 355 S':
+            type_eq_m = 'komax'
+        elif type_eq == 'Komax Gamma 333 PC':
+            type_eq_m = 'komax'
+        elif type_eq == 'Schunk / Stapla ультразвукова зварка':
+            type_eq_m = 'schunk'
+        else:
+            type_eq_m = 'other'
+        return type_eq_m
+
+
+    def markl(type_eq_m):
+        w = load_workbook('eq_log/general equipment log.xlsx')
+        sheet = str(type_eq_m)
+        ws = w[sheet]
+        # find last mark row, for new data place
+        mark = '**'
+        for row in ws:
+            for cell in row:
+                if cell.value == mark:
+                    ex_log = cell.row
+                    # print(ex_log)
+                    return ex_log
+
     # def num_check(num, counter):
     #
     #     if num < counter:
