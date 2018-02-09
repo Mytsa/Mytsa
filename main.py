@@ -57,7 +57,7 @@ class MyWin(QtWidgets.QDialog):
 # <------------------ this loops for the present and must be work with data log in future !!! and with another class
 
         # mark in message template on index by name
-        if type_eq == 'Applicator':
+        if type_eq == 'Аплікатор':
             f = str('B25')
         elif type_eq == 'Komax Alpha 355 / 355 S':
             f = str('B26')
