@@ -22,31 +22,15 @@ class MyWin(QtWidgets.QDialog):
     def action(self):
     # input data
         per_number = self.ui.per_number.toPlainText()     # input personal number
-        defect = self.ui.defect.toPlainText()     # input defect
-        index = self.dic_defect[defect]
         sap_eq = self.ui.sap_eq.toPlainText()  # input sap number of equipment
-        fault = self.ui.fault.toPlainText()  # input type fault
-        index1 = self.dic_fault[fault]
-        counter = self.ui.counter.toPlainText()  # input counter
 
-# calculation logic
-    # find log file
+        # find log file
+        type_eq = Log.type(sap_eq)
 
-# <-------------- in future change search logic. Work with txt data file
-        sap_eq1 = '8000' + str(sap_eq)
-        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))    # search file by number
-        ws = wb['main']
-
-        pos = str('G2')    # take type of equipment
-        # print(ws[pos].value)
-        type_eq = str(ws[pos].value)
-# ------------------------------>
-
-    # output data
+        # output data
         self.ui.type_eq.setText(type_eq)
 
-
-    # write data intro/to template file
+        # write data intro/to template file
         wrfile = load_workbook('f2-02-04-5.xlsx')
         sheet = wrfile.get_sheet_by_name('1')
 
@@ -54,28 +38,21 @@ class MyWin(QtWidgets.QDialog):
             sheet[str('B') + str(i)] = ''  # clean check mark
             sheet[str('H') + str(i)] = ''  # clean check mark
 
-# <------------------ this loops for the present and must be work with data log in future !!! and with another class
 
         # mark in message template on index by name
-        if type_eq == 'Аплікатор':
-            f = str('B25')
-        elif type_eq == 'Komax Alpha 355 / 355 S':
-            f = str('B26')
-        elif type_eq == 'Komax Gamma 333 PC':
-            f = str('B27')
-        elif type_eq == 'Schunk / Stapla ультразвукова зварка':
-            f = str('B28')
-        elif type_eq == 'Кабельбіндеровий пістолет':
-            f = str('H25')
-        elif type_eq == 'Raychem / Raychem TE':
-            f = str('H26')
-        elif type_eq == 'Komax Twist BT 188 t / BT 188':
-            f = str('H27')
-        elif type_eq == 'Kabateck / Ondal':
-            f = str('H28')
-        else:
-            f = str('B29')
-# ------------------>
+        f = Log.filtr(type_eq)
+
+
+
+        defect = self.ui.defect.toPlainText()  # input defect
+        index = self.dic_defect[defect]
+
+        fault = self.ui.fault.toPlainText()  # input type fault
+        index1 = self.dic_fault[fault]
+        counter = self.ui.counter.toPlainText()  # input counter
+
+# calculation logic
+
 
         # index coordinate for template file
         a = str('C7')
@@ -99,7 +76,11 @@ class MyWin(QtWidgets.QDialog):
         wrfile.save('f2-02-04-5.xlsx')
 
     # write data to equipment log file
-        ex = Log.mark(sap_eq1)
+        sap_eq1 = '8000' + str(sap_eq)
+        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))  # find file by number
+        ws = wb['main']
+
+        ex = Log.mark(sap_eq1)    # find index in file
 
         # index coordinate to equipment file
         a = str('A') + str(ex)

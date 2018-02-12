@@ -85,12 +85,33 @@ class Log:
                     # print(ex_log)
                     return ex_log
 
-    # def num_check(num, counter):
-    #
-    #     if num < counter:
-    #         a = 'ok'
-    #         return a
-    #     else:
-    #         b = 'counter not correct'
-    #         return b
+    def filtr(type_eq):
+        if type_eq == 'Аплікатор':
+            f = str('B25')
+        elif type_eq == 'Komax Alpha 355 / 355 S':
+            f = str('B26')
+        elif type_eq == 'Komax Gamma 333 PC':
+            f = str('B27')
+        elif type_eq == 'Schunk / Stapla ультразвукова зварка':
+            f = str('B28')
+        elif type_eq == 'Кабельбіндеровий пістолет':
+            f = str('H25')
+        elif type_eq == 'Raychem / Raychem TE':
+            f = str('H26')
+        elif type_eq == 'Komax Twist BT 188 t / BT 188':
+            f = str('H27')
+        elif type_eq == 'Kabateck / Ondal':
+            f = str('H28')
+        else:
+            f = str('B29')
+        return f
+
+    def type(sap_eq):
+        sap_eq1 = '8000' + str(sap_eq)
+        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))  # search file by number
+        ws = wb['main']
+        pos = str('G2')  # take type of equipment
+        type_eq = str(ws[pos].value)
+
+        return type_eq
 
