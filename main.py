@@ -33,7 +33,6 @@ class MyWin(QtWidgets.QDialog):
         # write data intro/to template file
         wrfile = load_workbook('f2-02-04-5.xlsx')
         sheet = wrfile.get_sheet_by_name('1')
-
         for i in range(11, 35):
             sheet[str('B') + str(i)] = ''  # clean check mark
             sheet[str('H') + str(i)] = ''  # clean check mark
@@ -41,8 +40,6 @@ class MyWin(QtWidgets.QDialog):
 
         # mark in message template on index by name
         f = Log.filtr(type_eq)
-
-
 
         defect = self.ui.defect.toPlainText()  # input defect
         index = self.dic_defect[defect]
@@ -52,8 +49,7 @@ class MyWin(QtWidgets.QDialog):
         counter = self.ui.counter.toPlainText()  # input counter
 
 # calculation logic
-
-
+        sap_eq1 = '8000' + str(sap_eq)
         # index coordinate for template file
         a = str('C7')
         b = str('F7')
@@ -68,7 +64,7 @@ class MyWin(QtWidgets.QDialog):
         sheet[b] = self.time
         sheet[c] = int(per_number)
         sheet[d] = 'X'
-        sheet[e] = int(sap_eq)
+        sheet[e] = int(sap_eq1)
         sheet[f] = 'X'
         sheet[g] = 'X'
         sheet[h] = int(counter)
@@ -76,8 +72,8 @@ class MyWin(QtWidgets.QDialog):
         wrfile.save('f2-02-04-5.xlsx')
 
     # write data to equipment log file
-        sap_eq1 = '8000' + str(sap_eq)
-        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))  # find file by number
+
+        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # find file by number
         ws = wb['main']
 
         ex = Log.mark(sap_eq1)    # find index in file
@@ -136,7 +132,7 @@ class MyWin(QtWidgets.QDialog):
 
             w.save('eq_log/general equipment log.xlsx')
 
-            wb.save('eq_log/{}.xlsx'.format(sap_eq1))
+            wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
             self.ui.message.setText('equipment log file is saved' + '\n' + 'forecast of next repair is: ' + forecast)
         else:
             self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved")

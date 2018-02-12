@@ -47,7 +47,7 @@ class Log:
 # ------------------>
 
     def mark(sap_eq1):
-        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))
+        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
         ws = wb['main']
         # find last mark row, for new data place
         mark = '**'
@@ -108,7 +108,7 @@ class Log:
 
     def type(sap_eq):
         sap_eq1 = '8000' + str(sap_eq)
-        wb = load_workbook('eq_log/{}.xlsx'.format(sap_eq1))  # search file by number
+        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # search file by number
         ws = wb['main']
         pos = str('G2')  # take type of equipment
         type_eq = str(ws[pos].value)
