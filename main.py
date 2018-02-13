@@ -23,12 +23,21 @@ class MyWin(QtWidgets.QDialog):
     # input data
         per_number = self.ui.per_number.toPlainText()     # input personal number
         sap_eq = self.ui.sap_eq.toPlainText()  # input sap number of equipment
-
         # find log file
         type_eq = Log.type(sap_eq)
-
         # output data
         self.ui.type_eq.setText(type_eq)
+        # mark in message template on index by name
+        f = Log.filtr(type_eq)
+
+        defect = self.ui.defect.toPlainText()  # input defect
+        index = self.dic_defect[defect]
+        fault = self.ui.fault.toPlainText()  # input type fault
+        index1 = self.dic_fault[fault]
+        counter = self.ui.counter.toPlainText()  # input counter
+
+# calculation logic
+        sap_eq1 = '8000' + str(sap_eq)
 
         # write data intro/to template file
         wrfile = load_workbook('f2-02-04-5.xlsx')
@@ -37,19 +46,6 @@ class MyWin(QtWidgets.QDialog):
             sheet[str('B') + str(i)] = ''  # clean check mark
             sheet[str('H') + str(i)] = ''  # clean check mark
 
-
-        # mark in message template on index by name
-        f = Log.filtr(type_eq)
-
-        defect = self.ui.defect.toPlainText()  # input defect
-        index = self.dic_defect[defect]
-
-        fault = self.ui.fault.toPlainText()  # input type fault
-        index1 = self.dic_fault[fault]
-        counter = self.ui.counter.toPlainText()  # input counter
-
-# calculation logic
-        sap_eq1 = '8000' + str(sap_eq)
         # index coordinate for template file
         a = str('C7')
         b = str('F7')
@@ -58,7 +54,6 @@ class MyWin(QtWidgets.QDialog):
         e = str('F22')
         g = str('{}'.format(index1[0])) + str(index1[1])    # need decision
         h = str('D52')    # counter
-
         # write data to template file
         sheet[a] = self.date
         sheet[b] = self.time
@@ -68,26 +63,20 @@ class MyWin(QtWidgets.QDialog):
         sheet[f] = 'X'
         sheet[g] = 'X'
         sheet[h] = int(counter)
-
         wrfile.save('f2-02-04-5.xlsx')
 
     # write data to equipment log file
-
         wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # find file by number
         ws = wb['main']
-
         ex = Log.mark(sap_eq1)    # find index in file
-
         # index coordinate to equipment file
         a = str('A') + str(ex)
         b = str('B') + str(ex)
         c = str('C') + str(ex)
         d = str('D') + str(ex)
         a1 = str('A') + str(ex + 1)  # for mark symbols
-
         # write data to equipment file
         df = Log.lf(defect)    # loop in file log_f, class Excel, method lf()
-
         sheet = wb.get_sheet_by_name('main')
         sheet[a] = self.date
         sheet[b] = per_number
@@ -99,21 +88,14 @@ class MyWin(QtWidgets.QDialog):
         num = str(ws[pos].value)
         self.ui.counter_info.setText(num)    # info block about last counter data in log file
 
-    # show forecast of counter for the next repair
-        
-
-        
-
         # check of input correct counter data, after successfully check write data to log or take a message
         if int(num) < int(counter):
-
+            # show forecast of counter for the next repair
             forecast = Log.cntr(sap_eq1, ex, counter)
-            #forecast = str(forecast)
-            
             type_eq_m = Log.te(type_eq)
+
             exl = Log.markl(type_eq_m)
             w = load_workbook('eq_log/general equipment log.xlsx')
-
             a = str('A') + str(exl)
             b = str('B') + str(exl)
             c = str('C') + str(exl)
@@ -128,16 +110,12 @@ class MyWin(QtWidgets.QDialog):
             sheet[d] = df
             sheet[e] = counter
             sheet[a1] = '**'
-
             w.save('eq_log/general equipment log.xlsx')
 
             wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
-            self.ui.message.setText('equipment log file is saved' + '\n' + 'forecast of next repair is: ' + forecast)
+            self.ui.message.setText('equipment log file is saved' + '\n' + 'to the next repair is: ' + forecast)
         else:
             self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved")
-
-
-
 
 
 # print the template

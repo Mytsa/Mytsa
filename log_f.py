@@ -127,7 +127,7 @@ class Log:
         counter = int(counter)
 
         aa = counter - wrt_counter
-        b = abs(num_aver - aa)
+        b = num_aver - aa
         b = str(b)
         return b
 
