@@ -100,17 +100,16 @@ class MyWin(QtWidgets.QDialog):
         self.ui.counter_info.setText(num)    # info block about last counter data in log file
 
     # show forecast of counter for the next repair
-        pos_f = str('D') + str(ex)
-        num_r = int(ws[pos_f].value)
-        pos_aver = str('H2')
-        num_aver = int(ws[pos_aver].value)
+        
 
-        forecast = num_aver - num_r
-        forecast = str(forecast)
+        
 
         # check of input correct counter data, after successfully check write data to log or take a message
         if int(num) < int(counter):
 
+            forecast = Log.cntr(sap_eq1, ex, counter)
+            #forecast = str(forecast)
+            
             type_eq_m = Log.te(type_eq)
             exl = Log.markl(type_eq_m)
             w = load_workbook('eq_log/general equipment log.xlsx')

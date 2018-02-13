@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from openpyxl import *
+import math
 
 class Log:
 
@@ -114,4 +115,21 @@ class Log:
         type_eq = str(ws[pos].value)
 
         return type_eq
+
+    def cntr(sap_eq1, ex, counter):
+        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
+        ws = wb['main']
+        pos = str('D') + str(ex-1)       
+        wrt_counter = ws[pos].value
+        wrt_counter = int(wrt_counter)
+        pos_aver = str('H2')
+        num_aver = int(ws[pos_aver].value)
+        counter = int(counter)
+
+        aa = counter - wrt_counter
+        b = abs(num_aver - aa)
+        b = str(b)
+        return b
+
+        
 
