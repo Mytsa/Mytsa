@@ -4,6 +4,7 @@ from openpyxl import *
 from datetime import datetime
 from gui import *    # gui is interface file
 from log_f import Log    # file work with log
+from templ_f import Templ    # file work with template
 
 
 class MyWin(QtWidgets.QDialog):
@@ -23,47 +24,24 @@ class MyWin(QtWidgets.QDialog):
     # input data
         per_number = self.ui.per_number.toPlainText()     # input personal number
         sap_eq = self.ui.sap_eq.toPlainText()  # input sap number of equipment
-        # find log file
-        type_eq = Log.type(sap_eq)
-        # output data
-        self.ui.type_eq.setText(type_eq)
-        # mark in message template on index by name
-        f = Log.filtr(type_eq)
-
         defect = self.ui.defect.toPlainText()  # input defect
         index = self.dic_defect[defect]
         fault = self.ui.fault.toPlainText()  # input type fault
         index1 = self.dic_fault[fault]
         counter = self.ui.counter.toPlainText()  # input counter
 
+        type_eq = Log.type(sap_eq)  # find log file and info about type of equipment
+    # output data
+        self.ui.type_eq.setText(type_eq)
+
 # calculation logic
+
         sap_eq1 = '8000' + str(sap_eq)
 
-        # write data intro/to template file
-        wrfile = load_workbook('f2-02-04-5.xlsx')
-        sheet = wrfile.get_sheet_by_name('1')
-        for i in range(11, 35):
-            sheet[str('B') + str(i)] = ''  # clean check mark
-            sheet[str('H') + str(i)] = ''  # clean check mark
-
-        # index coordinate for template file
-        a = str('C7')
-        b = str('F7')
-        c = str('K7')
-        d = str('{}'.format(index[0])) + str(index[1])
-        e = str('F22')
-        g = str('{}'.format(index1[0])) + str(index1[1])    # need decision
-        h = str('D52')    # counter
-        # write data to template file
-        sheet[a] = self.date
-        sheet[b] = self.time
-        sheet[c] = int(per_number)
-        sheet[d] = 'X'
-        sheet[e] = int(sap_eq1)
-        sheet[f] = 'X'
-        sheet[g] = 'X'
-        sheet[h] = int(counter)
-        wrfile.save('f2-02-04-5.xlsx')
+        d = str('{}'.format(index[0])) + str(index[1])    # need decision
+        g = str('{}'.format(index1[0])) + str(index1[1])  # need decision
+        f = Log.filtr(type_eq)   # mark in message template on index by name
+        Templ.wrt_templ(d, g, f, self.date, self.time, per_number, sap_eq1, counter)    # write data to template file
 
     # write data to equipment log file
         wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # find file by number
@@ -94,7 +72,7 @@ class MyWin(QtWidgets.QDialog):
             forecast = Log.cntr(sap_eq1, ex, counter)
             type_eq_m = Log.te(type_eq)
 
-            exl = Log.markl(type_eq_m)
+            exl = Log.markl(type_eq_m)   # find last/mark row
             w = load_workbook('eq_log/general equipment log.xlsx')
             a = str('A') + str(exl)
             b = str('B') + str(exl)
