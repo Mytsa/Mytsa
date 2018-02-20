@@ -5,6 +5,7 @@ from datetime import datetime
 from gui import *    # gui is interface file
 from log_f import Log    # file work with log
 from templ_f import Templ    # file work with template
+from s_parts import Parts    # file work with template
 
 
 class MyWin(QtWidgets.QDialog):
@@ -14,6 +15,7 @@ class MyWin(QtWidgets.QDialog):
         self.ui.setupUi(self)
         self.date = datetime.strftime(datetime.now(), "%d/%m/%Y")
         self.time = datetime.strftime(datetime.now(), "%H:%M")
+        self.w_date = datetime.strftime(datetime.now(), "%W")
         self.ui.pushButton.clicked.connect(self.action)  # calculation
         self.ui.pushButton1.clicked.connect(self.print_mes)  # write data to file
         self.dic_defect = {'1': ['B', 11], '2': ['B', 12], '3': ['B', 13], '4': ['B', 14], '5': ['B', 15], '6': ['B', 16], '7': ['B', 17], '8': ['B', 18], '17': ['B', 19], '9': ['H', 11], '10': ['H', 12], '11': ['H', 13], '12': ['H', 14], '13': ['H', 15], '14': ['H', 16], '15': ['H', 17], '16': ['H', 18]}
@@ -89,8 +91,38 @@ class MyWin(QtWidgets.QDialog):
             sheet[e] = counter
             sheet[a1] = '**'
             w.save('eq_log/general equipment log.xlsx')
-
             wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
+
+
+            px = Parts.mark(per_number)
+            num_part1 = self.ui.sp1.toPlainText()
+            num_part1 = int(num_part1)
+            name_part = 'anvil test'
+            print(num_part1)
+            if num_part1 > 1:
+                Parts.wrt_templ(per_number, px, num_part1, name_part, sap_eq1, counter)
+            else:
+                self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + 'write correct SAP number of spare part')
+
+            # num_part2 = self.ui.sp2.toPlainText()
+            # if num_part2 > 41:
+            #     Parts.wrt_templ(px, self.w_date, per_number, num_part2, name_part, sap_eq1, counter)
+            # else:
+            #     self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + 'write correct SAP number of spare part')
+            #
+            # num_part3 = self.ui.sp3.toPlainText()
+            # if num_part3 > 41:
+            #     Parts.wrt_templ(px, self.w_date, per_number, num_part3, name_part, sap_eq1, counter)
+            # else:
+            #     self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + 'write correct SAP number of spare part')
+            #
+            # num_part4 = self.ui.sp4.toPlainText()
+            # if num_part4 > 41:
+            #     Parts.wrt_templ(px, self.w_date, per_number, num_part4, name_part, sap_eq1, counter)
+            # else:
+            #     self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + 'write correct SAP number of spare part')
+
+
             self.ui.message.setText('equipment log file is saved' + '\n' + 'to the next repair is: ' + forecast)
         else:
             self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved")
