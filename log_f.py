@@ -116,7 +116,7 @@ class Log:
 
         return type_eq
 
-    def cntr(sap_eq1, ex, counter):
+    def cntr(sap_eq1, ex, counter):  # calculation of forecast repair
         wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
         ws = wb['main']
         pos = str('D') + str(ex-1)       
@@ -131,5 +131,22 @@ class Log:
         b = str(b)
         return b
 
-        
 
+    def eu_log(exl, type_eq_m, date, sap_eq1, per_number, df, counter):
+
+        w = load_workbook('eq_log/general equipment log.xlsx')
+        a = str('A') + str(exl)
+        b = str('B') + str(exl)
+        c = str('C') + str(exl)
+        d = str('D') + str(exl)
+        e = str('E') + str(exl)
+        a1 = str('A') + str(exl + 1)  # for mark symbols
+        # write data to equipment file
+        sheet = w.get_sheet_by_name(type_eq_m)
+        sheet[a] = date
+        sheet[b] = sap_eq1
+        sheet[c] = per_number
+        sheet[d] = df
+        sheet[e] = counter
+        sheet[a1] = '**'
+        w.save('eq_log/general equipment log.xlsx')

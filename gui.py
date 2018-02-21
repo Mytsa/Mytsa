@@ -60,20 +60,20 @@ class Ui_MainWindow(object):
         self.sp2 = QtWidgets.QTextEdit(self.centralwidget)
         self.sp2.setGeometry(QtCore.QRect(300, 240, 150, 25))
         self.sp2.setObjectName("spare_parts1")
-
-        self.label_9 = QtWidgets.QLabel(MainWindow)
-        self.label_9.setGeometry(QtCore.QRect(305, 270, 150, 16))
-        self.label_9.setObjectName("spare_parts2")
-        self.sp3 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp3.setGeometry(QtCore.QRect(300, 290, 150, 25))
-        self.sp3.setObjectName("spare_parts2")
-
-        self.label_10 = QtWidgets.QLabel(MainWindow)
-        self.label_10.setGeometry(QtCore.QRect(305, 320, 150, 16))
-        self.label_10.setObjectName("spare_parts3")
-        self.sp4 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp4.setGeometry(QtCore.QRect(300, 340, 150, 25))
-        self.sp4.setObjectName("spare_parts3")
+        #
+        # self.label_9 = QtWidgets.QLabel(MainWindow)
+        # self.label_9.setGeometry(QtCore.QRect(305, 270, 150, 16))
+        # self.label_9.setObjectName("spare_parts2")
+        # self.sp3 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.sp3.setGeometry(QtCore.QRect(300, 290, 150, 25))
+        # self.sp3.setObjectName("spare_parts2")
+        #
+        # self.label_10 = QtWidgets.QLabel(MainWindow)
+        # self.label_10.setGeometry(QtCore.QRect(305, 320, 150, 16))
+        # self.label_10.setObjectName("spare_parts3")
+        # self.sp4 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.sp4.setGeometry(QtCore.QRect(300, 340, 150, 25))
+        # self.sp4.setObjectName("spare_parts3")
 
         # output area
 
@@ -96,7 +96,7 @@ class Ui_MainWindow(object):
         self.label_12.setGeometry(QtCore.QRect(460, 420, 150, 16))
         self.label_12.setObjectName("статус обробки")
         self.message = QtWidgets.QTextBrowser(self.centralwidget)
-        self.message.setGeometry(QtCore.QRect(400, 440, 250, 50))
+        self.message.setGeometry(QtCore.QRect(400, 440, 250, 70))
         self.message.setObjectName("статус обробки")
 
 
@@ -210,8 +210,8 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "останній запис лічильника"))
         self.label_7.setText(_translate("MainWindow", "SAP № of spare parts 1"))
         self.label_8.setText(_translate("MainWindow", "SAP № of spare parts 2"))
-        self.label_9.setText(_translate("MainWindow", "SAP № of spare parts 3"))
-        self.label_10.setText(_translate("MainWindow", "SAP № of spare parts 4"))
+        # self.label_9.setText(_translate("MainWindow", "SAP № of spare parts 3"))
+        # self.label_10.setText(_translate("MainWindow", "SAP № of spare parts 4"))
 
         self.label_11.setText(_translate("MainWindow", "type of equipment"))
         self.label_12.setText(_translate("MainWindow", "<--- статус обробки --->"))
