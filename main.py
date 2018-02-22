@@ -84,8 +84,30 @@ class MyWin(QtWidgets.QDialog):
             else:
                 pass
 
+
         else:
             m_part1 = 'write correct SAP number of spare part1'
+            num = counter
+
+
+        num_part2 = self.ui.sp2.toPlainText()  # input spare part
+        num_part2 = int(num_part2)
+        name_part = 'anvil test2'  # need decision about catalog list with spare parts
+
+        if num_part2 > 1:
+            px = Parts.mark(per_number)
+            a = 'main'
+            px1 = Parts.mark_log(a)
+            m_part2 = ''
+
+            if int(num) >= int(counter):
+                self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + m_part2)
+            else:
+                pass
+
+
+        else:
+            m_part2 = 'write correct SAP number of spare part2'
             num = counter
 
         # check of input correct counter data, after successfully check write data to log or take a message
@@ -101,9 +123,9 @@ class MyWin(QtWidgets.QDialog):
             Parts.wrt_templ(per_number, px, num_part1, name_part, sap_eq1, counter)
             Parts.wrt_log(px1, self.date, per_number, num_part1, name_part, sap_eq1, counter)
 
-            self.ui.message.setText('equipment log file is saved' + '\n' + 'to the next repair is: ' + forecast + '\n' + m_part1)
+            self.ui.message.setText('equipment log file is saved' + '\n' + 'to the next repair is: ' + forecast + '\n' + m_part1 + '\n' + m_part2)
         else:
-            self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + m_part1)
+            self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + m_part1 + '\n' + m_part2)
 
 
 # print the template
