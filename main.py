@@ -69,13 +69,13 @@ class MyWin(QtWidgets.QDialog):
 
         num_part1 = self.ui.sp1.toPlainText()    # input spare part
         num_part1 = int(num_part1)
-        name_part = 'anvil test'  # need decision about catalog list with spare parts
+        name_part1 = 'anvil test'  # need decision about catalog list with spare parts
 
         if num_part1 > 1:
-            px = Parts.mark(per_number)
+            px1 = Parts.mark(per_number)
             # Parts.wrt_templ(per_number, px, num_part1, name_part, sap_eq1, counter)
             a = 'main'
-            px1 = Parts.mark_log(a)
+            px11 = Parts.mark_log(a)
             # Parts.wrt_log(px1, self.date, per_number, num_part1, name_part, sap_eq1, counter)
             m_part1 = ''
 
@@ -83,8 +83,6 @@ class MyWin(QtWidgets.QDialog):
                 self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + m_part1)
             else:
                 pass
-
-
         else:
             m_part1 = 'write correct SAP number of spare part1'
             num = counter
@@ -92,20 +90,21 @@ class MyWin(QtWidgets.QDialog):
 
         num_part2 = self.ui.sp2.toPlainText()  # input spare part
         num_part2 = int(num_part2)
-        name_part = 'anvil test2'  # need decision about catalog list with spare parts
+        name_part2 = 'anvil test2'  # need decision about catalog list with spare parts
+        empty = 0
 
-        if num_part2 > 1:
-            px = Parts.mark(per_number)
-            a = 'main'
-            px1 = Parts.mark_log(a)
+        if num_part2 == empty:
+            m_part2 = ''
+            self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + m_part2)
+        elif num_part2 > 1:
+            px2 = px1 + 1
+            px22 = px11 + 1
             m_part2 = ''
 
             if int(num) >= int(counter):
                 self.ui.message.setText("input data of counter is not correct" + '\n' + "equipment log file is NOT saved" + '\n' + m_part2)
             else:
                 pass
-
-
         else:
             m_part2 = 'write correct SAP number of spare part2'
             num = counter
@@ -120,8 +119,11 @@ class MyWin(QtWidgets.QDialog):
 
             wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
 
-            Parts.wrt_templ(per_number, px, num_part1, name_part, sap_eq1, counter)
-            Parts.wrt_log(px1, self.date, per_number, num_part1, name_part, sap_eq1, counter)
+            Parts.wrt_templ(per_number, px1, num_part1, name_part1, sap_eq1, counter)
+            Parts.wrt_log(px11, self.date, per_number, num_part1, name_part1, sap_eq1, counter)
+
+            Parts.wrt_templ(per_number, px2, num_part2, name_part2, sap_eq1, counter)
+            Parts.wrt_log(px22, self.date, per_number, num_part2, name_part2, sap_eq1, counter)
 
             self.ui.message.setText('equipment log file is saved' + '\n' + 'to the next repair is: ' + forecast + '\n' + m_part1 + '\n' + m_part2)
         else:
