@@ -42,7 +42,6 @@ class Log:
             df = 'інше'
         else:
             df = 'не вірно визначений дефект'
-
         # print(df)
         return df
 # ------------------>
@@ -58,6 +57,7 @@ class Log:
                     ex = cell.row
                     # print(ex)
                     return ex
+
 
     def te(type_eq):
         if type_eq == 'Аплікатор':
@@ -86,6 +86,7 @@ class Log:
                     # print(ex_log)
                     return ex_log
 
+
     def filtr(type_eq):
         if type_eq == 'Аплікатор':
             f = str('B25')
@@ -107,14 +108,22 @@ class Log:
             f = str('B29')
         return f
 
-    def type(sap_eq):
-        sap_eq1 = '8000' + str(sap_eq)
-        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # search file by number
-        ws = wb['main']
-        pos = str('G2')  # take type of equipment
-        type_eq = str(ws[pos].value)
 
+    def type(sap_eq):
+        sap_eq1 = '*8000' + str(sap_eq)
+        w = load_workbook('list_eq.xlsx')
+        ws = w['list_eq']
+        # find last mark row, for new data place
+        mark = sap_eq1
+        for row in ws:
+            for cell in row:
+                if cell.value == mark:
+                    ex_list = cell.row
+                    # print(ex_log)
+        pos = 'C' + str(ex_list)
+        type_eq = ws[pos].value
         return type_eq
+
 
     def cntr(sap_eq1, ex, counter):  # calculation of forecast repair
         wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
@@ -150,3 +159,28 @@ class Log:
         sheet[e] = counter
         sheet[a1] = '**'
         w.save('eq_log/general equipment log.xlsx')
+
+    def search_num_eq(sap_eq1, ex):
+        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # find file by number
+        ws = wb['main']
+
+        pos = str('D') + str(ex - 1)
+        num = str(ws[pos].value)
+        # wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
+        return num
+
+    def data_log_eq(ex, wb, date, per_number, df, counter):
+        a = str('A') + str(ex)
+        b = str('B') + str(ex)
+        c = str('C') + str(ex)
+        d = str('D') + str(ex)
+        ex1 = int(ex)
+        a1 = str('A') + str(ex1 + 1)  # for mark symbols
+        # write data to equipment file
+
+        sheet = wb.get_sheet_by_name('main')
+        sheet[a] = date
+        sheet[b] = per_number
+        sheet[c] = df
+        sheet[d] = counter
+        sheet[a1] = '**'

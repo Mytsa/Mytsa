@@ -48,18 +48,18 @@ class Ui_MainWindow(object):
 
 
         self.label_7 = QtWidgets.QLabel(MainWindow)
-        self.label_7.setGeometry(QtCore.QRect(305, 170, 150, 16))
+        self.label_7.setGeometry(QtCore.QRect(304, 170, 110, 16))
         self.label_7.setObjectName("spare_parts")
         self.sp1 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp1.setGeometry(QtCore.QRect(300, 190, 150, 25))
+        self.sp1.setGeometry(QtCore.QRect(300, 190, 110, 25))
         self.sp1.setObjectName("spare_parts")
 
-        self.label_8 = QtWidgets.QLabel(MainWindow)
-        self.label_8.setGeometry(QtCore.QRect(305, 220, 150, 16))
-        self.label_8.setObjectName("spare_parts1")
-        self.sp2 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp2.setGeometry(QtCore.QRect(300, 240, 150, 25))
-        self.sp2.setObjectName("spare_parts1")
+        # self.label_8 = QtWidgets.QLabel(MainWindow)
+        # self.label_8.setGeometry(QtCore.QRect(305, 220, 150, 16))
+        # self.label_8.setObjectName("spare_parts1")
+        # self.sp2 = QtWidgets.QTextEdit(self.centralwidget)
+        # self.sp2.setGeometry(QtCore.QRect(300, 240, 150, 25))
+        # self.sp2.setObjectName("spare_parts1")
         #
         # self.label_9 = QtWidgets.QLabel(MainWindow)
         # self.label_9.setGeometry(QtCore.QRect(305, 270, 150, 16))
@@ -196,6 +196,10 @@ class Ui_MainWindow(object):
         self.pushButton1.setGeometry(QtCore.QRect(300, 555, 200, 41))
         self.pushButton1.setObjectName("pushButton1")
 
+        self.pushButton2 = QtWidgets.QPushButton(MainWindow)
+        self.pushButton2.setGeometry(QtCore.QRect(420, 190, 150, 25))
+        self.pushButton2.setObjectName("pushButton2")
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -208,8 +212,8 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "опис дефекту:"))
         self.label_5.setText(_translate("MainWindow", "Ймовірні причини дефекту:"))
         self.label_6.setText(_translate("MainWindow", "останній запис лічильника"))
-        self.label_7.setText(_translate("MainWindow", "SAP № of spare parts 1"))
-        self.label_8.setText(_translate("MainWindow", "SAP № of spare parts 2"))
+        self.label_7.setText(_translate("MainWindow", "SAP № of spare part"))
+        # self.label_8.setText(_translate("MainWindow", "SAP № of spare parts 2"))
         # self.label_9.setText(_translate("MainWindow", "SAP № of spare parts 3"))
         # self.label_10.setText(_translate("MainWindow", "SAP № of spare parts 4"))
 
@@ -243,4 +247,5 @@ class Ui_MainWindow(object):
 
         self.pushButton.setText(_translate("MainWindow", "write data to file"))
         self.pushButton1.setText(_translate("MainWindow", "print 1 card of message"))
+        self.pushButton2.setText(_translate("MainWindow", "write spare part data to file"))
 
