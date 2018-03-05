@@ -115,3 +115,29 @@ class Parts:
         pos = str(index) + str('1')
         ws[pos] = '**'
         wb.save('spare_parts/cash.xlsx')
+
+    def name_part(mark):
+        wb = load_workbook('spare_parts/spare_parts_catalog.xlsx')
+        ws = wb['main']
+        mark = str('*') + str(mark)
+        for row in ws:
+            for cell in row:
+                if cell.value == mark:
+                    ex = cell.row
+                    pos = 'C' + str(ex)
+                    name = ws[pos].value
+                    return name
+
+    def position_part(mark):
+        wb = load_workbook('spare_parts/spare_parts_catalog.xlsx')
+        ws = wb['main']
+        mark = str('*') + str(mark)
+        for row in ws:
+            for cell in row:
+                if cell.value == mark:
+                    ex = cell.row
+                    pos = 'D' + str(ex)
+                    position = ws[pos].value
+                    return position
+
+

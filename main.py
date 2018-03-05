@@ -18,7 +18,8 @@ class MyWin(QtWidgets.QDialog):
         self.w_date = datetime.strftime(datetime.now(), "%W")
         self.ui.pushButton.clicked.connect(self.action)  # calculation
         self.ui.pushButton1.clicked.connect(self.print_mes)  # write data to file
-        self.ui.pushButton2.clicked.connect(self.s_part1)  # write data to file
+        self.ui.pushButton2.clicked.connect(self.s_part1)  # find spare part1
+        self.ui.pushButton3.clicked.connect(self.s_part2)  # find spare part2
         self.dic_defect = {'1': ['B', 11], '2': ['B', 12], '3': ['B', 13], '4': ['B', 14], '5': ['B', 15], '6': ['B', 16], '7': ['B', 17], '8': ['B', 18], '17': ['B', 19], '9': ['H', 11], '10': ['H', 12], '11': ['H', 13], '12': ['H', 14], '13': ['H', 15], '14': ['H', 16], '15': ['H', 17], '16': ['H', 18]}
         self.dic_fault = {'1': ['B', 33], '3': ['B', 34], '2': ['H', 33]}
 
@@ -56,16 +57,25 @@ class MyWin(QtWidgets.QDialog):
 
         self.ui.counter_info.setText(num)    # info block about last counter data in log file
 # <! ------- spare parts write -----!>
-        index = 'A'
-        num_part1 = int(Parts.inf_cash(index))
-        # print(num_part1)
-        name_part1 = 'test'
-        # print(name_part1)
-        # print(num_part1)   # how many unical spare parts in cash
 
-        px_mark = Parts.mark(self.w_date, per_number)
+        num_part1 = self.ui.sp1.toPlainText()
+        num_part1 = '40000' + str(num_part1)
+        name_part1 = Parts.name_part(num_part1)
+
+        px_mark1 = Parts.mark(self.w_date, per_number)
         a = 'main'
-        px_mark_log = Parts.mark_log(a)
+        px_mark_log1 = Parts.mark_log(a)
+
+        num_part2 = self.ui.sp3.toPlainText()  # ned decision about empty field
+        if num_part2 == 0000:
+            pass
+        else:
+            num_part2 = '40000' + str(num_part2)
+            name_part2 = Parts.name_part(num_part2)
+
+
+
+
 
         if int(num) >= int(counter):
             # print('check counter with number in log file')
@@ -77,8 +87,21 @@ class MyWin(QtWidgets.QDialog):
             exl = Log.markl(type_eq_m)   # find last/mark row
             Log.eu_log(exl, type_eq_m, self.date, sap_eq1, per_number, df, counter)
 
-            Parts.wrt_templ(per_number, self.w_date, px_mark, num_part1, name_part1, sap_eq1, counter)
-            Parts.wrt_log(px_mark_log, self.date, per_number, num_part1, name_part1, sap_eq1, counter)
+            Parts.wrt_templ(per_number, self.w_date, px_mark1, num_part1, name_part1, sap_eq1, counter)
+            Parts.wrt_log(px_mark_log1, self.date, per_number, num_part1, name_part1, sap_eq1, counter)
+
+            num_part2 = self.ui.sp3.toPlainText()  # ned decision about empty field
+            if num_part2 == 0000:
+                pass
+            else:
+
+                px_mark2 = Parts.mark(self.w_date, per_number)
+                a = 'main'
+                px_mark_log2 = Parts.mark_log(a)
+
+                Parts.wrt_templ(per_number, self.w_date, px_mark2, num_part2, name_part2, sap_eq1, counter)
+                Parts.wrt_log(px_mark_log2, self.date, per_number, num_part2, name_part2, sap_eq1, counter)
+
             wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # save equipment log file
 
             self.ui.message.setText('equipment log file is saved' + '\n' + 'to the next repair is: ' + forecast)
@@ -93,15 +116,28 @@ class MyWin(QtWidgets.QDialog):
 # add spare part to cash file
     def s_part1(self):
         num_part1 = self.ui.sp1.toPlainText()  # input spare part
-        if int(num_part1) > 1:
-            index = 'A'
-            mark = '**'
-            ex = Parts.mark_c(mark)
-            Parts.cash_save(index, ex, num_part1)
-            self.ui.message.setText('\n' + 'spare part is write')
+        num_part1 = '40000' + str(num_part1)
+        if int(num_part1) > 400000001:
+            name = Parts.name_part(num_part1)
+            position = Parts.position_part(num_part1)
+            self.ui.sp2.setText(name + '\n' + 'position is: ' + position)
         else:
-            self.ui.message.setText('\n' + 'spare part is NOT write')
+            self.ui.sp2.setText('\n' + 'spare part is NOT find')
 
+    def s_part2(self):
+        num_part2 = self.ui.sp3.toPlainText()  # input spare part
+        num_part2 = '40000' + str(num_part2)
+        if int(num_part2) > 400000001:
+            name = Parts.name_part(num_part2)
+            if name == None:  # ned decision about empty field
+                self.ui.sp4.setText('\n' + 'spare part is NOT find')
+            else:
+                position = Parts.position_part(num_part2)
+                self.ui.sp4.setText(name + '\n' + 'position is: ' + position)
+        else:
+            self.ui.sp4.setText('\n' + 'spare part is NOT find')
+            num_part2 = 0000  # ned decision about empty field
+            self.ui.sp3.toPlainText(num_part2)
 
     # def s_part2(self):
     #     num_part2 = self.ui.sp2.toPlainText()  # input spare part
