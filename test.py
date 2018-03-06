@@ -22,23 +22,23 @@ from openpyxl import *
 # print(markl(a))
 # print(ws[pos].value)
 
-wb = load_workbook('spare_parts/cash.xlsx')
-ws = wb['1']
-mark = '**'
-
-lis = []
-for i in range(1, x):
-    for row in ws:
-        for cell in row:
-            if cell.value == mark:
-                ex = cell.row
-                pos = 'A' + str(i)
-                number = ws[pos].value
-                if number == '**':
-                    break
-                else:
-                    print(number)
-                # lis.append(number)
+# wb = load_workbook('spare_parts/cash.xlsx')
+# ws = wb['1']
+# mark = '**'
+#
+# lis = []
+# for i in range(1, x):
+#     for row in ws:
+#         for cell in row:
+#             if cell.value == mark:
+#                 ex = cell.row
+#                 pos = 'A' + str(i)
+#                 number = ws[pos].value
+#                 if number == '**':
+#                     break
+#                 else:
+#                     print(number)
+#                 # lis.append(number)
 
 # pos = index + str(ex-1)
 # number = ws[pos].value
@@ -46,3 +46,11 @@ for i in range(1, x):
 # for ii in range(1, len(lis)):
 #     num_part1 = lis.index(ii)
 #     print(num_part1)
+
+num_part2 = 0000
+if num_part2 == 0000:
+    pass
+else:
+    print('good')
+print('so good')
+
