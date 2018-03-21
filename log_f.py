@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from openpyxl import *
-import math
+#import math
 
 class Log:
 
@@ -46,10 +46,8 @@ class Log:
         return df
 # ------------------>
 
-    def mark(sap_eq1):
-        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
-        ws = wb['main']
-        # find last mark row, for new data place
+
+    def f_mark_row(ws):
         mark = '**'
         for row in ws:
             for cell in row:
@@ -57,6 +55,13 @@ class Log:
                     ex = cell.row
                     # print(ex)
                     return ex
+
+    def mark(sap_eq1):
+        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
+        ws = wb['main']
+        # find last mark row, for new data place
+        ex = Log.f_mark_row(ws)
+        return ex
 
 
     def te(type_eq):
@@ -78,13 +83,9 @@ class Log:
         sheet = str(type_eq_m)
         ws = w[sheet]
         # find last mark row, for new data place
-        mark = '**'
-        for row in ws:
-            for cell in row:
-                if cell.value == mark:
-                    ex_log = cell.row
-                    # print(ex_log)
-                    return ex_log
+        ex_log = Log.f_mark_row(ws)
+        return ex_log
+
 
 
     def filtr(type_eq):
@@ -119,7 +120,7 @@ class Log:
             for cell in row:
                 if cell.value == mark:
                     ex_list = cell.row
-                    # print(ex_log)
+
         pos = 'C' + str(ex_list)
         type_eq = ws[pos].value
         return type_eq
@@ -139,6 +140,13 @@ class Log:
         b = num_aver - aa
         b = str(b)
         return b
+
+    def l_cntr(sap_eq1, ex):  # find counter of last repair
+        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
+        ws = wb['main']
+        pos = str('D') + str(ex-1)       
+        a = ws[pos].value
+        return a
 
 
     def eu_log(exl, type_eq_m, date, sap_eq1, per_number, df, counter):
@@ -166,7 +174,7 @@ class Log:
 
         pos = str('D') + str(ex - 1)
         num = str(ws[pos].value)
-        # wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))
+
         return num
 
     def data_log_eq(ex, wb, date, per_number, df, counter):
