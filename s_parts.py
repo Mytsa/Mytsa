@@ -98,7 +98,7 @@ class Parts:
         sheet[e] = counter
         sheet[f] = df
         sheet[g] = per_number
-        sheet[a1] = '**'
+        sheet[a1] = '**'  # ** for applicators spare parts , *** - for schunk spare parts
         wb.save('spare_parts/spare_parts_per_month.xlsx')
 
     def mark_c(mark):
