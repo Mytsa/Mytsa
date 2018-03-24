@@ -55,7 +55,9 @@ class Ui_MainWindow(object):
         self.sp1.setObjectName("spare_parts")
 
         self.label_35 = QtWidgets.QLabel(MainWindow)
+
         self.label_35.setGeometry(QtCore.QRect(520, 225, 80, 16))
+
         self.label_35.setObjectName("pcs1")
         self.pcs1 = QtWidgets.QTextEdit(self.centralwidget)
         self.pcs1.setGeometry(QtCore.QRect(520, 245, 50, 25))
@@ -69,6 +71,7 @@ class Ui_MainWindow(object):
         self.sp3.setObjectName("spare_parts2")
 
         self.label_37 = QtWidgets.QLabel(MainWindow)
+
         self.label_37.setGeometry(QtCore.QRect(520, 285, 80, 16))
         self.label_37.setObjectName("pcs2")
         self.pcs2 = QtWidgets.QTextEdit(self.centralwidget)
@@ -269,6 +272,7 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "опис дефекту:"))
         self.label_5.setText(_translate("MainWindow", "Ймовірні причини дефекту:"))
         self.label_6.setText(_translate("MainWindow", "останній запис лічильника"))
+
         self.label_7.setText(_translate("MainWindow", "запчастина 1 \nSAP № 40000:"))
         self.label_8.setText(_translate("MainWindow", "результат пошуку"))
         self.label_9.setText(_translate("MainWindow", "запчастина 2 \nSAP № 40000:"))
@@ -279,7 +283,6 @@ class Ui_MainWindow(object):
         self.label_37.setText(_translate("MainWindow", "кількість"))
         self.label_38.setText(_translate("MainWindow", "кількість"))
         self.label_39.setText(_translate("MainWindow", "кількість"))
-
 
 
         self.label_11.setText(_translate("MainWindow", "тип обладнання:"))
@@ -310,9 +313,11 @@ class Ui_MainWindow(object):
         self.label_33.setText(_translate("MainWindow", "2: Нормальне зношення / механічне зношення"))        
 
 
+
         self.pushButton.setText(_translate("MainWindow", "запис даних до фалів"))
         self.pushButton1.setText(_translate("MainWindow", "друк 1 сторінки повідомлення"))
         self.pushButton2.setText(_translate("MainWindow", "пошук запчастини"))
+
         #self.pushButton3.setText(_translate("MainWindow", "find equipment"))
         # self.pushButton4.setText(_translate("MainWindow", "find spare part3"))
         # self.pushButton5.setText(_translate("MainWindow", "find spare part4"))

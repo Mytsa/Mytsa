@@ -70,12 +70,14 @@ class MyWin(QtWidgets.QDialog):
             pcs1 = self.ui.pcs1.toPlainText()
 
             if pcs1 == '':
+
                 w_pcs1 = 'write correct pieces for spare parts №1' + '\n'
                 num = counter
                 #m_counter = ""
             else:
                 w_pcs1 = ''
                 #m_counter = "input data of counter is not correct"
+
 
         num_part2 = self.ui.sp3.toPlainText()  # ned decision about empty field
         if num_part2 == '':
@@ -87,6 +89,7 @@ class MyWin(QtWidgets.QDialog):
             pcs2 = self.ui.pcs2.toPlainText()
 
             if pcs2 == '':
+
                 w_pcs2 = 'write correct pieces for spare parts №2' + '\n'
                 num = counter
                 #m_counter = ""
@@ -104,12 +107,14 @@ class MyWin(QtWidgets.QDialog):
             pcs3 = self.ui.pcs3.toPlainText()
 
             if pcs3 == '':
+
                 w_pcs3 = 'write correct pieces for spare parts №3'  + '\n'
                 num = counter
                 #m_counter = ""
             else:
                 w_pcs3 = ''
                 #m_counter = "input data of counter is not correct"
+
 
         num_part4 = self.ui.sp7.toPlainText()  # ned decision about empty field
         if num_part4 == '':
@@ -119,6 +124,7 @@ class MyWin(QtWidgets.QDialog):
             num_part4 = '40000' + str(num_part4)
             name_part4 = Parts.name_part(num_part4)
             pcs4 = self.ui.pcs4.toPlainText()
+
 
             if pcs4 == '':
                 w_pcs4 = 'write correct pieces for spare parts №4'
@@ -131,8 +137,10 @@ class MyWin(QtWidgets.QDialog):
         if int(num) >= int(counter):
             # print('check counter with number in log file')
             #print('1')
+
             m_counter = "input data of counter is not correct" + '\n' 
             self.ui.message.setText("equipment log file is NOT saved" + '\n' + m_counter + w_pcs1 + w_pcs2 + w_pcs3 + w_pcs4)
+
         else:
             #print('2')
             # check of input correct counter data, after successfully check write data to log or take a message
@@ -147,6 +155,7 @@ class MyWin(QtWidgets.QDialog):
             else:
                 px_mark1 = Parts.mark(self.w_date, per_number)
                 a = 'main'
+
                 px_mark_log1 = Parts.mark_log(a)                     
 
                 Parts.wrt_templ(per_number, self.w_date, px_mark1, num_part1, name_part1, pcs1, sap_eq1, counter)
@@ -163,6 +172,7 @@ class MyWin(QtWidgets.QDialog):
                     # write data to file with control of repair of applicator
                 #else:
                     #pass
+
 
             if num_part2 == '':
                 pass
