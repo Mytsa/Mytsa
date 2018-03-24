@@ -19,10 +19,10 @@ class Ui_MainWindow(object):
         self.per_number.setObjectName("per_number")
 
         self.label_2 = QtWidgets.QLabel(MainWindow)
-        self.label_2.setGeometry(QtCore.QRect(305, 5, 150, 16))
+        self.label_2.setGeometry(QtCore.QRect(285, 5, 150, 16))
         self.label_2.setObjectName("counter")
         self.counter = QtWidgets.QTextEdit(self.centralwidget)
-        self.counter.setGeometry(QtCore.QRect(300, 25, 150, 25))
+        self.counter.setGeometry(QtCore.QRect(285, 25, 100, 25))
         self.counter.setObjectName("counter")
 
         self.label_3 = QtWidgets.QLabel(MainWindow)
@@ -48,86 +48,100 @@ class Ui_MainWindow(object):
 
 
         self.label_7 = QtWidgets.QLabel(MainWindow)
-        self.label_7.setGeometry(QtCore.QRect(304, 170, 100, 40))
+        self.label_7.setGeometry(QtCore.QRect(394, 210, 100, 40))
         self.label_7.setObjectName("spare_parts")
         self.sp1 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp1.setGeometry(QtCore.QRect(300, 205, 110, 25))
+        self.sp1.setGeometry(QtCore.QRect(390, 245, 110, 25))
         self.sp1.setObjectName("spare_parts")
 
+        self.label_35 = QtWidgets.QLabel(MainWindow)
+        self.label_35.setGeometry(QtCore.QRect(520, 225, 80, 16))
+        self.label_35.setObjectName("pcs1")
+        self.pcs1 = QtWidgets.QTextEdit(self.centralwidget)
+        self.pcs1.setGeometry(QtCore.QRect(520, 245, 50, 25))
+        self.pcs1.setObjectName("pcs1")
+
         self.label_9 = QtWidgets.QLabel(MainWindow)
-        self.label_9.setGeometry(QtCore.QRect(304, 235, 150, 40))
+        self.label_9.setGeometry(QtCore.QRect(394, 270, 150, 40))
         self.label_9.setObjectName("spare_parts2")
         self.sp3 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp3.setGeometry(QtCore.QRect(300, 270, 110, 25))
+        self.sp3.setGeometry(QtCore.QRect(390, 305, 110, 25))
         self.sp3.setObjectName("spare_parts2")
 
+        self.label_37 = QtWidgets.QLabel(MainWindow)
+        self.label_37.setGeometry(QtCore.QRect(520, 285, 80, 16))
+        self.label_37.setObjectName("pcs2")
+        self.pcs2 = QtWidgets.QTextEdit(self.centralwidget)
+        self.pcs2.setGeometry(QtCore.QRect(520, 305, 50, 25))
+        self.pcs2.setObjectName("pcs2")
+
         self.label_34 = QtWidgets.QLabel(MainWindow)
-        self.label_34.setGeometry(QtCore.QRect(304, 300, 150, 40))
+        self.label_34.setGeometry(QtCore.QRect(394, 330, 150, 40))
         self.label_34.setObjectName("spare_parts3")
         self.sp5 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp5.setGeometry(QtCore.QRect(300, 335, 110, 25))
+        self.sp5.setGeometry(QtCore.QRect(390, 365, 110, 25))
         self.sp5.setObjectName("spare_parts3")
 
+        self.label_38 = QtWidgets.QLabel(MainWindow)
+        self.label_38.setGeometry(QtCore.QRect(520, 340, 80, 16))
+        self.label_38.setObjectName("pcs3")
+        self.pcs3 = QtWidgets.QTextEdit(self.centralwidget)
+        self.pcs3.setGeometry(QtCore.QRect(520, 365, 50, 25))
+        self.pcs3.setObjectName("pcs3")
+
         self.label_36 = QtWidgets.QLabel(MainWindow)
-        self.label_36.setGeometry(QtCore.QRect(304, 370, 150, 40))
+        self.label_36.setGeometry(QtCore.QRect(394, 390, 150, 40))
         self.label_36.setObjectName("spare_parts4")
         self.sp7 = QtWidgets.QTextEdit(self.centralwidget)
-        self.sp7.setGeometry(QtCore.QRect(300, 405, 110, 25))
+        self.sp7.setGeometry(QtCore.QRect(390, 425, 110, 25))
         self.sp7.setObjectName("spare_parts4")
+
+        self.label_39 = QtWidgets.QLabel(MainWindow)
+        self.label_39.setGeometry(QtCore.QRect(520, 400, 80, 16))
+        self.label_39.setObjectName("pcs4")
+        self.pcs4 = QtWidgets.QTextEdit(self.centralwidget)
+        self.pcs4.setGeometry(QtCore.QRect(520, 425, 50, 25))
+        self.pcs4.setObjectName("pcs4")
+
+
+        self.label_10 = QtWidgets.QLabel(MainWindow)
+        self.label_10.setGeometry(QtCore.QRect(275, 140, 150, 16))
+        self.label_10.setObjectName("spare part number")
+        self.fp = QtWidgets.QTextEdit(self.centralwidget)
+        self.fp.setGeometry(QtCore.QRect(270, 160, 140, 25))
+        self.fp.setObjectName("spare part number")
+
 
         # output area
 
         self.label_8 = QtWidgets.QLabel(MainWindow)
-        self.label_8.setGeometry(QtCore.QRect(520, 170, 150, 16))
+        self.label_8.setGeometry(QtCore.QRect(570, 140, 150, 16))
         self.label_8.setObjectName("spare_parts1")
-        self.sp2 = QtWidgets.QTextBrowser(self.centralwidget)
-        self.sp2.setGeometry(QtCore.QRect(515, 190, 190, 40))
-        self.sp2.setObjectName("spare_parts1")
-
-        self.label_10 = QtWidgets.QLabel(MainWindow)
-        self.label_10.setGeometry(QtCore.QRect(520, 235, 150, 16))
-        self.label_10.setObjectName("spare_parts2")
         self.sp4 = QtWidgets.QTextBrowser(self.centralwidget)
-        self.sp4.setGeometry(QtCore.QRect(515, 255, 190, 40))
-        self.sp4.setObjectName("spare_parts2")
-
-        self.label_35 = QtWidgets.QLabel(MainWindow)
-        self.label_35.setGeometry(QtCore.QRect(520, 300, 150, 16))
-        self.label_35.setObjectName("spare_parts3")
-        self.sp6 = QtWidgets.QTextBrowser(self.centralwidget)
-        self.sp6.setGeometry(QtCore.QRect(515, 320, 190, 40))
-        self.sp6.setObjectName("spare_parts3")
-
-        self.label_37 = QtWidgets.QLabel(MainWindow)
-        self.label_37.setGeometry(QtCore.QRect(520, 370, 150, 16))
-        self.label_37.setObjectName("spare_parts3")
-        self.sp8 = QtWidgets.QTextBrowser(self.centralwidget)
-        self.sp8.setGeometry(QtCore.QRect(515, 390, 190, 40))
-        self.sp8.setObjectName("spare_parts3")
-
-
+        self.sp4.setGeometry(QtCore.QRect(535, 160, 190, 50))
+        self.sp4.setObjectName("spare_parts1")
 
 
         self.label_11 = QtWidgets.QLabel(MainWindow)
-        self.label_11.setGeometry(QtCore.QRect(520, 5, 150, 16))
+        self.label_11.setGeometry(QtCore.QRect(600, 5, 150, 16))
         self.label_11.setObjectName("type_eq")
         self.type_eq = QtWidgets.QTextBrowser(self.centralwidget)
-        self.type_eq.setGeometry(QtCore.QRect(515, 25, 150, 40))
+        self.type_eq.setGeometry(QtCore.QRect(575, 25, 150, 40))
         self.type_eq.setObjectName("type_eq")
 
 
         self.label_6 = QtWidgets.QLabel(MainWindow)
-        self.label_6.setGeometry(QtCore.QRect(520, 70, 150, 16))
+        self.label_6.setGeometry(QtCore.QRect(585, 70, 150, 16))
         self.label_6.setObjectName("counter_info")
         self.counter_info = QtWidgets.QTextBrowser(self.centralwidget)
-        self.counter_info.setGeometry(QtCore.QRect(515, 90, 150, 25))
+        self.counter_info.setGeometry(QtCore.QRect(575, 90, 150, 25))
         self.counter_info.setObjectName("counter_info")
 
         self.label_12 = QtWidgets.QLabel(MainWindow)
-        self.label_12.setGeometry(QtCore.QRect(460, 460, 150, 16))
+        self.label_12.setGeometry(QtCore.QRect(460, 455, 150, 16))
         self.label_12.setObjectName("статус обробки")
         self.message = QtWidgets.QTextBrowser(self.centralwidget)
-        self.message.setGeometry(QtCore.QRect(400, 480, 250, 70))
+        self.message.setGeometry(QtCore.QRect(400, 475, 250, 70))
         self.message.setObjectName("статус обробки")
 
 
@@ -214,7 +228,7 @@ class Ui_MainWindow(object):
 
         # my info-block
         self.label_13 = QtWidgets.QLabel(MainWindow)
-        self.label_13.setGeometry(QtCore.QRect(620, 555, 180, 20))
+        self.label_13.setGeometry(QtCore.QRect(660, 575, 180, 20))
         self.label_13.setObjectName("label_12")
 
         #  buttons
@@ -228,20 +242,20 @@ class Ui_MainWindow(object):
         self.pushButton1.setObjectName("pushButton1")
 
         self.pushButton2 = QtWidgets.QPushButton(MainWindow)
-        self.pushButton2.setGeometry(QtCore.QRect(412, 190, 100, 25))
+        self.pushButton2.setGeometry(QtCore.QRect(424, 140, 102, 41))
         self.pushButton2.setObjectName("pushButton2")
 
-        self.pushButton3 = QtWidgets.QPushButton(MainWindow)
-        self.pushButton3.setGeometry(QtCore.QRect(412, 255, 100, 25))
-        self.pushButton3.setObjectName("pushButton3")
+        # self.pushButton3 = QtWidgets.QPushButton(MainWindow)
+        # self.pushButton3.setGeometry(QtCore.QRect(430, 25, 110, 27))
+        # self.pushButton3.setObjectName("pushButton3")
 
-        self.pushButton4 = QtWidgets.QPushButton(MainWindow)
-        self.pushButton4.setGeometry(QtCore.QRect(412, 320, 100, 25))
-        self.pushButton4.setObjectName("pushButton4")
-
-        self.pushButton5 = QtWidgets.QPushButton(MainWindow)
-        self.pushButton5.setGeometry(QtCore.QRect(412, 390, 100, 25))
-        self.pushButton5.setObjectName("pushButton5")
+        # self.pushButton4 = QtWidgets.QPushButton(MainWindow)
+        # self.pushButton4.setGeometry(QtCore.QRect(412, 320, 100, 25))
+        # self.pushButton4.setObjectName("pushButton4")
+        #
+        # self.pushButton5 = QtWidgets.QPushButton(MainWindow)
+        # self.pushButton5.setGeometry(QtCore.QRect(412, 390, 100, 25))
+        # self.pushButton5.setObjectName("pushButton5")
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -249,26 +263,26 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "repare report"))
-        self.label_1.setText(_translate("MainWindow", "personal number"))
-        self.label_2.setText(_translate("MainWindow", "counter"))
-        self.label_3.setText(_translate("MainWindow", "SAP № of equipment 8000:"))
+        self.label_1.setText(_translate("MainWindow", "особовий номер"))
+        self.label_2.setText(_translate("MainWindow", "покази лічильника"))
+        self.label_3.setText(_translate("MainWindow", "SAP № обладнання 8000:"))
         self.label_4.setText(_translate("MainWindow", "опис дефекту:"))
         self.label_5.setText(_translate("MainWindow", "Ймовірні причини дефекту:"))
         self.label_6.setText(_translate("MainWindow", "останній запис лічильника"))
-        self.label_7.setText(_translate("MainWindow", "SAP № of \nspare part1  40000:"))
-        self.label_8.setText(_translate("MainWindow", "info about spare parts1"))
-        self.label_9.setText(_translate("MainWindow", "SAP № of \nspare part2  40000:"))
-        self.label_10.setText(_translate("MainWindow", "info about spare parts2"))
-        self.label_34.setText(_translate("MainWindow", "SAP № of \nspare part3  40000:"))
-        self.label_35.setText(_translate("MainWindow", "info about spare parts3"))
-        self.label_36.setText(_translate("MainWindow", "SAP № of \nspare part4  40000:"))
-        self.label_37.setText(_translate("MainWindow", "info about spare parts4"))
+        self.label_7.setText(_translate("MainWindow", "запчастина 1 \nSAP № 40000:"))
+        self.label_8.setText(_translate("MainWindow", "результат пошуку"))
+        self.label_9.setText(_translate("MainWindow", "запчастина 2 \nSAP № 40000:"))
+        self.label_10.setText(_translate("MainWindow", "номер запчастини 40000:"))
+        self.label_34.setText(_translate("MainWindow", "запчастина 3 \nSAP № 40000:"))
+        self.label_35.setText(_translate("MainWindow", "кількість"))
+        self.label_36.setText(_translate("MainWindow", "запчастина 4 \nSAP № 40000:"))
+        self.label_37.setText(_translate("MainWindow", "кількість"))
+        self.label_38.setText(_translate("MainWindow", "кількість"))
+        self.label_39.setText(_translate("MainWindow", "кількість"))
 
 
 
-
-
-        self.label_11.setText(_translate("MainWindow", "type of equipment"))
+        self.label_11.setText(_translate("MainWindow", "тип обладнання:"))
         self.label_12.setText(_translate("MainWindow", "<--- статус обробки --->"))
         self.label_13.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
 
@@ -296,10 +310,10 @@ class Ui_MainWindow(object):
         self.label_33.setText(_translate("MainWindow", "2: Нормальне зношення / механічне зношення"))        
 
 
-        self.pushButton.setText(_translate("MainWindow", "write data to file"))
-        self.pushButton1.setText(_translate("MainWindow", "print 1 card of message"))
-        self.pushButton2.setText(_translate("MainWindow", "find spare part1"))
-        self.pushButton3.setText(_translate("MainWindow", "find spare part2"))
-        self.pushButton4.setText(_translate("MainWindow", "find spare part3"))
-        self.pushButton5.setText(_translate("MainWindow", "find spare part4"))
+        self.pushButton.setText(_translate("MainWindow", "запис даних до фалів"))
+        self.pushButton1.setText(_translate("MainWindow", "друк 1 сторінки повідомлення"))
+        self.pushButton2.setText(_translate("MainWindow", "пошук запчастини"))
+        #self.pushButton3.setText(_translate("MainWindow", "find equipment"))
+        # self.pushButton4.setText(_translate("MainWindow", "find spare part3"))
+        # self.pushButton5.setText(_translate("MainWindow", "find spare part4"))
 
