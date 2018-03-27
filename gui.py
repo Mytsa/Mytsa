@@ -248,18 +248,6 @@ class Ui_MainWindow(object):
         self.pushButton2.setGeometry(QtCore.QRect(424, 140, 102, 41))
         self.pushButton2.setObjectName("pushButton2")
 
-        # self.pushButton3 = QtWidgets.QPushButton(MainWindow)
-        # self.pushButton3.setGeometry(QtCore.QRect(430, 25, 110, 27))
-        # self.pushButton3.setObjectName("pushButton3")
-
-        # self.pushButton4 = QtWidgets.QPushButton(MainWindow)
-        # self.pushButton4.setGeometry(QtCore.QRect(412, 320, 100, 25))
-        # self.pushButton4.setObjectName("pushButton4")
-        #
-        # self.pushButton5 = QtWidgets.QPushButton(MainWindow)
-        # self.pushButton5.setGeometry(QtCore.QRect(412, 390, 100, 25))
-        # self.pushButton5.setObjectName("pushButton5")
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -272,7 +260,6 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "опис дефекту:"))
         self.label_5.setText(_translate("MainWindow", "Ймовірні причини дефекту:"))
         self.label_6.setText(_translate("MainWindow", "останній запис лічильника"))
-
         self.label_7.setText(_translate("MainWindow", "запчастина 1 \nSAP № 40000:"))
         self.label_8.setText(_translate("MainWindow", "результат пошуку"))
         self.label_9.setText(_translate("MainWindow", "запчастина 2 \nSAP № 40000:"))
@@ -284,12 +271,9 @@ class Ui_MainWindow(object):
         self.label_38.setText(_translate("MainWindow", "кількість"))
         self.label_39.setText(_translate("MainWindow", "кількість"))
 
-
         self.label_11.setText(_translate("MainWindow", "тип обладнання:"))
         self.label_12.setText(_translate("MainWindow", "<--- статус обробки --->"))
         self.label_13.setText(_translate("MainWindow", "Mytsa Viktor. Ukraine Lviv"))
-
-
         self.label_14.setText(_translate("MainWindow", "1: Пошкодження поверхні контакту"))
         self.label_15.setText(_translate("MainWindow", "2: Гострини на розрізі контакту"))
         self.label_16.setText(_translate("MainWindow", "3: Не симетричне / не відповідне закриття ядра"))
@@ -307,12 +291,9 @@ class Ui_MainWindow(object):
         self.label_28.setText(_translate("MainWindow", "14: Не відповідна обмотка з’єднання"))
         self.label_29.setText(_translate("MainWindow", "15: Тріснута запчастина"))
         self.label_30.setText(_translate("MainWindow", "16: Обладнання не вмикається / не продукує виріб"))
-
         self.label_31.setText(_translate("MainWindow", "1: Людський фактор"))
         self.label_32.setText(_translate("MainWindow", "3: Інше:    ---> записати в карті"))
         self.label_33.setText(_translate("MainWindow", "2: Нормальне зношення / механічне зношення"))        
-
-
 
         self.pushButton.setText(_translate("MainWindow", "запис даних до фалів"))
         self.pushButton1.setText(_translate("MainWindow", "друк 1 сторінки повідомлення"))

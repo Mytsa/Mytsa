@@ -29,186 +29,165 @@ class MyWin(QtWidgets.QDialog):
     def action(self):
     # input data
         per_number = self.ui.per_number.toPlainText()     # input personal number
-        sap_eq = self.ui.sap_eq.toPlainText()  # input sap number of equipment
-        defect = self.ui.defect.toPlainText()  # input defect
-        index = self.dic_defect[defect]
-        fault = self.ui.fault.toPlainText()  # input type fault
-        index1 = self.dic_fault[fault]
-        counter = self.ui.counter.toPlainText()  # input counter
-
-        type_eq = Log.type(sap_eq)  # find log file and info about type of equipment
-        self.ui.type_eq.setText(type_eq)   # output data of type equipment
-
-# calculation logic
-        sap_eq1 = '8000' + str(sap_eq)
-
-        d = str('{}'.format(index[0])) + str(index[1])    # need decision
-        g = str('{}'.format(index1[0])) + str(index1[1])  # need decision
-        f = Log.filtr(type_eq)   # mark in message template on index by name
-        Templ.wrt_templ(d, g, f, self.date, self.time, per_number, sap_eq1, counter)    # write data to template file (printing file)
-
-# write data to equipment log file
-        ex = Log.mark(sap_eq1)  # find index in file
-        df = Log.lf(defect)  # loop in file log_f, class Excel, method lf()
-
-        wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # file to write
-        Log.data_log_eq(ex, wb, self.date, per_number, df, counter)    # sent data to work
-
-        number_counter = Log.search_num_eq(sap_eq1, ex)
-        num = number_counter
-
-        self.ui.counter_info.setText(num)    # info block about last counter data in log file
-# <! ------- spare parts write -----!>
-
-        num_part1 = self.ui.sp1.toPlainText()
-        if num_part1 == '':
-            w_pcs1 = ''
-            pass
+        if per_number == '':
+            self.ui.message.setText('write correct personal number')
         else:
-            num_part1 = '40000' + str(num_part1)
-            name_part1 = Parts.name_part(num_part1)
-            pcs1 = self.ui.pcs1.toPlainText()
-
-            if pcs1 == '':
-
-                w_pcs1 = 'write correct pieces for spare parts №1' + '\n'
-                num = counter
-                #m_counter = ""
+            sap_eq = self.ui.sap_eq.toPlainText()  # input sap number of equipment
+            if sap_eq == '':
+                self.ui.message.setText('write correct sap number of equipment')
             else:
-                w_pcs1 = ''
-                #m_counter = "input data of counter is not correct"
+                defect = self.ui.defect.toPlainText()  # input defect
+                if defect == '':
+                    self.ui.message.setText('input defect number')
+                else:
+                    index = self.dic_defect[defect]
+                    fault = self.ui.fault.toPlainText()  # input type fault
+                    if fault == '':
+                        self.ui.message.setText('input probable causes of the defect')
+                    else:
+                        index1 = self.dic_fault[fault]
+                        counter = self.ui.counter.toPlainText()  # input counter
+                        if counter == '':
+                            self.ui.message.setText('input counter data')
+                        else:
+                            type_eq = Log.type(sap_eq)  # find log file and info about type of equipment
+#<!-------- need desicion about check of files ---->
+                            if type_eq == 'UnboundLocalError':
+                                self.ui.type_eq.setText('equipment file is not find, please create file')
+                            else:
+                                self.ui.type_eq.setText(type_eq)   # output data of type equipment
 
+                        # calculation logic
+                                sap_eq1 = '8000' + str(sap_eq)
+                                d = str('{}'.format(index[0])) + str(index[1])    # need decision
+                                g = str('{}'.format(index1[0])) + str(index1[1])  # need decision
+                                f = Log.filtr(type_eq)   # mark in message template on index by name
+                                Templ.wrt_templ(d, g, f, self.date, self.time, per_number, sap_eq1, counter)    # write data to template file (printing file)
 
-        num_part2 = self.ui.sp3.toPlainText()  # ned decision about empty field
-        if num_part2 == '':
-            w_pcs2 = ''
-            pass
-        else:
-            num_part2 = '40000' + str(num_part2)
-            name_part2 = Parts.name_part(num_part2)
-            pcs2 = self.ui.pcs2.toPlainText()
+                        # write data to equipment log file
+                                ex = Log.mark(sap_eq1)  # find index in file
+                                df = Log.lf(defect)  # loop in file log_f, class Excel, method lf()
+                                wb = load_workbook('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # file to write
+                                Log.data_log_eq(ex, wb, self.date, per_number, df, counter)    # sent data to work
+                                number_counter = Log.search_num_eq(sap_eq1, ex)
+                                num = number_counter
 
-            if pcs2 == '':
+                                self.ui.counter_info.setText(num)    # info block about last counter data in log file
+                        # <! ------- spare parts write -----!>
 
-                w_pcs2 = 'write correct pieces for spare parts №2' + '\n'
-                num = counter
-                #m_counter = ""
-            else:
-                w_pcs2 = ''
-                #m_counter = "input data of counter is not correct"
+                                num_part1 = self.ui.sp1.toPlainText()
+                                if num_part1 == '':
+                                    w_pcs1 = ''
+                                    pass
+                                else:
+                                    num_part11 = '40000' + str(num_part1)
+                                    name_part1 = Parts.name_part(num_part11)
+                                    pcs1 = self.ui.pcs1.toPlainText()
 
-        num_part3 = self.ui.sp5.toPlainText()  # ned decision about empty field
-        if num_part3 == '':
-            w_pcs3 = ''
-            pass
-        else:
-            num_part3 = '40000' + str(num_part3)
-            name_part3 = Parts.name_part(num_part3)
-            pcs3 = self.ui.pcs3.toPlainText()
+                                    if pcs1 == '':
+                                        w_pcs1 = 'write correct pieces for spare parts №1' + '\n'
+                                        num = counter
+                                    else:
+                                        w_pcs1 = ''
 
-            if pcs3 == '':
+                                num_part2 = self.ui.sp3.toPlainText()  # ned decision about empty field
+                                if num_part2 == '':
+                                    w_pcs2 = ''
+                                    pass
+                                else:
+                                    num_part22 = '40000' + str(num_part2)
+                                    name_part2 = Parts.name_part(num_part22)
+                                    pcs2 = self.ui.pcs2.toPlainText()
 
-                w_pcs3 = 'write correct pieces for spare parts №3'  + '\n'
-                num = counter
-                #m_counter = ""
-            else:
-                w_pcs3 = ''
-                #m_counter = "input data of counter is not correct"
+                                    if pcs2 == '':
+                                        w_pcs2 = 'write correct pieces for spare parts №2' + '\n'
+                                        num = counter
+                                    else:
+                                        w_pcs2 = ''
 
+                                num_part3 = self.ui.sp5.toPlainText()  # ned decision about empty field
+                                if num_part3 == '':
+                                    w_pcs3 = ''
+                                    pass
+                                else:
+                                    num_part33 = '40000' + str(num_part3)
+                                    name_part3 = Parts.name_part(num_part33)
+                                    pcs3 = self.ui.pcs3.toPlainText()
 
-        num_part4 = self.ui.sp7.toPlainText()  # ned decision about empty field
-        if num_part4 == '':
-            w_pcs4 = ''
-            pass
-        else:
-            num_part4 = '40000' + str(num_part4)
-            name_part4 = Parts.name_part(num_part4)
-            pcs4 = self.ui.pcs4.toPlainText()
+                                    if pcs3 == '':
+                                        w_pcs3 = 'write correct pieces for spare parts №3'  + '\n'
+                                        num = counter
+                                    else:
+                                        w_pcs3 = ''
 
+                                num_part4 = self.ui.sp7.toPlainText()  # ned decision about empty field
+                                if num_part4 == '':
+                                    w_pcs4 = ''
+                                    pass
+                                else:
+                                    num_part44 = '40000' + str(num_part4)
+                                    name_part4 = Parts.name_part(num_part44)
+                                    pcs4 = self.ui.pcs4.toPlainText()
 
-            if pcs4 == '':
-                w_pcs4 = 'write correct pieces for spare parts №4'
-                num = counter
-                # m_counter = ""
-            else:
-                w_pcs4 = ''
-                
+                                    if pcs4 == '':
+                                        w_pcs4 = 'write correct pieces for spare parts №4'
+                                        num = counter
+                                    else:
+                                        w_pcs4 = ''
 
-        if int(num) >= int(counter):
-            # print('check counter with number in log file')
-            #print('1')
+                                if int(num) >= int(counter):
+                                    m_counter = "input data of counter is not correct" + '\n'
+                                    self.ui.message.setText("equipment log file is NOT saved" + '\n' + m_counter + w_pcs1 + w_pcs2 + w_pcs3 + w_pcs4)
 
-            m_counter = "input data of counter is not correct" + '\n' 
-            self.ui.message.setText("equipment log file is NOT saved" + '\n' + m_counter + w_pcs1 + w_pcs2 + w_pcs3 + w_pcs4)
+                                else:
+                                    l_counter = Log.l_cntr(sap_eq1, ex)    # last wrote counter
+                                    type_eq_m = Log.te(type_eq)
+                                    exl = Log.markl(type_eq_m)   # find last/mark row
+                                    Log.eu_log(exl, type_eq_m, self.date, sap_eq1, per_number, df, counter)
 
-        else:
-            #print('2')
-            # check of input correct counter data, after successfully check write data to log or take a message
-            #forecast = Log.cntr(sap_eq1, ex, counter)   # show forecast of counter for the next repair
-            l_counter = Log.l_cntr(sap_eq1, ex)    # last wrote counter
-            type_eq_m = Log.te(type_eq)
-            exl = Log.markl(type_eq_m)   # find last/mark row
-            Log.eu_log(exl, type_eq_m, self.date, sap_eq1, per_number, df, counter)
+                                    if num_part1 == '':
+                                        pass
+                                    else:
+                                        px_mark1 = Parts.mark(self.w_date, per_number)
+                                        a = 'main'
+                                        px_mark_log1 = Parts.mark_log(a)
+                                        Parts.wrt_templ(per_number, self.w_date, px_mark1, num_part11, name_part1, pcs1, sap_eq1, counter)
+                                        Parts.wrt_log(px_mark_log1, self.date, per_number, num_part11, name_part1, pcs1, sap_eq1, counter)
 
-            if num_part1 == '':
-                pass
-            else:
-                px_mark1 = Parts.mark(self.w_date, per_number)
-                a = 'main'
+                                    if num_part2 == '':
+                                        pass
+                                    else:
+                                        px_mark2 = Parts.mark(self.w_date, per_number)
+                                        a = 'main'
+                                        px_mark_log2 = Parts.mark_log(a)
 
-                px_mark_log1 = Parts.mark_log(a)                     
+                                        Parts.wrt_templ(per_number, self.w_date, px_mark2, num_part22, name_part2, pcs2, sap_eq1, counter)
+                                        Parts.wrt_log(px_mark_log2, self.date, per_number, num_part22, name_part2, pcs2, sap_eq1, counter)
 
-                Parts.wrt_templ(per_number, self.w_date, px_mark1, num_part1, name_part1, pcs1, sap_eq1, counter)
-                Parts.wrt_log(px_mark_log1, self.date, per_number, num_part1, name_part1, pcs1, sap_eq1, counter)
+                                    if num_part3 == '':
+                                        pass
+                                    else:
+                                        px_mark3 = Parts.mark(self.w_date, per_number)
+                                        a = 'main'
+                                        px_mark_log3 = Parts.mark_log(a)
+                                        Parts.wrt_templ(per_number, self.w_date, px_mark3, num_part33, name_part3, pcs3, sap_eq1, counter)
+                                        Parts.wrt_log(px_mark_log3, self.date, per_number, num_part33, name_part3, pcs3, sap_eq1, counter)
 
-                #if name_part1 == ('crimper wire' or 'crimper insulation'):
-                    # write data to file with control of repair of applicator
-                    #name_part1 = 1
-# BIG PROBLEM WITH SENT DATA BY SINGLE
-                    #name_part2 = 0 # how write sigly
-                    #Parts.apl_sp(self.m_date, sap_eq1, self.date, name_part1, name_part2, df, counter, per_number)
+                                    if num_part4 == '':
+                                        pass
+                                    else:
+                                        px_mark4 = Parts.mark(self.w_date, per_number)
+                                        a = 'main'
+                                        px_mark_log4 = Parts.mark_log(a)
+                                        Parts.wrt_templ(per_number, self.w_date, px_mark4, num_part44, name_part4, pcs4, sap_eq1, counter)
+                                        Parts.wrt_log(px_mark_log4, self.date, per_number, num_part44, name_part4, pcs4, sap_eq1, counter)
 
-                #elif name_part1 == ('anvil wire' or 'anvil insulation' or 'anvil'):
-                    # write data to file with control of repair of applicator
-                #else:
-                    #pass
+                                    wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # save equipment log file
 
-
-            if num_part2 == '':
-                pass
-            else:
-                px_mark2 = Parts.mark(self.w_date, per_number)
-                a = 'main'
-                px_mark_log2 = Parts.mark_log(a)
-
-                Parts.wrt_templ(per_number, self.w_date, px_mark2, num_part2, name_part2, pcs2, sap_eq1, counter)
-                Parts.wrt_log(px_mark_log2, self.date, per_number, num_part2, name_part2, pcs2, sap_eq1, counter)
-
-            if num_part3 == '':
-                pass
-            else:
-                px_mark3 = Parts.mark(self.w_date, per_number)
-                a = 'main'
-                px_mark_log3 = Parts.mark_log(a)
-
-                Parts.wrt_templ(per_number, self.w_date, px_mark3, num_part3, name_part3, pcs3, sap_eq1, counter)
-                Parts.wrt_log(px_mark_log3, self.date, per_number, num_part3, name_part3, pcs3, sap_eq1, counter)
-
-            if num_part4 == '':
-                pass
-            else:
-                px_mark4 = Parts.mark(self.w_date, per_number)
-                a = 'main'
-                px_mark_log4 = Parts.mark_log(a)
-
-                Parts.wrt_templ(per_number, self.w_date, px_mark4, num_part4, name_part4, pcs4, sap_eq1, counter)
-                Parts.wrt_log(px_mark_log4, self.date, per_number, num_part4, name_part4, pcs4, sap_eq1, counter)
-
-            wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # save equipment log file
-
-            dif_counter = str(int(counter) - int(l_counter))
-
-            self.ui.message.setText('logs files were saved' + '\n' + 'the difference between the repairs is: ' + dif_counter )
+                        # BIG PROBLEM WITH SENT DATA BY SINGLE TO SPARE PARTS PER MONTH FILE
+                        #             Parts.check_name(self.m_date, sap_eq1, self.date, name_part1, name_part2, df, counter, per_number)
+                                    dif_counter = str(int(counter) - int(l_counter))
+                                    self.ui.message.setText('logs files were saved' + '\n' + 'the difference between the repairs is: ' + dif_counter)
 
 
 # print the template
@@ -216,38 +195,21 @@ class MyWin(QtWidgets.QDialog):
         os.startfile('f2-02-04-5.xlsx', "print")  # write correct address, file name
 
 
-#     def find_eq(self):
-#         num_part1 = self.ui.sp1.toPlainText()  # input spare part
-#         num_part1 = '40000' + str(num_part1)
-#         if int(num_part1) > 400000001:
-#             name = Parts.name_part(num_part1)
-#             position = Parts.position_part(num_part1)
-#             self.ui.sp2.setText(name + '\n' + 'position is: ' + position)
-#         else:
-#             self.ui.sp2.setText('\n' + 'spare part is NOT find')
-
     def find_spare_part(self):
-        find_spare_part = self.ui.fp.toPlainText()  # input spare part
-        find_spare_part = int(find_spare_part)
-
-#<!-------- need write all symbols like in catalog file
-        # sap_number = Parts.sap_part(find_spare_part)
-        # name = Parts.name_part(find_spare_part)
-        # position = Parts.position_part(find_spare_part)
-        # self.ui.sp4.setText(name + '\n' + 'position is: ' + position + '\n' + sap_number)
-# ---------------!>
+        find_spare_part1 = self.ui.fp.toPlainText()  # input spare part
+        find_spare_part = int(find_spare_part1)
 
         if int(find_spare_part) > 1:
-            find_spare_part = '40000' + str(find_spare_part)
+            find_spare_part = '40000' + str(find_spare_part1)
             name = Parts.name_part(find_spare_part)
-            if name == '':  # ned decision about empty field
+            if name == '':  # need decision about empty field
                 self.ui.sp4.setText('\n' + 'spare part is NOT find')
             else:
                 position = Parts.position_part(find_spare_part)
                 self.ui.sp4.setText(name + '\n' + 'position is: ' + position)
         else:
             self.ui.sp4.setText('\n' + 'spare part is NOT find')
-            find_spare_part = ''  # ned decision about empty field
+            find_spare_part = ''  # need decision about empty field
             self.ui.fp.toPlainText(find_spare_part)
 
 

@@ -24,7 +24,6 @@ class Parts:
     def wrt_templ(per_number, w_date, px, num_part, name_part, pcs, sap_eq1, counter):
         wrfile1 = load_workbook('spare_parts/{}.xlsx'.format(per_number))
         sheet = wrfile1.get_sheet_by_name(w_date)
-
         # index coordinate for template file
         a = str('B') + str(px)
         b = str('C') + str(px)
@@ -52,7 +51,6 @@ class Parts:
         wrfile2 = load_workbook('spare_parts/s_parts_log.xlsx')
         sheet = wrfile2.get_sheet_by_name('main')
         px = int(px)    # only for position A1
-
         # index coordinate for template file
         a = str('A') + str(px)
         b = str('B') + str(px)
@@ -78,9 +76,7 @@ class Parts:
         sheet = wb.get_sheet_by_name(m_date)
         ws = wb[m_date]
         px = Parts.f_mark_row(ws)
-
         px = int(px)    # only for position A1
-
         # index coordinate for file
         a = str('A') + str(px)
         b = str('B') + str(px)
@@ -101,20 +97,6 @@ class Parts:
         sheet[a1] = '**'  # ** for applicators spare parts , *** - for schunk spare parts
         wb.save('spare_parts/spare_parts_per_month.xlsx')
 
-    def mark_c(mark):
-        wb = load_workbook('spare_parts/cash.xlsx')
-        ws = wb['1']
-        # find last mark row, for new data place
-        ex = Parts.f_mark_row(ws)
-        return ex
-
-    def inf_cash(index):
-        wb = load_workbook('spare_parts/cash.xlsx')
-        ws = wb['1']
-        ex = Parts.f_mark_row(ws)
-        pos = index + str(ex - 1)
-        number = ws[pos].value
-        return number
 
     def name_part(mark):
         wb = load_workbook('spare_parts/spare_parts_catalog.xlsx')
@@ -151,4 +133,38 @@ class Parts:
                     pos = 'A' + str(ex)
                     position = ws[pos].value
                     return position
+
+    def check_name(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number):
+        if name_part1 == ('crimper wire'):
+            # write data to file with control of repair of applicator
+            name_part1 = 1
+            if name_part2 == ('anvil'):
+                name_part2 = 1
+                Parts.apl_sp(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number)
+            elif name_part2 == ('anvil wire'):
+                name_part2 = 1
+                Parts.apl_sp(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number)
+            elif name_part2 == ('anvil insulation'):
+                name_part2 = 1
+                Parts.apl_sp(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number)
+            else:
+                name_part2 = 0
+                Parts.apl_sp(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number)
+
+        elif name_part1 == ('crimper insulation'):
+            name_part1 = 1
+            if name_part2 == ('anvil'):
+                name_part2 = 1
+                Parts.apl_sp(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number)
+            elif name_part2 == ('anvil wire'):
+                name_part2 = 1
+                Parts.apl_sp(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number)
+            elif name_part2 == ('anvil insulation'):
+                name_part2 = 1
+                Parts.apl_sp(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number)
+            else:
+                name_part2 = 0
+                Parts.apl_sp(m_date, sap_eq1, date, name_part1, name_part2, df, counter, per_number)
+        else:
+            pass
 

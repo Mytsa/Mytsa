@@ -46,11 +46,17 @@ from openpyxl import *
 # for ii in range(1, len(lis)):
 #     num_part1 = lis.index(ii)
 #     print(num_part1)
+#
+# num_part2 = 0000
+# if num_part2 == 0000:
+#     pass
+# else:
+#     print('good')
+# print
+defect = str(17)
+defect1 = int(defect)
 
-num_part2 = 0000
-if num_part2 == 0000:
-    pass
+if 18 > defect1 > 0:
+    print('input write defect')
 else:
-    print('good')
-print('so good')
-
+    print('not good')
