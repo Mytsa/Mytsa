@@ -51,7 +51,7 @@ class MyWin(QtWidgets.QDialog):
                             self.ui.message.setText('input counter data')
                         else:
                             type_eq = Log.type(sap_eq)  # find log file and info about type of equipment
-#<!-------- need desicion about check of files ---->
+#<!-------- need decision about check of files ---->
                             if type_eq == 'UnboundLocalError':
                                 self.ui.type_eq.setText('equipment file is not find, please create file')
                             else:
@@ -115,7 +115,7 @@ class MyWin(QtWidgets.QDialog):
                                     pcs3 = self.ui.pcs3.toPlainText()
 
                                     if pcs3 == '':
-                                        w_pcs3 = 'write correct pieces for spare parts №3'  + '\n'
+                                        w_pcs3 = 'write correct pieces for spare parts №3' + '\n'
                                         num = counter
                                     else:
                                         w_pcs3 = ''
@@ -130,14 +130,14 @@ class MyWin(QtWidgets.QDialog):
                                     pcs4 = self.ui.pcs4.toPlainText()
 
                                     if pcs4 == '':
-                                        w_pcs4 = 'write correct pieces for spare parts №4'
+                                        w_pcs4 = 'write correct pieces for spare parts №4' + '\n'
                                         num = counter
                                     else:
                                         w_pcs4 = ''
 
                                 if int(num) >= int(counter):
-                                    m_counter = "input data of counter is not correct" + '\n'
-                                    self.ui.message.setText("equipment log file is NOT saved" + '\n' + m_counter + w_pcs1 + w_pcs2 + w_pcs3 + w_pcs4)
+                                    m_counter = "input data of counter is not correct"
+                                    self.ui.message.setText("equipment log file is NOT saved" + '\n' + w_pcs1 + w_pcs2 + w_pcs3 + w_pcs4 + m_counter)
 
                                 else:
                                     l_counter = Log.l_cntr(sap_eq1, ex)    # last wrote counter
