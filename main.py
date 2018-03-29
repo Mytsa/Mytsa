@@ -52,7 +52,7 @@ class MyWin(QtWidgets.QDialog):
                         else:
                             type_eq = Log.type(sap_eq)  # find log file and info about type of equipment
 #<!-------- need decision about check of files ---->
-                            if type_eq == 'UnboundLocalError':
+                            if type_eq == '':
                                 self.ui.type_eq.setText('equipment file is not find, please create file')
                             else:
                                 self.ui.type_eq.setText(type_eq)   # output data of type equipment
@@ -153,6 +153,7 @@ class MyWin(QtWidgets.QDialog):
                                         px_mark_log1 = Parts.mark_log(a)
                                         Parts.wrt_templ(per_number, self.w_date, px_mark1, num_part11, name_part1, pcs1, sap_eq1, counter)
                                         Parts.wrt_log(px_mark_log1, self.date, per_number, num_part11, name_part1, pcs1, sap_eq1, counter)
+                                        Parts.check_name(self.m_date, sap_eq1, self.date, pcs1, name_part1, df, counter, per_number)
 
                                     if num_part2 == '':
                                         pass
@@ -163,6 +164,7 @@ class MyWin(QtWidgets.QDialog):
 
                                         Parts.wrt_templ(per_number, self.w_date, px_mark2, num_part22, name_part2, pcs2, sap_eq1, counter)
                                         Parts.wrt_log(px_mark_log2, self.date, per_number, num_part22, name_part2, pcs2, sap_eq1, counter)
+                                        Parts.check_name(self.m_date, sap_eq1, self.date, pcs2, name_part2, df, counter, per_number)
 
                                     if num_part3 == '':
                                         pass
@@ -172,6 +174,7 @@ class MyWin(QtWidgets.QDialog):
                                         px_mark_log3 = Parts.mark_log(a)
                                         Parts.wrt_templ(per_number, self.w_date, px_mark3, num_part33, name_part3, pcs3, sap_eq1, counter)
                                         Parts.wrt_log(px_mark_log3, self.date, per_number, num_part33, name_part3, pcs3, sap_eq1, counter)
+                                        Parts.check_name(self.m_date, sap_eq1, self.date, pcs3, name_part3, df, counter, per_number)
 
                                     if num_part4 == '':
                                         pass
@@ -181,11 +184,9 @@ class MyWin(QtWidgets.QDialog):
                                         px_mark_log4 = Parts.mark_log(a)
                                         Parts.wrt_templ(per_number, self.w_date, px_mark4, num_part44, name_part4, pcs4, sap_eq1, counter)
                                         Parts.wrt_log(px_mark_log4, self.date, per_number, num_part44, name_part4, pcs4, sap_eq1, counter)
+                                        Parts.check_name(self.m_date, sap_eq1, self.date, pcs4, name_part4, df, counter, per_number)
 
                                     wb.save('eq_log/eq_file/{}.xlsx'.format(sap_eq1))  # save equipment log file
-
-                        # BIG PROBLEM WITH SENT DATA BY SINGLE TO SPARE PARTS PER MONTH FILE
-                        #             Parts.check_name(self.m_date, sap_eq1, self.date, name_part1, name_part2, df, counter, per_number)
                                     dif_counter = str(int(counter) - int(l_counter))
                                     self.ui.message.setText('logs files were saved' + '\n' + 'the difference between the repairs is: ' + dif_counter)
 
