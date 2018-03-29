@@ -79,6 +79,7 @@ class Parts:
         wrfile2.save('spare_parts/s_parts_log.xlsx')
 
     def apl_sp(m_date, sap_eq1, date, pcs, name_part, df, counter, per_number):
+        pcs = int(pcs)    # for calculation in excel
         wb = load_workbook('spare_parts/spare_parts_per_month.xlsx')
         sheet = wb.get_sheet_by_name(m_date)
         ws = wb[m_date]

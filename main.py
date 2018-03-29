@@ -161,7 +161,6 @@ class MyWin(QtWidgets.QDialog):
                                         px_mark2 = Parts.mark(self.w_date, per_number)
                                         a = 'main'
                                         px_mark_log2 = Parts.mark_log(a)
-
                                         Parts.wrt_templ(per_number, self.w_date, px_mark2, num_part22, name_part2, pcs2, sap_eq1, counter)
                                         Parts.wrt_log(px_mark_log2, self.date, per_number, num_part22, name_part2, pcs2, sap_eq1, counter)
                                         Parts.check_name(self.m_date, sap_eq1, self.date, pcs2, name_part2, df, counter, per_number)
