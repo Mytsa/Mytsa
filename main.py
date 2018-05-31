@@ -22,8 +22,6 @@ class MyWin(QtWidgets.QMainWindow):
         pass
 
 
-    
-
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     myapp = MyWin()

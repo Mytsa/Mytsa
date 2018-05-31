@@ -14,6 +14,7 @@ class Ui_MainWindow(object):
         MainWindow.resize(343, 831)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setStyleSheet("bg:rgb(214, 214, 0);\n" "font: 10pt \"Times New Roman\";")
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
