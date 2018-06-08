@@ -97,15 +97,15 @@ class Ui_MainWindow(object):
         self.radioButton_16.setGeometry(QtCore.QRect(180, 350, 82, 17))
         self.radioButton_16.setObjectName("radioButton_16")
 
-        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(20, 100, 161, 51))
-        self.textEdit.setStyleSheet("font: 75 24pt \"Times New Roman\";")
-        self.textEdit.setObjectName("textEdit")
+        self.eq_number = QtWidgets.QTextEdit(self.centralwidget)
+        self.eq_number.setGeometry(QtCore.QRect(20, 100, 161, 51))
+        self.eq_number.setStyleSheet("font: 75 24pt \"Times New Roman\";")
+        self.eq_number.setObjectName("eq_number")
 
-        self.textEdit_2 = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit_2.setGeometry(QtCore.QRect(10, 20, 71, 31))
-        self.textEdit_2.setStyleSheet("font: 75 12pt \"Times New Roman\";")
-        self.textEdit_2.setObjectName("textEdit_2")
+        self.per_number = QtWidgets.QTextEdit(self.centralwidget)
+        self.per_number.setGeometry(QtCore.QRect(10, 20, 71, 31))
+        self.per_number.setStyleSheet("font: 75 12pt \"Times New Roman\";")
+        self.per_number.setObjectName("per_number")
 
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(10, 0, 71, 20))
@@ -127,9 +127,9 @@ class Ui_MainWindow(object):
         self.progressBar.setObjectName("progressBar")
 # progres Bar ----!>
 
-        self.textEdit_3 = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit_3.setGeometry(QtCore.QRect(20, 530, 301, 71))
-        self.textEdit_3.setObjectName("textEdit_3")
+        self.notice = QtWidgets.QTextEdit(self.centralwidget)
+        self.notice.setGeometry(QtCore.QRect(20, 530, 301, 71))
+        self.notice.setObjectName("minutes")
 
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(150, 510, 171, 16))
@@ -191,15 +191,15 @@ class Ui_MainWindow(object):
         self.pushButton_2.setStyleSheet("font: 75 bold 10pt \"Times New Roman\"")
         self.pushButton_2.setObjectName("pushButton_2")
 
-        self.textEdit_4 = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit_4.setGeometry(QtCore.QRect(130, 20, 191, 51))
-        self.textEdit_4.setStyleSheet("font: 8pt \"Calibri\";")
-        self.textEdit_4.setObjectName("textEdit_4")
+        self.message = QtWidgets.QTextEdit(self.centralwidget)
+        self.message.setGeometry(QtCore.QRect(130, 20, 191, 51))
+        self.message.setStyleSheet("font: 8pt \"Calibri\";")
+        self.message.setObjectName("message")
 
-        self.textEdit_5 = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit_5.setGeometry(QtCore.QRect(230, 100, 91, 51))
-        self.textEdit_5.setStyleSheet("font: 75 24pt \"Times New Roman\";")
-        self.textEdit_5.setObjectName("textEdit_5")
+        self.minutes = QtWidgets.QTextEdit(self.centralwidget)
+        self.minutes.setGeometry(QtCore.QRect(230, 100, 91, 51))
+        self.minutes.setStyleSheet("font: 75 24pt \"Times New Roman\";")
+        self.minutes.setObjectName("notice")
 
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_3.setGeometry(QtCore.QRect(10, 680, 151, 31))
@@ -236,10 +236,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.textEdit_2, self.textEdit_4)
-        MainWindow.setTabOrder(self.textEdit_4, self.textEdit)
-        MainWindow.setTabOrder(self.textEdit, self.textEdit_5)
-        MainWindow.setTabOrder(self.textEdit_5, self.radioButton)
+        MainWindow.setTabOrder(self.per_number, self.message)
+        MainWindow.setTabOrder(self.message, self.eq_number)
+        MainWindow.setTabOrder(self.eq_number, self.minutes)
+        MainWindow.setTabOrder(self.minutes, self.radioButton)
         MainWindow.setTabOrder(self.radioButton, self.radioButton_2)
         MainWindow.setTabOrder(self.radioButton_2, self.radioButton_3)
         MainWindow.setTabOrder(self.radioButton_3, self.radioButton_5)
@@ -265,8 +265,8 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.radioButton_23, self.radioButton_24)
         MainWindow.setTabOrder(self.radioButton_24, self.radioButton_25)
         MainWindow.setTabOrder(self.radioButton_25, self.radioButton_26)
-        MainWindow.setTabOrder(self.radioButton_26, self.textEdit_3)
-        MainWindow.setTabOrder(self.textEdit_3, self.pushButton)
+        MainWindow.setTabOrder(self.radioButton_26, self.notice)
+        MainWindow.setTabOrder(self.notice, self.pushButton)
         MainWindow.setTabOrder(self.pushButton, self.pushButton_2)
         MainWindow.setTabOrder(self.pushButton_2, self.pushButton_3)
         MainWindow.setTabOrder(self.pushButton_3, self.pushButton_4)
@@ -293,13 +293,13 @@ class Ui_MainWindow(object):
         self.radioButton_14.setText(_translate("MainWindow", "14 value"))
         self.radioButton_15.setText(_translate("MainWindow", "15 value"))
         self.radioButton_16.setText(_translate("MainWindow", "16 value"))
-        self.textEdit.setWhatsThis(_translate("MainWindow", "equipment number"))
-        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.eq_number.setWhatsThis(_translate("MainWindow", "equipment number"))
+        self.eq_number.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Times New Roman\'; font-size:24pt; font-weight:72; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
-        self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.per_number.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Times New Roman\'; font-size:12pt; font-weight:72; font-style:normal;\">\n"
@@ -307,7 +307,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "you number"))
         self.label_2.setText(_translate("MainWindow", "equipment number"))
         self.label_3.setText(_translate("MainWindow", "minutes"))
-        self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.notice.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Times New Roman\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
@@ -329,13 +329,13 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "status of run"))
         self.pushButton.setText(_translate("MainWindow", "ADD"))
         self.pushButton_2.setText(_translate("MainWindow", "create table per shift"))
-        self.textEdit_4.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.message.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Calibri\'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
-        self.textEdit_5.setWhatsThis(_translate("MainWindow", "equipment number"))
-        self.textEdit_5.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.minutes.setWhatsThis(_translate("MainWindow", "equipment number"))
+        self.minutes.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Times New Roman\'; font-size:24pt; font-weight:72; font-style:normal;\">\n"
