@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import sys
+import os
 from openpyxl import *
+import subprocess
 from datetime import datetime
 from gui import *    # gui is interface file
 from f_w_r import *
+from filter import *
 
 
 
@@ -21,59 +24,46 @@ class MyWin(QtWidgets.QMainWindow):
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton.clicked.connect(self.Add)
-        # self.ui.pushButton1.clicked.connect(self.MyFunction1)
-        # self.ui.pushButton2.clicked.connect(self.MyFunction2)
-        # self.ui.pushButton3.clicked.connect(self.MyFunction3)
-        # self.ui.pushButton4.clicked.connect(self.MyFunction4)
-        # self.ui.pushButton5.clicked.connect(self.MyFunction5)
-        # self.ui.pushButton6.clicked.connect(self.MyFunction6)
-        # self.ui.pushButton7.clicked.connect(self.MyFunction7)
+        self.ui.pushButton_2.clicked.connect(self.CreateTable)
+        self.ui.pushButton_3.clicked.connect(self.HistoryEquipment)
 
-    # Пока пустая функция которая выполняется
-    # при нажатии на кнопку
+
     def Add(self):
         eq_number = self.ui.eq_number.toPlainText()  # input equipment number
+        eq_number = '8000' + str(eq_number)    # add const in beginner of figures 8000....
         per_number = self.ui.per_number.toPlainText()  # input personal number
 
         minutes = self.ui.minutes.toPlainText()  # input minutes
         notice = self.ui.notice.toPlainText()  # input notice
+        apl = self.ui.apl.toPlainText()  # input № of machine for applicator
         # print(eq_number + str(' eq_num') + per_number + str(' per num'), notice + str(' commet'), minutes + str(' minutes'))
+
+        shift = shift_id(per_number)    # return name of shift by person number fo rwrite data in Log file
+        write_log_file(date, shift, eq_number, apl, minutes, data, notice)    # write data to Log file
 
 
         name = eq_number
-        sheet = 'main'
-        mark = 'Gamma 1 (8_1235)'
+        sheet = 's_p'
+        mark = '**'
         mes = str(find_row(name, sheet, mark))
-        print(mes)
-        message = self.ui.message.setText(mes)  # output message/status of run
-        print(message)
+        # print(mes)
+        self.ui.message.setText(mes)  # output message/status of run
+        # print(message)
 
 
 
 
 
-    def MyFunction1(self):
-        pass
+    def CreateTable(self):    # open table for shift
+        os.startfile('files\DownTime_shift.xlsx', "open")  # write correct address, file name
 
-    def MyFunction2(self):
-        pass
-
-    def MyFunction3(self):
-        pass
-
-    def MyFunction4(self):
-        pass
-
-    def MyFunction5(self):
-        pass
-
-    def MyFunction6(self):
-        pass
-
-    def MyFunction7(self):
-        pass
-
-
+    def HistoryEquipment(self):    # open equipment file for history run
+        eq_number = self.ui.eq_number.toPlainText()  # input equipment number
+        name = '8000' + str(eq_number)
+        if eq_number == '':
+            self.ui.message.setText('write correct equipment number')
+        else:
+            os.startfile('files\eq_files\{}.xlsx'.format(name), "open")  # write correct address, file name
 
 
 if __name__=="__main__":
