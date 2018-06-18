@@ -5,24 +5,18 @@ from openpyxl import *
 from f_w_r import *
 
 def shift_id(per_number):    # return name of shift by person number
-    try:
+    wb = load_workbook('files\personfile.xlsx')
+    ws = wb['main']
+    mark = str('*') + str(per_number)
+    sheet = 'main'
+    name = 'personfile'
 
-        wb = load_workbook('files\personfile.xlsx')
-        ws = wb['main']
-        mark = str('*') + str(per_number)
-        sheet = 'main'
-        name = 'personfile'
+    ex = find_row_fls(name, sheet, mark)
+    pos = str('D') + str(ex)
 
-        ex = find_row_fls(name, sheet, mark)
-        pos = str('D') + str(ex)
-
-        sft = (ws[pos].value)
-        # print(sft)
-        return sft
-    except FileNotFoundError:    # if you work with filter in def open_file - use this error "FileNotFoundError:"
-        mes = 'file not find, please create file or check you data input'
-        #print(mes)
-        return mes
+    sft = (ws[pos].value)
+    # print(sft)
+    return sft
 
 
 
