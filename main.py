@@ -2,7 +2,6 @@
 import sys
 import os
 from openpyxl import *
-import subprocess
 from datetime import datetime
 from gui import *    # gui is interface file
 from f_w_r import *
@@ -29,29 +28,35 @@ class MyWin(QtWidgets.QMainWindow):
 
 
     def Add(self):
-        eq_number = self.ui.eq_number.toPlainText()  # input equipment number
-        eq_number = '8000' + str(eq_number)    # add const in beginner of figures 8000....
+        eq_num = self.ui.eq_number.toPlainText()  # input equipment number
+        eq_number = '8000' + str(eq_num)    # add const in beginner of figures 8000....
         per_number = self.ui.per_number.toPlainText()  # input personal number
-
         minutes = self.ui.minutes.toPlainText()  # input minutes
         notice = self.ui.notice.toPlainText()  # input notice
         apl = self.ui.apl.toPlainText()  # input № of machine for applicator
-        # print(eq_number + str(' eq_num') + per_number + str(' per num'), notice + str(' commet'), minutes + str(' minutes'))
+        if eq_num == '':
+            self.ui.message.setText('write correct equipment number')
 
-        shift = shift_id(per_number)    # return name of shift by person number fo rwrite data in Log file
-        write_log_file(date, shift, eq_number, apl, minutes, data, notice)    # write data to Log file
+        else:
 
-
-        name = eq_number
-        sheet = 's_p'
-        mark = '**'
-        mes = str(find_row(name, sheet, mark))
-        # print(mes)
-        self.ui.message.setText(mes)  # output message/status of run
-        # print(message)
+            type_fix = '11'    # add choice of reason DownTime
 
 
+            shift = shift_id(per_number)    # return name of shift by person number fo write data in Log file
 
+            write_log_file(self.date, shift, eq_number, apl, minutes, type_fix, notice)  # write data to Log file - 1 sec
+
+            write_eq_file(eq_number, self.date, per_number, type_fix)    # write data to equipment file   - 2 sec
+
+            write_sum_and_shift_files(eq_number, type_fix, minutes)    # 1 sec
+
+            write_sum_by_weeks(eq_number, self.w_date, type_fix, minutes)    # 6 sec
+
+            #    sum of run is fucking 7 seconds
+            mes = 'done'
+
+
+            self.ui.message.setText(mes)  # output message/status of run
 
 
     def CreateTable(self):    # open table for shift
