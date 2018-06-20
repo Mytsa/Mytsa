@@ -147,6 +147,7 @@ def write_log_file(date, shift, eq_number, apl, minutes, data, notice):    # wri
     sheet = 'main'
     mark = '**'
 
+
     ex = find_row_fls(name, sheet, mark)
     w = load_workbook('files\{}.xlsx'.format(name))
 

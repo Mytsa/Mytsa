@@ -32,13 +32,23 @@ per_number = '*3070'
 # shift_id(per_number)
 
 
-wb = load_workbook('files\personfile.xlsx')
-ws = wb['main']
-mark = '*3070'
-sheet = 'main'
-name = 'personfile'
+# wb = load_workbook('files\personfile.xlsx')
+# ws = wb['main']
+# mark = '*3070'
+# sheet = 'main'
+# name = 'personfile'
+#
+# ex = find_row_fls(name, sheet, mark)
+# pos = str('D') + str(ex)
+#
+# print(ws[pos].value)
+eq_num = input('imnput number : ')
 
-ex = find_row_fls(name, sheet, mark)
-pos = str('D') + str(ex)
-
-print(ws[pos].value)
+a = eq_num.isdigit()
+print(a)
+# num = str(num)
+# if eq_num == int(eq_num):
+#     print('write correct equipment number')
+#
+# else:
+#     print('good')
