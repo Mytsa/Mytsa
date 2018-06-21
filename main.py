@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import sys
 import os
 from openpyxl import *
@@ -25,6 +25,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton.clicked.connect(self.Add)
         self.ui.pushButton_2.clicked.connect(self.CreateTable)
         self.ui.pushButton_3.clicked.connect(self.HistoryEquipment)
+        self.ui.pushButton_4.clicked.connect(self.ManualCorrection)
 
 
     def Add(self):
@@ -82,7 +83,15 @@ class MyWin(QtWidgets.QMainWindow):
     def HistoryEquipment(self):    # open equipment file for history run
         eq_number = self.ui.eq_number.toPlainText()  # input equipment number
         name = '8000' + str(eq_number)
-        os.startfile('files\eq_files\{}.xlsx'.format(name), "open")  # write correct address, file name
+        b = len(eq_number)
+        if eq_number.isdigit() is (False or b != 4):
+            self.ui.message.setText('write correct equipment number')
+
+        else:
+            os.startfile('files\eq_files\{}.xlsx'.format(name), "open")  # write correct address, file name
+
+    def ManualCorrection(self):    # open table correction
+        os.startfile('files\log.xlsx', "open")  # write correct address, file name
 
 
 if __name__=="__main__":

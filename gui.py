@@ -106,9 +106,13 @@ class Ui_MainWindow(object):
         # self.radioButton_16 = QtWidgets.QRadioButton(self.centralwidget)
         # self.radioButton_16.setGeometry(QtCore.QRect(180, 350, 82, 17))
         # self.radioButton_16.setObjectName("radioButton_16")
+        
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(100, 0, 150, 16))
+        self.label_2.setObjectName("eq_number")
 
         self.eq_number = QtWidgets.QTextEdit(self.centralwidget)
-        self.eq_number.setGeometry(QtCore.QRect(20, 100, 161, 51))
+        self.eq_number.setGeometry(QtCore.QRect(120, 20, 90, 51))
         self.eq_number.setStyleSheet("font: 75 24pt \"Times New Roman\";")
         self.eq_number.setObjectName("eq_number")
 
@@ -121,13 +125,23 @@ class Ui_MainWindow(object):
         self.label.setGeometry(QtCore.QRect(10, 0, 200, 20))
         self.label.setObjectName("label")
 
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(40, 80, 200, 16))
-        self.label_2.setObjectName("label_2")
-
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(250, 80, 200, 13))
-        self.label_3.setObjectName("label_3")
+        self.label_3.setGeometry(QtCore.QRect(260, 0, 200, 13))
+        self.label_3.setObjectName("minutes")
+        
+        self.minutes = QtWidgets.QTextEdit(self.centralwidget)
+        self.minutes.setGeometry(QtCore.QRect(240, 20, 91, 51))
+        self.minutes.setStyleSheet("font: 75 24pt \"Times New Roman\";")
+        self.minutes.setObjectName("minutes")
+
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(130, 600, 171, 16))
+        self.label_5.setObjectName("message")
+
+        self.message = QtWidgets.QTextEdit(self.centralwidget)
+        self.message.setGeometry(QtCore.QRect(20, 620, 301, 71))
+        self.message.setStyleSheet("font: 9pt \"Calibri\";")
+        self.message.setObjectName("message")
 
 # # <!---- progres Bar
 #         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
@@ -137,13 +151,15 @@ class Ui_MainWindow(object):
 #         self.progressBar.setObjectName("progressBar")
 # # progres Bar ----!>
 
-        self.notice = QtWidgets.QTextEdit(self.centralwidget)
-        self.notice.setGeometry(QtCore.QRect(20, 530, 301, 71))
-        self.notice.setObjectName("minutes")
-
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(150, 510, 171, 16))
-        self.label_4.setObjectName("label_4")
+        self.label_4.setGeometry(QtCore.QRect(140, 75, 71, 20))
+        self.label_4.setObjectName("notice")
+
+        self.notice = QtWidgets.QTextEdit(self.centralwidget)
+        self.notice.setGeometry(QtCore.QRect(10, 95, 320, 55))
+        self.notice.setStyleSheet("font: 75 14pt \"Times New Roman\";")
+        self.notice.setObjectName("notice")
+
 
         self.radioButton_19 = QtWidgets.QRadioButton(self.centralwidget)
         self.radioButton_19.setGeometry(QtCore.QRect(20, 440, 150, 17))
@@ -187,12 +203,8 @@ class Ui_MainWindow(object):
         self.radioButton_26.setGeometry(QtCore.QRect(180, 490, 150, 17))
         self.radioButton_26.setObjectName("radioButton_26")
 
-        self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(190, 0, 71, 20))
-        self.label_5.setObjectName("label_5")
-
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(20, 610, 300, 80))
+        self.pushButton.setGeometry(QtCore.QRect(20, 515, 300, 80))
         self.pushButton.setStyleSheet("font: 75 bold 18pt \"Times New Roman\";bg:rgb(214, 214, 0);")
         self.pushButton.setObjectName("ADD")
 
@@ -205,16 +217,12 @@ class Ui_MainWindow(object):
         self.pushButton_3.setGeometry(QtCore.QRect(20, 700, 151, 31))
         self.pushButton_3.setObjectName("history")
 
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setGeometry(QtCore.QRect(5, 58, 110, 31))
+        self.pushButton_4.setObjectName("manual correction")
 
-        self.message = QtWidgets.QTextEdit(self.centralwidget)
-        self.message.setGeometry(QtCore.QRect(130, 20, 191, 51))
-        self.message.setStyleSheet("font: 8pt \"Calibri\";")
-        self.message.setObjectName("message")
 
-        self.minutes = QtWidgets.QTextEdit(self.centralwidget)
-        self.minutes.setGeometry(QtCore.QRect(230, 100, 91, 51))
-        self.minutes.setStyleSheet("font: 75 24pt \"Times New Roman\";")
-        self.minutes.setObjectName("minutes")
+        
 
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
         self.label_10.setGeometry(QtCore.QRect(100, 750, 180, 20))
@@ -262,8 +270,8 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.radioButton_25, self.radioButton_26)
         MainWindow.setTabOrder(self.radioButton_26, self.notice)
         MainWindow.setTabOrder(self.notice, self.pushButton)
-        MainWindow.setTabOrder(self.pushButton, self.pushButton_2)
         MainWindow.setTabOrder(self.pushButton_2, self.pushButton_3)
+        MainWindow.setTabOrder(self.pushButton_3, self.pushButton_4)
 
 
 
@@ -304,8 +312,8 @@ class Ui_MainWindow(object):
         self.notice.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Times New Roman\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
+"</style></head><body style=\" font-family:\'Times New Roman\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
         self.label_4.setText(_translate("MainWindow", "коментар"))
         self.groupBox.setTitle(_translate("MainWindow", "Komax"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Applicator"))
@@ -325,6 +333,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "ADD"))
         self.pushButton_2.setText(_translate("MainWindow", "create table per shift"))
         self.pushButton_3.setText(_translate("MainWindow", "show equipment history"))
+        self.pushButton_4.setText(_translate("MainWindow", "manual correction"))
         self.message.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
