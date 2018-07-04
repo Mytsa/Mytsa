@@ -26,9 +26,17 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.CreateTable)
         self.ui.pushButton_3.clicked.connect(self.HistoryEquipment)
         self.ui.pushButton_4.clicked.connect(self.ManualCorrection)
+        self.ui.radioButton_19.clicked.connect(self.Radio)
+
+        # self.radioButton_19.connect =
+
+    def Radio(self):
+        mess = 'механічна поломка1'
+        write_type(mess)
 
 
     def Add(self):
+
         eq_num = self.ui.eq_number.toPlainText()  # input equipment number
         eq_number = '8000' + str(eq_num)    # add const in beginner of figures 8000....
         per_number = self.ui.per_number.toPlainText()  # input personal number
@@ -57,14 +65,15 @@ class MyWin(QtWidgets.QMainWindow):
                 else:
                     pass
 # --------------------------!>
-                type_fix = '11'    # add choice of reason DownTime
+
+                type_fix = data_from_write_type()    # sent data of type fix
 
 
                 shift = shift_id(per_number)    # return name of shift by person number fo write data in Log file
 
                 write_log_file(self.date, shift, eq_number, apl, minutes, type_fix, notice)  # write data to Log file - 1 sec
 
-                write_eq_file(eq_number, self.date, per_number, type_fix)    # write data to equipment file   - 2 sec
+                write_eq_file(eq_number, self.date, per_number, type_fix, notice)    # write data to equipment file   - 2 sec
 
                 write_sum_and_shift_files(eq_number, type_fix, minutes)    # 1 sec
 

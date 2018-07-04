@@ -68,7 +68,7 @@ def find_data_in_row(sheet, name, mark, type_fix):
     num = str(ws[pos].value)
     return num
 
-def write_eq_file(eq_number, date, per_number, type_fix):
+def write_eq_file(eq_number, date, per_number, type_fix, notice):
     sheet = 's_p'
     mark = '**'
     ex = find_row(eq_number, sheet, mark)
@@ -77,12 +77,14 @@ def write_eq_file(eq_number, date, per_number, type_fix):
     a = str('A') + str(ex)
     b = str('B') + str(ex)
     c = str('C') + str(ex)
+    d = str('D') + str(ex)
     a1 = str('A') + str(ex + 1)  # for mark symbols
     # write data to equipment file
     sheet = w.get_sheet_by_name('s_p')
     sheet[a] = date
     sheet[b] = per_number
     sheet[c] = type_fix
+    sheet[d] = notice
     sheet[a1] = '**'    # mark last row for find in new write process
 
     w.save('files\eq_files\{}.xlsx'.format(eq_number))
@@ -174,15 +176,29 @@ def write_log_file(date, shift, eq_number, apl, minutes, data, notice):    # wri
     w.save('files\{}.xlsx'.format(name))
 
 
+def write_type(type):
+    w = load_workbook('files\write_type.xlsx')
+    sheet = w.get_sheet_by_name('main')
+
+    sheet['A1'] = type
+    w.save('files\write_type.xlsx')
+
+def data_from_write_type():
+    wb = load_workbook('files\write_type.xlsx')
+    ws = wb['main']
+    pos = 'A1'
+    type_fix = str(ws[pos].value)
+    return type_fix
+
 
 def pos_by_fix(type_fix):
     # b = 'B'
     # return b
 
-    if type_fix == 'проблеми з матеріалом':
+    if type_fix == '11':
         pos = 'B'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'механічна поломка1':
         pos = 'C'
         return pos
     elif type_fix == 'механічна поломка':
@@ -191,7 +207,7 @@ def pos_by_fix(type_fix):
     elif type_fix == 'механічна поломка':
         pos = 'E'
         return pos
-    elif type_fix == '11':
+    elif type_fix == 'механічна поломка':
         pos = 'F'
         return pos
     elif type_fix == 'механічна поломка':
