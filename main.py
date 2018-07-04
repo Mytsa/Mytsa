@@ -26,13 +26,37 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.CreateTable)
         self.ui.pushButton_3.clicked.connect(self.HistoryEquipment)
         self.ui.pushButton_4.clicked.connect(self.ManualCorrection)
-        self.ui.radioButton_19.clicked.connect(self.Radio)
 
-        # self.radioButton_19.connect =
+        self.ui.radioButton_1.clicked.connect(self.Radio1)
+        self.ui.radioButton_2.clicked.connect(self.Radio2)
+        self.ui.radioButton_3.clicked.connect(self.Radio3)
+        self.ui.radioButton_4.clicked.connect(self.Radio4)
+        self.ui.radioButton_5.clicked.connect(self.Radio5)
+        self.ui.radioButton_6.clicked.connect(self.Radio6)
+        self.ui.radioButton_7.clicked.connect(self.Radio7)
+        self.ui.radioButton_8.clicked.connect(self.Radio8)
+        self.ui.radioButton_9.clicked.connect(self.Radio9)
+        self.ui.radioButton_10.clicked.connect(self.Radio10)
+        self.ui.radioButton_11.clicked.connect(self.Radio11)
+        self.ui.radioButton_12.clicked.connect(self.Radio12)
+        self.ui.radioButton_13.clicked.connect(self.Radio13)
 
-    def Radio(self):
-        mess = 'механічна поломка1'
-        write_type(mess)
+        self.ui.radioButton_15.clicked.connect(self.Radio15)
+
+
+        self.ui.radioButton_19.clicked.connect(self.Radio19)
+        self.ui.radioButton_18.clicked.connect(self.Radio18)
+        self.ui.radioButton_17.clicked.connect(self.Radio17)
+        self.ui.radioButton_22.clicked.connect(self.Radio22)
+        self.ui.radioButton_20.clicked.connect(self.Radio20)
+        self.ui.radioButton_21.clicked.connect(self.Radio21)
+        self.ui.radioButton_25.clicked.connect(self.Radio25)
+        self.ui.radioButton_24.clicked.connect(self.Radio24)
+        self.ui.radioButton_23.clicked.connect(self.Radio23)
+        # self.ui.radioButton_26.clicked.connect(self.Radio26)
+
+
+
 
 
     def Add(self):
@@ -84,6 +108,104 @@ class MyWin(QtWidgets.QMainWindow):
 
 
                 self.ui.message.setText(mes)  # output message/status of run
+
+
+
+    def Radio1(self):
+        mess = 'проблеми з матеріалом'
+        write_type(mess)
+
+    def Radio2(self):
+        mess = 'механічна поломка'
+        write_type(mess)
+
+    def Radio3(self):
+        mess = 'електрична поломка'
+        write_type(mess)
+
+    def Radio4(self):
+        mess = 'СPU 2000'
+        write_type(mess)
+
+    def Radio5(self):
+        mess = 'scaner'
+        write_type(mess)
+
+    def Radio6(self):
+        mess = 'інший тип простою'
+        write_type(mess)
+
+    def Radio7(self):
+        mess = 'налаштування принтера'
+        write_type(mess)
+
+    def Radio8(self):
+        mess = 'налаштування втулочного модуля'
+        write_type(mess)
+
+    def Radio25(self):
+        mess = 'очікування зварка'
+        write_type(mess)
+
+    def Radio10(self):
+        mess = 'ТО обладнання'
+        write_type(mess)
+
+    def Radio11(self):
+        mess = 'механічне налаштування'
+        write_type(mess)
+
+    def Radio12(self):
+        mess = 'налаштування симетричності розрізу'
+        write_type(mess)
+
+    def Radio13(self):
+        mess = 'заміна запчастин'
+        write_type(mess)
+
+    def Radio15(self):
+        mess = 'ТО аплікатора'
+        write_type(mess)
+
+    def Radio17(self):
+        mess = 'Збій програми'
+        write_type(mess)
+
+    def Radio18(self):
+        mess = 'новий проект/нові параметри'
+        write_type(mess)
+
+    def Radio19(self):
+        mess = 'заміна електродів'
+        write_type(mess)
+
+    def Radio20(self):
+        mess = 'чистка обладнання'
+        write_type(mess)
+
+    def Radio21(self):
+        mess = 'ремонт електродів / зазор'
+        write_type(mess)
+
+    def Radio22(self):
+        mess = 'проблеми з матеріалом на зварці'
+        write_type(mess)
+
+    def Radio23(self):
+        mess = 'ТО зварки'
+        write_type(mess)
+
+    def Radio24(self):
+        mess = 'очікування тех.відділу'
+        write_type(mess)
+
+    def Radio9(self):
+        mess = 'ПЗ'
+        write_type(mess)
+
+    # def Radio26(self):
+    #     mess = 'заміна електродів'
+    #     write_type(mess)
 
 
     def CreateTable(self):    # open table for shift

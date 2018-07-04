@@ -177,100 +177,113 @@ def write_log_file(date, shift, eq_number, apl, minutes, data, notice):    # wri
 
 
 def write_type(type):
-    w = load_workbook('files\write_type.xlsx')
-    sheet = w.get_sheet_by_name('main')
+    # w = load_workbook('files\write_type.xlsx')
+    # sheet = w.get_sheet_by_name('main')
+    #
+    # sheet['A1'] = type
+    # w.save('files\write_type.xlsx')
 
-    sheet['A1'] = type
-    w.save('files\write_type.xlsx')
+
+    file = open('files\write_type.txt', 'w')
+    file.write(type)
+    file.close()
+
+
 
 def data_from_write_type():
-    wb = load_workbook('files\write_type.xlsx')
-    ws = wb['main']
-    pos = 'A1'
-    type_fix = str(ws[pos].value)
+    # wb = load_workbook('files\write_type.xlsx')
+    # ws = wb['main']
+    # pos = 'A1'
+    # type_fix = str(ws[pos].value)
+    f = open('files\write_type.txt', 'r')
+    type_fix = f.read()
+    print(type_fix)
+
     return type_fix
 
 
 def pos_by_fix(type_fix):
-    # b = 'B'
-    # return b
 
-    if type_fix == '11':
+    # komax of DownTime
+
+    if type_fix == 'проблеми з матеріалом':
         pos = 'B'
         return pos
-    elif type_fix == 'механічна поломка1':
+    elif type_fix == 'механічна поломка':
         pos = 'C'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'електрична поломка':
         pos = 'D'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'очікування тех.відділу':
         pos = 'E'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'ПЗ':
         pos = 'F'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'СPU 2000':
         pos = 'G'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'scaner':
         pos = 'H'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'ТО обладнання':
         pos = 'I'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'інший тип простою':
         pos = 'J'
         return pos
 
     # applicators type of DownTime
 
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'механічне налаштування':
         pos = 'K'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'заміна запчастин':
         pos = 'L'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'налаштування симетричності розрізу':
         pos = 'M'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'ТО аплікатора':
         pos = 'N'
         return pos
 
     # seal DownTime
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'налаштування втулочного модуля':
         pos = 'O'
         return pos
 
     # printer DownTime
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'налаштування принтера':
         pos = 'P'
         return pos
 
     # schunk type of DownTime
 
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'проблеми з матеріалом на зварці':
         pos = 'T'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'Збій програми':
         pos = 'U'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'новий проект/нові параметри':
         pos = 'V'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'заміна електродів':
         pos = 'W'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'чистка обладнання':
         pos = 'X'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'ремонт електродів / зазор':
         pos = 'Y'
         return pos
-    elif type_fix == 'механічна поломка':
+    elif type_fix == 'ТО зварки':
         pos = 'Z'
         return pos
-    else:
-        pos = 'ZZ'
+    elif type_fix == 'очікування зварка':
+        pos = 'AA'
         return pos
+    else:
+        pass
