@@ -197,7 +197,7 @@ def data_from_write_type():
     # type_fix = str(ws[pos].value)
     f = open('files\write_type.txt', 'r')
     type_fix = f.read()
-    print(type_fix)
+    # print(type_fix)
 
     return type_fix
 
