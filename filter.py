@@ -17,17 +17,17 @@ def shift_id(per_number):    # return name of shift by person number
     sft = (ws[pos].value)
     # print(sft)
     return sft
-
-
-def apl_check(apl):    # not working now
-    if apl != '':
-        b = len(apl)
-        if apl.isdigit() is (False or b != 4):
-            mes = 'write correct applicator number'
-        else:
-            apl = '8000' + str(apl)
-    else:
-        apl = ''
+#
+#
+# def apl_check(apl):    # not working now
+#     if apl != '':
+#         b = len(apl)
+#         if apl.isdigit() is (False or b != 4):
+#             mes = 'write correct applicator number'
+#         else:
+#             apl = '8000' + str(apl)
+#     else:
+#         apl = ''
 
 # def four_num(num):    # check input number by digitals and for len in list by 4 numbers
 #     b = len(num)

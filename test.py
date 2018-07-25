@@ -52,3 +52,28 @@ print(a)
 #
 # else:
 #     print('good')
+
+
+if type_fix == 'механічне налаштування':
+    # add to number applicator 8000...
+    if apl == '':
+        self.ui.message.setText('write correct applicator number')
+    else:
+        apl = '8000' + str(apl)
+        eq_number = apl
+        write_eq_file(eq_number, self.date, per_number, type_fix, notice)
+elif type_fix == 'заміна запчастин':
+    if apl == '':
+        self.ui.message.setText('write correct applicator number')
+    else:
+        apl = '8000' + str(apl)
+        eq_number = apl
+        write_eq_file(eq_number, self.date, per_number, type_fix, notice)
+
+elif type_fix == 'налаштування симетричності розрізу':
+    if apl == '':
+        self.ui.message.setText('write correct applicator number')
+    else:
+        apl = '8000' + str(apl)
+        eq_number = apl
+        write_eq_file(eq_number, self.date, per_number, type_fix, notice)

@@ -80,36 +80,71 @@ class MyWin(QtWidgets.QMainWindow):
 
             else:
 # <! -------------- problem with 3 figures is write to log file
-                b = len(apl)
-                if apl != '':
-                    apl = '8000' + str(apl)
-                elif b != 4:
-                    self.ui.message.setText('write correct applicator number')
-
-                else:
-                    pass
+#                 b = len(apl)
+#                 if apl.isdigit() is (False or b != 4):
+#
+#                 # elif b != 4:
+#                     self.ui.message.setText('write correct applicator number')
+#
+#                 else:
+#                     # pass
 # --------------------------!>
 
                 type_fix = data_from_write_type()    # sent data of type fix
-
-
                 shift = shift_id(per_number)    # return name of shift by person number fo write data in Log file
 
-                write_log_file(self.date, shift, eq_number, apl, minutes, type_fix, notice)  # write data to Log file - 1 sec
+                # # add to number applicator 8000...
+                # if apl == '':
+                #     pass
+                # else:
+                #     apl = '8000' + str(apl)
 
-                write_eq_file(eq_number, self.date, per_number, type_fix, notice)    # write data to equipment file   - 2 sec
+                    # <! -------------- problem with 3 figures is write to log file
+                b = len(apl)
+                if apl.isdigit() is (False or b != 4):
+
+                    # elif b != 4:
+                    self.ui.message.setText('write correct applicator number')
+
+                else:
+            # pass
+            # --------------------------!>
+
+                    if type_fix == 'механічне налаштування':
+                        if apl == '':
+                            self.ui.message.setText('write correct applicator number')
+                        else:
+                            apl = '8000' + str(apl)
+                            write_eq_file(apl, self.date, per_number, type_fix, notice)
+                    elif type_fix == 'заміна запчастин':
+                        if apl == '':
+                            self.ui.message.setText('write correct applicator number')
+                        else:
+                            apl = '8000' + str(apl)
+                            write_eq_file(apl, self.date, per_number, type_fix, notice)
+                    elif type_fix == 'налаштування симетричності розрізу':
+                        if apl == '':
+                            self.ui.message.setText('write correct applicator number')
+                        else:
+                            apl = '8000' + str(apl)
+                            write_eq_file(apl, self.date, per_number, type_fix, notice)
+                    elif type_fix == 'ТО аплікатора':
+                        if apl == '':
+                            self.ui.message.setText('write correct applicator number')
+                        else:
+                            apl = '8000' + str(apl)
+
+                    else:
+                        apl = ''
+
+                write_log_file(self.date, shift, eq_number, apl, minutes, type_fix, notice)  # write data to Log file - 1 sec
+                write_eq_file(eq_number, self.date, per_number, type_fix, notice)
+#    --------------------------!>
 
                 write_sum_and_shift_files(eq_number, type_fix, minutes)    # 1 sec
 
-                write_sum_by_weeks(eq_number, self.w_date, type_fix, minutes)    # 6 sec
-
-                #    sum of run is fucking 7 seconds
                 mes = 'done'
-
-
                 self.ui.message.setText(mes)  # output message/status of run
-
-
 
     def Radio1(self):
         mess = 'проблеми з матеріалом'
@@ -207,9 +242,11 @@ class MyWin(QtWidgets.QMainWindow):
     #     mess = 'заміна електродів'
     #     write_type(mess)
 
-
     def CreateTable(self):    # open table for shift
         os.startfile('files\DownTime_shift.xlsx', "open")  # write correct address, file name
+        write_sum_by_weeks(self.w_date)  # 6 sec
+        mes = 'table is create'
+        self.ui.message.setText(mes)  # output message/status of run
 
     def HistoryEquipment(self):    # open equipment file for history run
         eq_number = self.ui.eq_number.toPlainText()  # input equipment number

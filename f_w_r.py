@@ -117,32 +117,63 @@ def write_sum_and_shift_files(eq_number, type_fix, minutes):    # need sum of fi
     w.save('files\{}.xlsx'.format(name))
 
 
-def write_sum_by_weeks(eq_number, w_date, type_fix, minutes):    # need sum of figures in table for creat summary table
-    name = 'summary'
-    sheet = str(w_date)
-    mark = '*' + str(eq_number)
+def write_sum_by_weeks(w_date):    # need sum of figures in table for creat summary table
+    # name = 'summary'
+    # sheet = str(w_date)
+    # mark = '*' + str(eq_number)
     # print(mark)
 
-    ex = find_row_fls(name, sheet, mark)
+    # ex = find_row_fls(name, sheet, mark)
     # print(ex)
-    pos = pos_by_fix(type_fix)
-    # print('finish')
-
-    data_from_pos = find_data_in_row(sheet, name, mark, pos)
-    # print(data_from_pos)
-    f_data = int(data_from_pos) + int(minutes)
+    # pos = pos_by_fix(type_fix)    # sent index coordinates
+    # # print('finish')
+    #
+    # data_from_pos = find_data_in_row(sheet, name, mark, pos)
+    # # print(data_from_pos)
+    # f_data = int(data_from_pos) + int(minutes)
     # print(f_data)
 
     # a = str('A') + str(ex)
-    b = str(pos) + str(ex)
-    # print(b)
+    # b = str(pos) + str(ex)
+
+    wb = load_workbook('files\DownTime_shift.xlsx')
+    ws = wb['main']
+
+    w = load_workbook('files\summary.xlsx')
+    sheet = w.get_sheet_by_name(str(w_date))
+# <! ------ WRITE sum of figures to komax table
+    letters = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P']
+    for i in range(3, 18):
+        for j in letters:
+            pos = str(j) + str(i)
+            figures = str(ws[pos].value)
+            data_from_pos = str(sheet[pos].value)
+            f_sum = int(figures) + int(data_from_pos)
+            # print(pos)
+            b = str(j) + str(i)
+            sheet[b] = f_sum
+            print('donnnnne')
+
+# <! ------ WRITE sum of figures to schunk table
+    letters = ['T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA']
+    for i in range(3, 19):
+        for j in letters:
+            pos = str(j) + str(i)
+            figures = str(ws[pos].value)
+            data_from_pos = str(sheet[pos].value)
+            f_sum = int(figures) + int(data_from_pos)
+            # print(pos)
+            b = str(j) + str(i)
+            sheet[b] = f_sum
+            # print('donnnnne2')
+
 
     # write data to equipment file
-    w = load_workbook('files\{}.xlsx'.format(name))
-    sheet = w.get_sheet_by_name(sheet)
-    # sheet[a] = date
-    sheet[b] = f_data
-    w.save('files\{}.xlsx'.format(name))
+    # w = load_workbook('files\{}.xlsx'.format(name))
+    # sheet = w.get_sheet_by_name(sheet)
+    # # sheet[a] = date
+    # sheet[b] = f_data
+    w.save('files\summary.xlsx')
 
 def write_log_file(date, shift, eq_number, apl, minutes, data, notice):    # write data to Log file
     name = 'log'
