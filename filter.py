@@ -17,6 +17,22 @@ def shift_id(per_number):    # return name of shift by person number
     sft = (ws[pos].value)
     # print(sft)
     return sft
+
+
+def check_apl(sap_eq):    # check equipment is applicator
+    sap_eq1 = '*8000' + str(sap_eq)
+    w = load_workbook('files\list_apl.xlsx')
+    ws = w['main']
+    mark = sap_eq1
+    for row in ws:
+        for cell in row:
+            if cell.value == mark:
+                ex_list = cell.row
+
+    pos = 'C' + str(ex_list)
+    type_eq = ws[pos].value
+    # print(type_eq)
+    return type_eq
 #
 #
 # def apl_check(apl):    # not working now

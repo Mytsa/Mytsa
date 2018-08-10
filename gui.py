@@ -221,6 +221,10 @@ class Ui_MainWindow(object):
         self.pushButton_4.setGeometry(QtCore.QRect(5, 58, 110, 31))
         self.pushButton_4.setObjectName("manual correction")
 
+        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_5.setGeometry(QtCore.QRect(190, 740, 131, 31))
+        self.pushButton_5.setObjectName("clean table")
+
 
         
 
@@ -272,6 +276,7 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.notice, self.pushButton)
         MainWindow.setTabOrder(self.pushButton_2, self.pushButton_3)
         MainWindow.setTabOrder(self.pushButton_3, self.pushButton_4)
+        MainWindow.setTabOrder(self.pushButton_4, self.pushButton_5)
 
 
 
@@ -334,6 +339,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "create table per shift"))
         self.pushButton_3.setText(_translate("MainWindow", "show equipment history"))
         self.pushButton_4.setText(_translate("MainWindow", "manual correction"))
+        self.pushButton_5.setText(_translate("MainWindow", "clean shift table"))
         self.message.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

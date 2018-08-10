@@ -5,11 +5,10 @@ from openpyxl import *
 from datetime import datetime
 from gui import *    # gui is interface file
 from f_w_r import *    # def for files are write and read
-from filter import *    # filter to personal number - need decision!!!
-
-
+from filter import *    # filter to personal number, applicator list
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -26,6 +25,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.CreateTable)
         self.ui.pushButton_3.clicked.connect(self.HistoryEquipment)
         self.ui.pushButton_4.clicked.connect(self.ManualCorrection)
+        self.ui.pushButton_5.clicked.connect(self.clean_data_shift)
 
         self.ui.radioButton_1.clicked.connect(self.Radio1)
         self.ui.radioButton_2.clicked.connect(self.Radio2)
@@ -43,7 +43,6 @@ class MyWin(QtWidgets.QMainWindow):
 
         self.ui.radioButton_15.clicked.connect(self.Radio15)
 
-
         self.ui.radioButton_19.clicked.connect(self.Radio19)
         self.ui.radioButton_18.clicked.connect(self.Radio18)
         self.ui.radioButton_17.clicked.connect(self.Radio17)
@@ -56,9 +55,6 @@ class MyWin(QtWidgets.QMainWindow):
         # self.ui.radioButton_26.clicked.connect(self.Radio26)
 
 
-
-
-
     def Add(self):
 
         eq_num = self.ui.eq_number.toPlainText()  # input equipment number
@@ -68,68 +64,43 @@ class MyWin(QtWidgets.QMainWindow):
         notice = self.ui.notice.toPlainText()  # input notice
         apl = self.ui.apl.toPlainText()  # input № of applicator
 
-
         b = len(eq_num)
         if eq_num.isdigit() is (False or b != 4):
             self.ui.message.setText('write correct equipment number')
-
         else:
             b = len(per_number)
+
             if per_number.isdigit() is (False or b != 4):
                 self.ui.message.setText('write correct personal number')
-
             else:
-# <! -------------- problem with 3 figures is write to log file
-#                 b = len(apl)
-#                 if apl.isdigit() is (False or b != 4):
-#
-#                 # elif b != 4:
-#                     self.ui.message.setText('write correct applicator number')
-#
-#                 else:
-#                     # pass
-# --------------------------!>
-
                 type_fix = data_from_write_type()    # sent data of type fix
                 shift = shift_id(per_number)    # return name of shift by person number fo write data in Log file
 
-                # # add to number applicator 8000...
-                # if apl == '':
-                #     pass
-                # else:
-                #     apl = '8000' + str(apl)
 
-                    # <! -------------- problem with 3 figures is write to log file
-                b = len(apl)
-                if apl.isdigit() is (False or b != 4):
-
-                    # elif b != 4:
-                    self.ui.message.setText('write correct applicator number')
-
+                if check_apl(apl) != "1":
+                    self.ui.message.setText('applicator number is not in list')
                 else:
-            # pass
-            # --------------------------!>
-
+                    b = len(apl)
                     if type_fix == 'механічне налаштування':
-                        if apl == '':
+                        if b != 4:
                             self.ui.message.setText('write correct applicator number')
                         else:
                             apl = '8000' + str(apl)
                             write_eq_file(apl, self.date, per_number, type_fix, notice)
                     elif type_fix == 'заміна запчастин':
-                        if apl == '':
+                        if b != 4:
                             self.ui.message.setText('write correct applicator number')
                         else:
                             apl = '8000' + str(apl)
                             write_eq_file(apl, self.date, per_number, type_fix, notice)
                     elif type_fix == 'налаштування симетричності розрізу':
-                        if apl == '':
+                        if b != 4:
                             self.ui.message.setText('write correct applicator number')
                         else:
                             apl = '8000' + str(apl)
                             write_eq_file(apl, self.date, per_number, type_fix, notice)
                     elif type_fix == 'ТО аплікатора':
-                        if apl == '':
+                        if b != 4:
                             self.ui.message.setText('write correct applicator number')
                         else:
                             apl = '8000' + str(apl)
@@ -138,13 +109,13 @@ class MyWin(QtWidgets.QMainWindow):
                         apl = ''
 
                 write_log_file(self.date, shift, eq_number, apl, minutes, type_fix, notice)  # write data to Log file - 1 sec
-                write_eq_file(eq_number, self.date, per_number, type_fix, notice)
+                write_eq_file(eq_number, self.date, per_number, type_fix, notice)    # need decision with write only apl. data
 #    --------------------------!>
 
                 write_sum_and_shift_files(eq_number, type_fix, minutes)    # 1 sec
 
                 mes = 'done'
-                self.ui.message.setText(mes)  # output message/status of run
+                self.ui.message.setText(mes + '\n' + str(type_fix))  # output message/status of run
 
     def Radio1(self):
         mess = 'проблеми з матеріалом'
@@ -260,6 +231,11 @@ class MyWin(QtWidgets.QMainWindow):
 
     def ManualCorrection(self):    # open table correction
         os.startfile('files\log.xlsx', "open")  # write correct address, file name
+
+    def clean_data_shift(self):
+        sheet = 'main'
+        clean_sum_by_weeks(sheet)
+        self.ui.message.setText('clean shift table')
 
 
 if __name__=="__main__":

@@ -54,7 +54,6 @@ def find_row_fls(name, sheet, mark):
                     return ex
     except FileNotFoundError:    # if you work with filter in def open_file - use this error "FileNotFoundError:"
         mes = 'file not find, please create file or check you data input'
-        #print(mes)
         return mes
 
 
@@ -67,6 +66,33 @@ def find_data_in_row(sheet, name, mark, type_fix):
     pos = str(type_fix) + str(ex)
     num = str(ws[pos].value)
     return num
+
+
+def clean_sum_by_weeks(sheet):
+    w = load_workbook('files\DownTime_shift.xlsx')
+    # ws = wb['main']
+    # sheet = 'main'
+    sheet = w.get_sheet_by_name(sheet)
+
+
+    # <! ------ WRITE sum of figures to komax table
+    letters = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P']
+    for i in range(3, 18):
+        for j in letters:
+            b = str(j) + str(i)
+            write = '0'
+            sheet[b] = int(write)
+
+    # <! ------ WRITE sum of figures to schunk table
+    letters = ['T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA']
+    for i in range(3, 19):
+        for j in letters:
+            b = str(j) + str(i)
+            write = '0'
+            sheet[b] = int(write)
+
+    w.save('files\DownTime_shift.xlsx')
+
 
 def write_eq_file(eq_number, date, per_number, type_fix, notice):
     sheet = 's_p'
@@ -93,54 +119,26 @@ def write_sum_and_shift_files(eq_number, type_fix, minutes):    # need sum of fi
     name = 'DownTime_shift'
     sheet = 'main'
     mark = '*' + str(eq_number)
-    # print(mark)
 
     ex = find_row_fls(name, sheet, mark)
-    # print(ex)
     pos = pos_by_fix(type_fix)
-    # print(pos)
-
     data_from_pos = find_data_in_row(sheet, name, mark, pos)
-    # print(data_from_pos)
     f_data = int(data_from_pos) + int(minutes)
-    # print(f_data)
-
-    # a = str('A') + str(ex)
     b = str(pos) + str(ex)
-    # print(b)
 
     # write data to equipment file
     w = load_workbook('files\{}.xlsx'.format(name))
     sheet = w.get_sheet_by_name(sheet)
-    # sheet[a] = date
     sheet[b] = f_data
     w.save('files\{}.xlsx'.format(name))
 
 
-def write_sum_by_weeks(w_date):    # need sum of figures in table for creat summary table
-    # name = 'summary'
-    # sheet = str(w_date)
-    # mark = '*' + str(eq_number)
-    # print(mark)
-
-    # ex = find_row_fls(name, sheet, mark)
-    # print(ex)
-    # pos = pos_by_fix(type_fix)    # sent index coordinates
-    # # print('finish')
-    #
-    # data_from_pos = find_data_in_row(sheet, name, mark, pos)
-    # # print(data_from_pos)
-    # f_data = int(data_from_pos) + int(minutes)
-    # print(f_data)
-
-    # a = str('A') + str(ex)
-    # b = str(pos) + str(ex)
-
+def write_sum_by_weeks(w_date):
     wb = load_workbook('files\DownTime_shift.xlsx')
     ws = wb['main']
-
     w = load_workbook('files\summary.xlsx')
     sheet = w.get_sheet_by_name(str(w_date))
+
 # <! ------ WRITE sum of figures to komax table
     letters = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P']
     for i in range(3, 18):
@@ -149,10 +147,8 @@ def write_sum_by_weeks(w_date):    # need sum of figures in table for creat summ
             figures = str(ws[pos].value)
             data_from_pos = str(sheet[pos].value)
             f_sum = int(figures) + int(data_from_pos)
-            # print(pos)
             b = str(j) + str(i)
             sheet[b] = f_sum
-            print('donnnnne')
 
 # <! ------ WRITE sum of figures to schunk table
     letters = ['T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA']
@@ -162,24 +158,15 @@ def write_sum_by_weeks(w_date):    # need sum of figures in table for creat summ
             figures = str(ws[pos].value)
             data_from_pos = str(sheet[pos].value)
             f_sum = int(figures) + int(data_from_pos)
-            # print(pos)
             b = str(j) + str(i)
             sheet[b] = f_sum
-            # print('donnnnne2')
 
-
-    # write data to equipment file
-    # w = load_workbook('files\{}.xlsx'.format(name))
-    # sheet = w.get_sheet_by_name(sheet)
-    # # sheet[a] = date
-    # sheet[b] = f_data
     w.save('files\summary.xlsx')
 
 def write_log_file(date, shift, eq_number, apl, minutes, data, notice):    # write data to Log file
     name = 'log'
     sheet = 'main'
     mark = '**'
-
 
     ex = find_row_fls(name, sheet, mark)
     w = load_workbook('files\{}.xlsx'.format(name))
@@ -208,29 +195,16 @@ def write_log_file(date, shift, eq_number, apl, minutes, data, notice):    # wri
 
 
 def write_type(type):
-    # w = load_workbook('files\write_type.xlsx')
-    # sheet = w.get_sheet_by_name('main')
-    #
-    # sheet['A1'] = type
-    # w.save('files\write_type.xlsx')
-
-
     file = open('files\write_type.txt', 'w')
     file.write(type)
     file.close()
 
 
-
 def data_from_write_type():
-    # wb = load_workbook('files\write_type.xlsx')
-    # ws = wb['main']
-    # pos = 'A1'
-    # type_fix = str(ws[pos].value)
     f = open('files\write_type.txt', 'r')
     type_fix = f.read()
-    # print(type_fix)
-
     return type_fix
+
 
 
 def pos_by_fix(type_fix):
