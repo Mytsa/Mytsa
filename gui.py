@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(343, 800)
+        MainWindow.resize(343, 825)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setStyleSheet("bg:rgb(214, 214, 0);\n" "font: 10pt \"Times New Roman\";")
 
@@ -225,11 +225,15 @@ class Ui_MainWindow(object):
         self.pushButton_5.setGeometry(QtCore.QRect(190, 740, 131, 31))
         self.pushButton_5.setObjectName("clean table")
 
+        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_6.setGeometry(QtCore.QRect(20, 740, 151, 31))
+        self.pushButton_6.setObjectName("contact info")
+
 
         
 
         self.label_10 = QtWidgets.QLabel(self.centralwidget)
-        self.label_10.setGeometry(QtCore.QRect(100, 750, 180, 20))
+        self.label_10.setGeometry(QtCore.QRect(100, 772, 180, 20))
         self.label_10.setObjectName("Mytsa Viktor")
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -277,6 +281,7 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.pushButton_2, self.pushButton_3)
         MainWindow.setTabOrder(self.pushButton_3, self.pushButton_4)
         MainWindow.setTabOrder(self.pushButton_4, self.pushButton_5)
+        MainWindow.setTabOrder(self.pushButton_5, self.pushButton_6)
 
 
 
@@ -340,6 +345,8 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "show equipment history"))
         self.pushButton_4.setText(_translate("MainWindow", "manual correction"))
         self.pushButton_5.setText(_translate("MainWindow", "clean shift table"))
+        self.pushButton_6.setText(_translate("MainWindow", "permission info"))
+
         self.message.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

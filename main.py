@@ -25,7 +25,8 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.CreateTable)
         self.ui.pushButton_3.clicked.connect(self.HistoryEquipment)
         self.ui.pushButton_4.clicked.connect(self.ManualCorrection)
-        self.ui.pushButton_5.clicked.connect(self.clean_data_shift)
+        self.ui.pushButton_5.clicked.connect(self.Clean_data_shift)
+        self.ui.pushButton_6.clicked.connect(self.Contact_info)
 
         self.ui.radioButton_1.clicked.connect(self.Radio1)
         self.ui.radioButton_2.clicked.connect(self.Radio2)
@@ -76,43 +77,46 @@ class MyWin(QtWidgets.QMainWindow):
                 type_fix = data_from_write_type()    # sent data of type fix
                 shift = shift_id(per_number)    # return name of shift by person number fo write data in Log file
 
+                # b = len(apl)
+                # if check_apl(apl) != "1":
+                #     self.ui.message.setText('applicator number is not in list')
+                # elif b != 4:
 
-                if check_apl(apl) != "1":
-                    self.ui.message.setText('applicator number is not in list')
-                else:
-                    b = len(apl)
-                    if type_fix == 'механічне налаштування':
-                        if b != 4:
-                            self.ui.message.setText('write correct applicator number')
-                        else:
-                            apl = '8000' + str(apl)
-                            write_eq_file(apl, self.date, per_number, type_fix, notice)
-                    elif type_fix == 'заміна запчастин':
-                        if b != 4:
-                            self.ui.message.setText('write correct applicator number')
-                        else:
-                            apl = '8000' + str(apl)
-                            write_eq_file(apl, self.date, per_number, type_fix, notice)
-                    elif type_fix == 'налаштування симетричності розрізу':
-                        if b != 4:
-                            self.ui.message.setText('write correct applicator number')
-                        else:
-                            apl = '8000' + str(apl)
-                            write_eq_file(apl, self.date, per_number, type_fix, notice)
-                    elif type_fix == 'ТО аплікатора':
-                        if b != 4:
-                            self.ui.message.setText('write correct applicator number')
-                        else:
-                            apl = '8000' + str(apl)
 
+                if type_fix == 'механічне налаштування':
+                    if check_apl(apl) != "1":
+                        self.ui.message.setText('write correct applicator number')
                     else:
-                        apl = ''
+                        apl = '8000' + str(apl)
+                        write_eq_file(apl, self.date, per_number, type_fix, notice)
+                elif type_fix == 'заміна запчастин':
+                    if check_apl(apl) != "1":
+                        self.ui.message.setText('write correct applicator number')
+                    else:
+                        apl = '8000' + str(apl)
+                        write_eq_file(apl, self.date, per_number, type_fix, notice)
+                elif type_fix == 'налаштування симетричності розрізу':
+                    if check_apl(apl) != "1":
+                        self.ui.message.setText('write correct applicator number')
+                    else:
+                        apl = '8000' + str(apl)
+                        write_eq_file(apl, self.date, per_number, type_fix, notice)
+                elif type_fix == 'ТО аплікатора':
+                    if check_apl(apl) != "1":
+                        self.ui.message.setText('write correct applicator number')
+                    else:
+                        apl = '8000' + str(apl)
 
-                write_log_file(self.date, shift, eq_number, apl, minutes, type_fix, notice)  # write data to Log file - 1 sec
-                write_eq_file(eq_number, self.date, per_number, type_fix, notice)    # need decision with write only apl. data
-#    --------------------------!>
+
+                else:
+                    apl = ''
+
+                    write_eq_file(eq_number, self.date, per_number, type_fix, notice)    # need decision with write only apl. data
+    #    --------------------------!>
 
                 write_sum_and_shift_files(eq_number, type_fix, minutes)    # 1 sec
+                write_log_file(self.date, shift, eq_number, apl, minutes, type_fix,
+                               notice)  # write data to Log file - 1 sec
 
                 mes = 'done'
                 self.ui.message.setText(mes + '\n' + str(type_fix))  # output message/status of run
@@ -232,10 +236,13 @@ class MyWin(QtWidgets.QMainWindow):
     def ManualCorrection(self):    # open table correction
         os.startfile('files\log.xlsx', "open")  # write correct address, file name
 
-    def clean_data_shift(self):
+    def Clean_data_shift(self):
         sheet = 'main'
         clean_sum_by_weeks(sheet)
         self.ui.message.setText('clean shift table')
+
+    def Contact_info(self):
+        self.ui.message.setText(str('use only with permission') + '\n' + str('contact info') + '\n' + str('e-mail: Viktor.Mytsa@gmail.com'))
 
 
 if __name__=="__main__":
