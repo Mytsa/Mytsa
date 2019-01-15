@@ -298,7 +298,7 @@ class Ui_MainWindow(object):
         self.radioButton_8.setText(_translate("MainWindow", "втулочний модуль"))
         self.radioButton_9.setText(_translate("MainWindow", "ПЗ"))
         self.radioButton_10.setText(_translate("MainWindow", "Технічний Огляд"))
-        self.radioButton_11.setText(_translate("MainWindow", "механічне корегування"))
+        self.radioButton_11.setText(_translate("MainWindow", "механічне налаштування"))
         self.radioButton_12.setText(_translate("MainWindow", "налаштування розрізу"))
         self.radioButton_13.setText(_translate("MainWindow", "заміна з/ч"))
         # self.radioButton_14.setText(_translate("MainWindow", "зміна кроку подачі"))
